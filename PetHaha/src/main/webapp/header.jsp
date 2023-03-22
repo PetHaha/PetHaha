@@ -16,7 +16,7 @@
 <body>
     <div class="headback">
       	<div id="mainlogo">
-        	<a href="index"><img src="petlogo.png" /> 펫하하</a>
+        	<a href="index"><img src="images/petlogo.png" /> 펫하하</a>
       	</div>
     <div class="headbuttons">
         <c:choose>
