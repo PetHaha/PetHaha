@@ -14,9 +14,17 @@
 <script type="text/javascript" src="script/pethaha.js"></script>
 </head>
 <body>
-	<div class="headback">
+    <div class="headback">
       	<div id="mainlogo">
-        	<a href="index"><img src="images/petlogo.png"/></a>
+        	<a href="index"><img src="petlogo.png" /> 펫하하</a>
       	</div>
-	</div>
+    <div class="headbuttons">
+        <c:choose>
+          	<c:when test="${empty loginUser}">
+            	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
+            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoinForm'">
+          	</c:when>   
+        </c:choose>
+  	</div>
+    </div>
  
