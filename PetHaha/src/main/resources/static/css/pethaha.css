@@ -1,0 +1,5 @@
+@charset "UTF-8";
+body {margin: 0;position: relative;}
+.headback {width: 100%;height: 100px;background-color: #dfb4ff;margin: 0;}
+#mainlogo {position: relative;width: 100px;height: 100px;margin-left: 50px;}
+#mainlogo img {width: 80px;height: 80px; margin-top: 9px;}

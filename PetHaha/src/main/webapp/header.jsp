@@ -14,4 +14,9 @@
 <script type="text/javascript" src="script/pethaha.js"></script>
 </head>
 <body>
+	<div class="headback">
+      	<div id="mainlogo">
+        	<a href="index"><img src="images/petlogo.png"/></a>
+      	</div>
+	</div>
  
