@@ -4,7 +4,7 @@
 	<div id="banner">광고 / 공지</div>
 
     <div id="borderlist">
-        <h2 class="subject">베스트</h2>
+        <h2 class="subjectt">&nbsp;&nbsp;베스트</h2>
         <a class="items" href="#">
             <div class="images">
                 <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >

@@ -20,22 +20,22 @@
       	<div id="mainlogo" onclick="location.href='index'">
         	<img src="images/petlogo.png"/><div id="mainname">펫하하</div>
       	</div>
-    <div class="headbuttons">
-        <c:choose>
-          	<c:when test="${empty loginUser}">
-            	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
-            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
-          	</c:when>   
-        </c:choose>
-  	</div>
+	    <div class="headbuttons">
+	        <c:choose>
+	          	<c:when test="${empty loginUser}">
+	            	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
+	            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
+	          	</c:when>   
+	        </c:choose>
+	  	</div>
     </div>
     
     <div class="menubar">
-      	<ul>
-		        <li><a href="">베스트</a></li>
-		        <li><a href="">강아지</a></li>
-		        <li><a href="">고양이</a></li>
-		        <li><a href="">정보</a></li>
+      	<ul style="margin-top:15px;">
+		        <li style="text-decoration: none;">베스트</li>
+		        <li style="text-decoration: none;">강아지</li>
+		        <li style="text-decoration: none;">고양이</li>
+		        <li style="text-decoration: none;">정보</li>
       	</ul>
     </div>
- 
+ <br>

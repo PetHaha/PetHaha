@@ -2,16 +2,16 @@
 
 
 #banner{border: 1px solid; margin: 0 auto; height: 100px; width: 800px;}
-.subject{font-weight: bold;  color: rgb(252, 127, 252); width: 100px; position: relative;}
+.subjectt{font-weight: bold;  color: rgb(119, 15, 167);width: 100px; position: relative;}
 #borderlist a { text-decoration: none; position: relative; color: var(--default-anchor-color); float: left; border-bottom: 1px solid gainsboro ;}
 #borderlist a:-webkit-any-link { color: -webkit-link;  cursor: pointer; }
 
-#borderlist{width: 930px;  margin: 0 auto; }
+#borderlist{width: 880px;  margin: 0 auto; }
 .items{height: 62px; width: 100%; position: relative; float: left;}
 .images{height: 52px; width:65px ; position: relative;float: left; margin: 5px;}
 .images img{height: 52px; border: 1px solid gray;width: 58px; border-radius: 5px; margin: 0 auto;}
 
-.info{width: 835px;height: 52px;  margin: 5px;color: black; padding: 4px;}
+.info{width: 800px;height: 52px;  margin: 5px;color: black; padding: 4px;}
 .etc{position: relative; float: left;}
 .as{float: left; margin-right: 4px;}
 .dot{float: left; margin-right: 4px;color: gainsboro;}
