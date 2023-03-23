@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>PetHaha</title>
 <link href="css/pethaha.css" rel="stylesheet">
+<link href="css/daeui.css" rel="stylesheet">
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="script/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="script/pethaha.js"></script>
@@ -22,7 +23,7 @@
         <c:choose>
           	<c:when test="${empty loginUser}">
             	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
-            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoinForm'">
+            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
           	</c:when>   
         </c:choose>
   	</div>
