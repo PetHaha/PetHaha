@@ -14,7 +14,7 @@
 <script type="text/javascript" src="script/pethaha.js"></script>
 </head>
 <body>
-    <div class="headback">
+    <div class="headerbox">
       	<div id="mainlogo">
         	<a href="index"><img src="images/petlogo.png" /> 펫하하</a>
       	</div>
@@ -26,5 +26,14 @@
           	</c:when>   
         </c:choose>
   	</div>
+    </div>
+    
+    <div class="menubar">
+      	<ul>
+		        <li><a href="">베스트</a></li>
+		        <li><a href="">강아지</a></li>
+		        <li><a href="">고양이</a></li>
+		        <li><a href="">정보</a></li>
+      	</ul>
     </div>
  
