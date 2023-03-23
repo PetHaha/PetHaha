@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PetHaha</title>
+
 <link href="css/pethaha.css" rel="stylesheet">
 <link href="css/daeui.css" rel="stylesheet">
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -16,8 +17,8 @@
 </head>
 <body>
     <div class="headerbox">
-      	<div id="mainlogo">
-        	<a href="index"><img src="images/petlogo.png" /> 펫하하</a>
+      	<div id="mainlogo" onclick="location.href='index'">
+        	<img src="images/petlogo.png"/><div id="mainname">펫하하</div>
       	</div>
     <div class="headbuttons">
         <c:choose>
