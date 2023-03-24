@@ -15,6 +15,6 @@
 .etc{position: relative; float: left;}
 .as{float: left; margin-right: 4px;}
 .dot{float: left; margin-right: 4px;color: gainsboro;}
-.titleContainer{ font-size: 15px;}
+.titleContainer{ font-size: 17px;}
 .category{border: 1px solid gray; border-radius: 4px; font-size: 13px;padding: 2px; }
-.etc{font-size: 10px ;margin-top:4px ;color: gray;}
+.etc{font-size: 13px; margin-top:4px ;color: gray;}
