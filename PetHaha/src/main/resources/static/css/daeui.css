@@ -7,14 +7,14 @@
 #borderlist a:-webkit-any-link { color: -webkit-link;  cursor: pointer; }
 
 #borderlist{width: 880px;  margin: 0 auto; }
-.items{height: 62px; width: 100%; position: relative; float: left;}
-.images{height: 52px; width:65px ; position: relative;float: left; margin: 5px;}
-.images img{height: 52px; border: 1px solid gray;width: 58px; border-radius: 5px; margin: 0 auto;}
+.items{height: 80px; width: 100%; position: relative; float: left;}
+.images{height: 64px; width:82px ; position: relative;float: left; margin: 8px;}
+.images img{height: 64px; border: 1px solid gray;width: 70px; border-radius: 5px; margin: 0 auto;}
 
-.info{width: 800px;height: 52px;  margin: 5px;color: black; padding: 4px;}
+.info{width: 800px;height: 60px;  margin: 10px;color: black; padding: 4px;}
 .etc{position: relative; float: left;}
 .as{float: left; margin-right: 4px;}
 .dot{float: left; margin-right: 4px;color: gainsboro;}
-.titleContainer{ font-size: 17px;}
-.category{border: 1px solid gray; border-radius: 4px; font-size: 13px;padding: 2px; }
+.titleContainer{ font-size: 20px;}
+.category{border: 1px solid gray; border-radius: 4px; font-size: 15px;padding: 2px; }
 .etc{font-size: 13px; margin-top:4px ;color: gray;}
