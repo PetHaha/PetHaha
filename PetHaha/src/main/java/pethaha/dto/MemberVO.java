@@ -1,7 +1,5 @@
 package pethaha.dto;
 
-import java.sql.Timestamp;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
