@@ -61,7 +61,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout") // 회원 로그아웃
-	public String logout(HttpServletRequest request) {
+	public String logout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginUser");
 		return "redirect:/";

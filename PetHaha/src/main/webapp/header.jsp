@@ -14,6 +14,15 @@
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="script/jquery-3.6.1.js"></script>
 <script type="text/javascript" src="script/pethaha.js"></script>
+
+<script type="text/javascript">    
+    function checkLogout() {
+        if( confirm("로그아웃이 완료되었습니다.") ) {
+            location.href = "logout";
+        }
+    }    
+</script>
+
 </head>
 <body>
     <div class="headerbox">
@@ -27,7 +36,7 @@
 	            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
 	          	</c:when>
 	          	<c:otherwise>
-	    			<input type="button" value="로그아웃" class="headbutton" onclick="location.href='logout'">
+ 			        <input type="button" value="로그아웃" class="headbutton" onclick="checkLogout();">
 		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href=''">
     			</c:otherwise>   
 	        </c:choose>
