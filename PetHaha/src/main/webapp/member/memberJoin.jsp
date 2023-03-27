@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 
   
   <!-- Bootstrap CSS -->
@@ -24,16 +24,26 @@
 	            <div class="row">
 	              <div class="col-md-6 mb-3">
 	                <label for="id">아이디 *</label>
-	                <input type="text" class="form-control" id="id" value="" required/>
+	                <input type="text" class="form-control" id="id" value="" required style="width:350px"/>
 	                <div class="invalid-feedback">아이디를 입력해주세요.</div>
 	              </div>
-	              <div class="col-md-6 mb-3">
+	              <input type="button" class="btn btn-primary btn-lg btn-block" 
+	              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
+	              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인">
+	            </div>
+	            
+				<div class="mb-3">
 	                <label for="pass">비밀번호 *</label>
-	                <input type="text" class="form-control" id="pass" value="" required/>
+	                <input type="password" class="form-control" id="pass" value="" required/>
 	                <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 	              </div>
-	            </div>
-	
+	              
+	              <div class="mb-3">
+	                <label for="passcheck">비밀번호 확인 *</label>
+	                <input type="password" class="form-control" id="passcheck" value="" required/>
+	                <div class="invalid-feedback">비밀번호 확인을 입력해주세요.</div>
+	              </div>
+		
 	            <div class="mb-3">
 	              <label for="nickname">닉네임 *</label>
 	              <input type="text" class="form-control" id="nickname" value="" required/>
@@ -42,7 +52,7 @@
 	
 	            <div class="mb-3">
 	              <label for="phone">전화번호 *</label>
-	              <input type="text" class="form-control" id="phone" placeholder="010-****-****" required/>
+	              <input type="text" class="form-control" id="phone" placeholder="010-1234-1234" required/>
 	              <div class="invalid-feedback">전화번호를 입력해주세요.</div>
 	            </div>
 	
@@ -83,4 +93,4 @@
   </script>
 
 
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>
