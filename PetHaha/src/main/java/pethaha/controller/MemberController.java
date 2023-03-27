@@ -3,6 +3,9 @@ package pethaha.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +34,13 @@ public class MemberController {
 	@RequestMapping("/loginForm") // 회원 로그인 폼 이동
 	public String loginForm() {
 		return "member/memberLogin";
+	}
+	
+	@RequestMapping("/logout") // 회원 로그아웃
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("loginUser");
+		return "redirect:/";
 	}
 	
 	
