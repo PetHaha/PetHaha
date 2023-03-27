@@ -6,7 +6,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <style>
-    .jbody {min-height: 100vh; background-color:white;}
+    .jbody {height: 460px; background-color:white;}
     .input-form {max-width: 680px;margin-top: 80px;padding: 32px;background: #fff;
       -webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;
       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
@@ -17,7 +17,7 @@
 <div class="jbody">
 	<div class="container">
 	      <div class="input-form-backgroud row">
-	        <div class="input-form col-md-12 mx-auto">
+	        <div class="input-form col-md-12 mx-auto" >
 	          <h4 class="mb-3">로그인</h4>
 	          <form class="validation-form" novalidate>
 	            <div class="row">
