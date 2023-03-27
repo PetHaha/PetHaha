@@ -12,6 +12,8 @@
       -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)}
+      
+     #loginmessage {width: 100%; height: 20px; margin-top: 30px; color: red; text-align: center; }
   </style>
 
 <div class="jbody">
@@ -19,25 +21,28 @@
 	      <div class="input-form-backgroud row">
 	        <div class="input-form col-md-12 mx-auto" >
 	          <h4 class="mb-3">로그인</h4>
-	          <form class="validation-form" novalidate>
-	            <div class="row">
-	              <div class="col-md-6 mb-3">
+	          <form class="validation-form" novalidate method="post" action="login" name="loginForm">
+
+	              <div class="mb-3">
 	                <label for="id">아이디</label>
-	                <input type="text" class="form-control" id="id" value="" required/>
+	                <input type="text" class="form-control" id="id" value="${dto.ID}" name="ID" required/>
 	                <div class="invalid-feedback">아이디를 입력해주세요.</div>
 	              </div>
-	              <div class="col-md-6 mb-3">
+	              <div class="mb-3">
 	                <label for="pass">비밀번호</label>
-	                <input type="text" class="form-control" id="pass" value="" required/>
+	                <input type="password" class="form-control" id="pwd" value="${dto.PWD}" name="PWD" required/>
 	                <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 	              </div>
-	            </div>
-	            <button style="background-color:#ca9bee; font-weight:bold; border:1px solid white" class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+
+	            <button style="background-color:#ca9bee; font-weight:bold; border:1px solid white" class="btn btn-primary btn-lg btn-block" 
+	            type="submit">로그인</button>
 	          </form>
 	        </div>
 	      </div>
 	  </div>
+	  <div id="loginmessage">${message}</div>
   </div>
+  
   <script>
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
@@ -53,6 +58,7 @@
         }, false);
       });
     }, false);
+    
   </script>
 
 <%@ include file="../footer.jsp"%>
