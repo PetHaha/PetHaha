@@ -25,7 +25,11 @@
 	          	<c:when test="${empty loginUser}">
 	            	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
 	            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
-	          	</c:when>   
+	          	</c:when>
+	          	<c:otherwise>
+	    			<input type="button" value="로그아웃" class="headbutton" onclick="location.href='logout'">
+		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href=''">
+    			</c:otherwise>   
 	        </c:choose>
 	  	</div>
     </div>

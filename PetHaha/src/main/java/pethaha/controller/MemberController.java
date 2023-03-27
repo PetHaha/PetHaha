@@ -43,8 +43,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST) // 회원 로그인, validation 적용
 	public String login(@ModelAttribute("dto") @Valid MemberVO mvo, BindingResult result, HttpSession session, Model model) {
-		String url = "member/memberLogin";
-		{
+		String url = "member/memberLogin";{
 			HashMap<String, Object> prm = new HashMap<>();
 			prm.put("ID", mvo.getID());
 			ms.getMember(prm);
