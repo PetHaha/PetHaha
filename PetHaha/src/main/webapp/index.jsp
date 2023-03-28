@@ -1,9 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-	<div id="banner"></div>
+
+<script type="text/javascript">
+$(function(){
+	var num=0;
+	setInterval(function(){
+        $('#rb').animate({ left : num * -800 },2000);
+            num++;
+            if(num==2)num=0;
+    }, 4000);
+});
+</script>
+
+
+	<div id="pbanner" style="height: 120px; width: 820px; margin:0 auto; border: 1px solid black; position:relative; overflow:hidden">
+		<div id="rb" style="position:absolute; top:0px; left:0px; width: 1640px; height:120px; float:left; "><img src="images/pet1.jpg" style="height: 120px; width: 820px; margin:0 auto;" ><img src="images/pet2.jpg" style="height: 120px; width: 820px; margin:0 auto;" ></div>
+	</div>
 
     <div id="borderlist">
+    	<br>
         <h2 class="subjectt">&nbsp;&nbsp;베스트</h2>
         <a class="items" href="#">
             <div class="images">
