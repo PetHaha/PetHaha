@@ -6,7 +6,7 @@
 $(function(){
 	var num=0;
 	setInterval(function(){
-        $('#rb').animate({ left : num * -800 },2000);
+        $('#rb').animate({ left : num * -820 },2000);
             num++;
             if(num==2)num=0;
     }, 4000);
@@ -14,7 +14,7 @@ $(function(){
 </script>
 
 
-	<div id="pbanner" style="height: 120px; width: 820px; margin:0 auto; border: 1px solid black; position:relative; overflow:hidden">
+	<div id="pbanner" style="position:relative; height: 120px; width: 820px; margin:0 auto; overflow:hidden;">
 		<div id="rb" style="position:absolute; top:0px; left:0px; width: 1640px; height:120px; float:left; "><img src="images/pet1.jpg" style="height: 120px; width: 820px; margin:0 auto;" ><img src="images/pet2.jpg" style="height: 120px; width: 820px; margin:0 auto;" ></div>
 	</div>
 
