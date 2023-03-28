@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="pethaha.dao.IMemberDao2">
+	<resultMap id="memberMap2" type="java.util.HashMap"></resultMap>
+	
+	<insert id="insertMember" statementType="CALLABLE" parameterType="pethaha.dto.MemberVO" >
+		{CALL insertMember(#{ID},#{PWD},#{NAME},#{PHONE},#{NICK}, #{INTRO})}
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
