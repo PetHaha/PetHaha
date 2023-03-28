@@ -147,3 +147,13 @@ create sequence preply_seq start with 1;
 drop sequence pre_reply_seq;
 create sequence pre_reply_seq start with 1;	
 
+CREATE TABLE PBanner -- 롤링 배너 테이블 
+(
+	bnseq number(5) primary key,
+	bnborder number(5) DEFAULT 4,
+	bnimage varchar2(20) NOT NULL,
+	bnname varchar2(20) NOT NULL,
+	indate date DEFAULT sysdate
+);
+
+
