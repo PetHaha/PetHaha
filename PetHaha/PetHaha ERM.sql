@@ -145,7 +145,10 @@ drop sequence preply_seq;
 create sequence preply_seq start with 1;	
 
 drop sequence pre_reply_seq;
-create sequence pre_reply_seq start with 1;	
+create sequence pre_reply_seq start with 1;
+
+drop sequence pbanner_seq; -- 롤링 배너 시퀀스 
+create sequence pbanner_seq start with 1;
 
 CREATE TABLE PBanner -- 롤링 배너 테이블 
 (
