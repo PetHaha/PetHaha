@@ -37,7 +37,7 @@
 	          	</c:when>
 	          	<c:otherwise>
  			        <input type="button" value="로그아웃" class="headbutton" onclick="checkLogout();">
-		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href=''">
+		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href='memberUpdateForm'">
     			</c:otherwise>   
 	        </c:choose>
 	  	</div>
