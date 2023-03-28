@@ -90,7 +90,7 @@
 	<div class="container">
 	      <div class="input-form-backgroud row">
 	        <div class="input-form col-md-12 mx-auto">
-	          <h4 class="mb-3" style="margin:0 auto;">회원가입</h4>
+	          <h4 class="mb-3" style="text-align:center;">회원가입</h4>
 	          <form class="validation-form" novalidate name="joinform" method="post" action="memberJoin">
 	            <div class="row">
 	              <div class="col-md-6 mb-3">
