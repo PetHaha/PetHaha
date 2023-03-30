@@ -1,5 +1,7 @@
 package pethaha.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import pethaha.dto.MemberVO;
@@ -8,5 +10,9 @@ import pethaha.dto.MemberVO;
 public interface IMemberDao2 {
 
 	void insertMember(MemberVO mvo);
+
+	void PboardGetAllCount(HashMap<String, Object> prm);
+
+	void PgetBoard(HashMap<String, Object> prm);
 
 }
