@@ -19,6 +19,6 @@ is
 begin
     update pmember set pwd=p_pwd,nick=p_nick,phone=p_phone,name=p_name,intro=p_intro,memimg=p_memimg where id=p_id;
     commit;
-     OPEN p_curvar For select * from member where id=p_id;
+     OPEN p_curvar For select * from pmember where id=p_id;
 end;
 
