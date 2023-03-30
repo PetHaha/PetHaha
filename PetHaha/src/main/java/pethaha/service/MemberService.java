@@ -17,4 +17,9 @@ public class MemberService {
 		mdao.getMember(prm);		
 	}
 
+	public void PmemberUpdate(HashMap<String, Object> prm) {
+		mdao.PmemberUpdate(prm);
+		
+	}
+
 }

@@ -11,4 +11,8 @@
 		{CALL getMember(#{ ID, mode=IN },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap })}
 	</select>
 	
+	<update id="PmemberUpdate" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PmemberUpdate(#{mvo.ID}, #{mvo.PWD}, #{mvo.NICK}, #{mvo.PHONE}, #{mvo.NAME},#{mvo.INTRO}, #{mvo.MEMIMG}, #{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap })}
+	</update>
+	
 </mapper>

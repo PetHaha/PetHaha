@@ -1,8 +1,10 @@
 package pethaha.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,6 +16,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pethaha.dto.MemberVO;
 import pethaha.service.MemberService;
@@ -23,6 +30,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberService ms;
+	
+	@Autowired
+	ServletContext context;
 	
 	@RequestMapping("/") // 메인화면으로 이동
 	public String main(Model model) {
@@ -73,29 +83,38 @@ public class MemberController {
 		return "member/memberUpdate";
 	}
 	
-	/*
+	@RequestMapping(value="fileUp",method=RequestMethod.POST)
+	@ResponseBody	
+	public HashMap<String , Object> fileUp(Model model,HttpServletRequest request) throws IOException{
+		String path=context.getRealPath("");
+		HashMap<String,Object>result=new HashMap<String,Object>();		
+		MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+		result.put("STATUS",1);
+		result.put("FILENAME", multi.getFilesystemName("fileimage"));
+		return result;
+	}
+	
 	  @RequestMapping(value="/memberUpdate", method=RequestMethod.POST) // 회원 정보 수정, validation 적용
-	   public String memberUpdate( @ModelAttribute("loginUser") @Valid MemberVO mvo, BindingResult result, Model model, HttpSession session ) {
-	      if (session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-	      if (result.getFieldError("PWD")!=null ) model.addAttribute("message", result.getFieldError("PWD").getDefaultMessage());
-	      else if (result.getFieldError("NAME")!=null ) model.addAttribute("message", result.getFieldError("NAME").getDefaultMessage());
-	      else if (result.getFieldError("PHONE")!=null ) model.addAttribute("message", result.getFieldError("PHONE").getDefaultMessage());
-	      else if (result.getFieldError("EMAIL")!=null ) model.addAttribute("message", result.getFieldError("EMAIL").getDefaultMessage());
-	      else if (mvo.getADDRESS2()==null||mvo.getADDRESS2().equals(""))model.addAttribute("message","상세주소를 입력해주세요");
-	      else if (mvo.getNICK()==null||mvo.getNICK().equals(""))model.addAttribute("message","닉네임을 입력해주세요");
-	      else if (mvo.getUSERPWDCHK().equals("") || mvo.getUSERPWDCHK() == null || !mvo.getUSERPWDCHK().equals(mvo.getPWD() ) ) model.addAttribute("message", "비밀번호가 일치하지 않습니다");
-	      else {
+	   public String memberUpdate( @ModelAttribute("loginUser") @Valid MemberVO mvo, BindingResult result, 
+			   Model model, HttpSession session, @RequestParam(value="OLDIMAGE",required=false) String oldImage) {
+	        if (session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+	      
+			if( mvo.getMEMIMG().equals("") ) {
+				if(oldImage==null)oldImage="noimg.jpg";
+				mvo.setMEMIMG(oldImage);
+			}
 	         HashMap<String, Object> prm = new HashMap<String, Object>();      
 	         prm.put("mvo", mvo);
-	         ms.memberUpdate( prm ); // 업데이트 후, 갱신된 정보로 로그인 유저 조회
+	         ms.PmemberUpdate( prm ); // 업데이트 후, 갱신된 정보로 로그인 유저 조회
 	         ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 	         HashMap<String,Object> loginUser = list.get(0);
 	         session.setAttribute("loginUser", loginUser); // 갱신된 정보 세션에 저장
 	         model.addAttribute("success", "1"); //정보수정 알림
-	      }
+	         
 	      return "member/memberUpdate";
 	   }
-	   */
+
+
 	
 	
 

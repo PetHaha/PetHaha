@@ -39,7 +39,7 @@ CREATE TABLE PMember
 	phone varchar2(50) NOT NULL,
 	name varchar2(20) NOT NULL,
 	intro varchar2(1000),
-	MemImg varchar2(100),
+	MemImg varchar2(100) default 'noimg.jpg', -- default값 추가 
 	point number(6) DEFAULT 0,
 	kick number(1) DEFAULT 0,
 	PRIMARY KEY (id, nick)
