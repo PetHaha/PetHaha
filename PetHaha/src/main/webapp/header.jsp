@@ -36,6 +36,7 @@
 	            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
 	          	</c:when>
 	          	<c:otherwise>
+	          		<div id="wlcm" style="position:absoulute;font-weight:bold; color:white; font-size:19px">'${loginUser.NICK}'<span style="font-size:17px;"> 님 반가워요!</span></div>
  			        <input type="button" value="로그아웃" class="headbutton" onclick="checkLogout();">
 		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href='memberUpdateForm'">
     			</c:otherwise>   
