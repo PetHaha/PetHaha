@@ -21,244 +21,70 @@ $(function(){
     <div id="borderlist">
     	<br>
         <h2 class="subjectt">&nbsp;&nbsp;베스트</h2>
+        <div style="position:relative;">
+        <c:forEach items="${list}" var="board">
+        <div style="height:81px; flaot:left;	">
         <a class="items" href="#">
             <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
+            <c:choose>
+	            <c:when test="${empty board.BIMG1 }">
+	                <img src="images/boardimg/noimg.jpg" alt="${board.SUBJECT }"  >
+	            </c:when>
+	            <c:otherwise>
+	            	<img src="images/boardimg/${board.BIMG1}" alt="${board.SUBJECT }"  >
+	            </c:otherwise> 
+            </c:choose>   
             </div>
             <div class="info" >
                 <div class="titleContainer">
-                    <span class="category">강아지</span>
+                	<c:choose>
+                		<c:when test="${board.CATEGORY=='1' }">
+                    		<span class="category">강아지</span>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<span class="category">고양이</span>
+                    	</c:otherwise>
+                    </c:choose>
                     <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
+                    <span class="text"> ${board.SUBJECT}</span>
                     </span>
                 </div>
                 <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
+                    <div class="as">${board.NICK }</div>
                     <div class="dot">.</div>
-                    <div class="as">25초전</div>
+                    <div class="as">${board.INDATE }</div>
                     <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
+                    <div class="as"><img src="images/eye.png" style="height:10px"> ${board.VIEWS }</div>
                     <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
+                    <div class="as"><img src="images/thumb.png" style="height:9px"> ${board.THUMBS}</div>
                 </div>
             </div>
         </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-        <a class="items" href="#">
-            <div class="images">
-                <img src="images/123.png" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  >
-            </div>
-            <div class="info" >
-                <div class="titleContainer">
-                    <span class="category">강아지</span>
-                    <span class="title">
-                    <span class="text"> 시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ</span>
-                    </span>
-                </div>
-                <div class="etc">
-                    <div class="as">겨울배가맛있단다배가달아</div>
-                    <div class="dot">.</div>
-                    <div class="as">25초전</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/eye.png" style="height:10px"> 2</div>
-                    <div class="dot">.</div>
-                    <div class="as"><img src="images/thumb.png" style="height:9px"> 2</div>
-                </div>
-            </div>
-        </a>
-
-        paging
-
+        </div>
+        </c:forEach>
+        </div>
+       
+        <jsp:include page="/board/paging.jsp">
+			<jsp:param name="command" value="index"/>
+		</jsp:include>	
+	
         <br>
-        <table id="" style="float: right;">
-			<tr >
-				<td style="font-size:15px; width:642; " >
-                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px;">
-                        <option value="1" >제목</option>
-                        <option value="2">내용</option>
-                        <option value="3">제목+내용</option>
-                        <option value="4">작성자</option>
-                    </select>
-                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
-					<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색" onClick="go_search()">
-				</td>
-			</tr>
-		</table>
+        <form name="frm" method="post" action="index">
+        <input type="hidden" name="category" value="0">
+	        <table id="" style="float: right;">
+				<tr >
+					<td style="font-size:15px; width:642; " >
+	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px;" name="sc">
+	                        <option value="subject" >제목</option>
+	                        <option value="content">내용</option>
+	                        <option value="nick">작성자</option>
+	                    </select>
+	                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
+						<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
+					</td>
+				</tr>
+			</table>
+		</form>
         
 
     </div>

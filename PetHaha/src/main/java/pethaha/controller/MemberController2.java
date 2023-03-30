@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pethaha.dto.MemberVO;
+import pethaha.dto.Paging;
 import pethaha.service.MemberService;
 import pethaha.service.MemberService2;
 
@@ -53,6 +51,21 @@ public class MemberController2 {
 			model.addAttribute("message", "회원가입이 완료되었습니다. 로그인하세요");
 			return "member/memberLogin";
 		
+	}
+	
+	@RequestMapping("/index") // 메인화면으로 이동
+	public String index(Model model,HttpServletRequest request ,@RequestParam(value="category", required=false) String category) {
+		HashMap<String,Object>prm=new HashMap<String,Object>();
+		
+		if (category==null)category="0";
+		prm.put("category",category );
+		prm.put("request", request);
+		ms.Pgetboard(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		model.addAttribute("paging", (Paging)prm.get("paging"));
+		model.addAttribute("key", (String)prm.get("key"));
+		model.addAttribute("list", list);
+		return "index";
 	}
 	
 	
