@@ -1,4 +1,4 @@
-create or replace procedure getMember(p_id IN pmember.id%type, p_curvar OUT SYS_REFCURSOR)
+create or replace procedure PgetMember(p_id IN pmember.id%type, p_curvar OUT SYS_REFCURSOR)
 IS
 BEGIN
     OPEN p_curvar For 

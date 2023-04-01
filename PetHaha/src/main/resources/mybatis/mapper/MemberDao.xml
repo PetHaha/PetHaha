@@ -7,8 +7,8 @@
   <mapper namespace="pethaha.dao.IMemberDao">
 	<resultMap id="memberMap" type="java.util.HashMap"></resultMap>
 	
-	<select id="getMember" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{CALL getMember(#{ ID, mode=IN },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap })}
+	<select id="PgetMember" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PgetMember(#{ ID, mode=IN },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap })}
 	</select>
 	
 	<update id="PmemberUpdate" statementType="CALLABLE" parameterType="java.util.HashMap">

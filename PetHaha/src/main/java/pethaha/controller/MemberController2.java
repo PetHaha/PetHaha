@@ -35,7 +35,7 @@ public class MemberController2 {
 	public String member_id_check( @RequestParam("ID") String ID, Model model, HttpServletRequest request ) {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("ID", ID);
-		msi.getMember( paramMap );
+		msi.PgetMember( paramMap );
 		ArrayList< HashMap<String,Object> > list = (ArrayList< HashMap<String,Object> >) paramMap.get("ref_cursor");
 		if( list.size()==0 ) model.addAttribute("result" , -1);
 		else model.addAttribute("result" , 1);
