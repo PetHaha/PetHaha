@@ -5,9 +5,13 @@ body {margin: 0;position: relative;}
 #mainlogo {position: relative;width: 200px;height: 100px;margin-left: 30px; cursor:pointer;}
 #mainname{position:relative;font-weight: bold;font-size:20px;color: white; width:90px; left:90px; top:-30px;}
 #mainlogo img {width: 80px;height: 80px; margin-top: 9px; float:left; position: relative;}
+<<<<<<< HEAD
 .headbuttons {position: absolute; width: 210px;top: 23px;right:30px;}
 .headbuttons2 {position: absolute; width: 510px;top: 23px;right:30px; height:80px; border:1px solid black;}
 #welcome{width:200px; height:60px; border:1px solid green;}
+=======
+.headbuttons {position: absolute; width:500px; top: 23px; right:30px;}
+>>>>>>> refs/remotes/origin/develop
 .headbutton {width: 100px;height: 50px;border-radius: 60px;text-decoration: none;font-weight: bold;font-size: 120%;
 background-color: #fff;line-height: 45px;color: #fff;background-color: transparent;
 border: 4px solid white;}
@@ -21,5 +25,7 @@ text-align: center; text-align: center;text-decoration: none;color: white;}
 .footerbox #copyright {position: absolute;top: 30px; right:50px;text-align: center;font-size: 17px;opacity: 80%;color: white;
   font-family: Verdana;}
 .footerbox  #logo{ position:absolute; width:50px; height: 50px;  right: 15px; opacity: 70%; top:18px}
+
+.wlcm{text-decoration:none; border:none; width:10px;}
 
 

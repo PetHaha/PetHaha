@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ include file="../header.jsp"%>
 
   
@@ -15,8 +17,10 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)}
       .error_text{color:#dc3545; font-size:80%}
   </style>
+  
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.6.1.js"></script>  
+<script type="text/javascript" src="js/jquery-3.6.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script type="text/javascript">
 
 // file upload ajax
@@ -36,8 +40,12 @@ $(function(){
 	        success : function(data){
 	            if(data.STATUS == 1){  	
 	            	$("#fileimage").val(data.FILENAME);
+<<<<<<< HEAD
 	            	$("#filename").html("<img src='images/profile/"+data.FILENAME+"' height='150'/>");
 	            	$("#OLDIMAGE").hide();
+=======
+	            	$("#filename").html("<img src='images/"+data.FILENAME+"' height='150'/>");
+>>>>>>> refs/remotes/origin/develop
 	            }
 	        },
 	        error: function() {	alert("업로드 실패");}
@@ -150,8 +158,8 @@ $(function(){
 				       <input type="hidden" name="MEMIMG" id="fileimage">
 				                  	
 					<div id="filename" style="float:left; margin-right:30px;">
-						<c:if test="${not empty NEWMEMIMAGE}">
-							<img src="${NEWMEMIMAGE}" height='150'/>
+						<c:if test="${not empty NEWMEMIMG}">
+							<img src="images/profile/${NEWMEMIMG}" height='150'/>
 						</c:if>
 					</div>
 				</div>
