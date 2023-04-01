@@ -75,10 +75,11 @@ $(function(){
 				<tr >
 					<td style="font-size:15px; width:642; " >
 	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px;" name="sc">
-	                        <option value="subject" >제목</option>
-	                        <option value="content">내용</option>
-	                        <option value="nick">작성자</option>
+	                        <option value="1" >제목</option>
+	                        <option value="2">내용</option>
+	                        <option value="3">작성자</option>
 	                    </select>
+	                    <input type="hidden" name="page" value="1">
 	                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
 						<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
 					</td>

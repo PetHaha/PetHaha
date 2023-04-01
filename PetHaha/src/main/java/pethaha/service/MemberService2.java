@@ -29,13 +29,16 @@ public class MemberService2 {
 		HttpServletRequest request = (HttpServletRequest)prm.get("request");
 		HttpSession session = request.getSession();
 		String key = "";
-		 int page = 1;
+		int page = 1;
+		String sc=""; 
 		 
 		if(request.getParameter("first")!=null) {
 			session.removeAttribute("page");
 			session.removeAttribute("key");
+			session.removeAttribute("sc");
 			request.removeAttribute("page");
 			request.removeAttribute("key");
+			request.removeAttribute("sc");
 		} else {
 	        if (request.getParameter("page")!=null) {
 	           page = Integer.parseInt( request.getParameter("page") );
@@ -48,9 +51,14 @@ public class MemberService2 {
 	           key = request.getParameter("key");
 	        } else if (session.getAttribute("key")!=null)
 	           key = (String)session.getAttribute("key");
+	        
+	        if(request.getParameter("sc")!=null) {
+		           session.setAttribute("sc", request.getParameter("sc"));
+		           sc = request.getParameter("sc");
+		        } else if (session.getAttribute("sc")!=null)
+		           sc = (String)session.getAttribute("sc");
 		}
-		String sc="content";
-		if (request.getParameter("sc")==null) sc="content";
+		
 		
 		Paging paging = new Paging();
 		paging.setPage(page);

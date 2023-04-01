@@ -38,14 +38,14 @@ public class MemberController {
 	public String main(Model model) {
 		return "redirect:/index";
 	}
-
+	/*
 	@RequestMapping("/index") // 메인화면으로 이동
 	public String index(Model model) {
 		HashMap<String,Object>prm=new HashMap<String,Object>();
 		ArrayList<HashMap<String,Object>> list =(ArrayList<HashMap<String,Object>>) prm.get("ref_cursor");
 		return "index";
 	}
-	
+	*/
 	@RequestMapping("/loginForm") // 회원 로그인 폼 이동
 	public String loginForm() {
 		return "member/memberLogin";

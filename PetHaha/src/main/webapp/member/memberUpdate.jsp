@@ -40,7 +40,12 @@ $(function(){
 	        success : function(data){
 	            if(data.STATUS == 1){  	
 	            	$("#fileimage").val(data.FILENAME);
+<<<<<<< HEAD
+	            	$("#filename").html("<img src='images/profile/"+data.FILENAME+"' height='150'/>");
+	            	$("#OLDIMAGE").hide();
+=======
 	            	$("#filename").html("<img src='images/"+data.FILENAME+"' height='150'/>");
+>>>>>>> refs/remotes/origin/develop
 	            }
 	        },
 	        error: function() {	alert("업로드 실패");}
@@ -143,7 +148,7 @@ $(function(){
 	              <label for="intro"
 	                >소개글<span class="text-muted"
 	                  >&nbsp;(필수 아님)</span></label>
-	              <textarea class="form-control" name="INTRO" value="${loginUser.INTRO}" style="resize: none; height:100px"></textarea>
+	              <textarea class="form-control" name="INTRO"  style="resize: none; height:100px">${loginUser.INTRO}</textarea>
 	            </div>
 	            
 			    <label for="img">대표사진(필수 아님)</label><br>
@@ -161,14 +166,14 @@ $(function(){
 				
 	            <div class="mb-4"></div>
 	            <button style="margin-top:20px; background-color:#ca9bee; font-weight:bold; border:1px solid white" class="btn btn-primary btn-lg btn-block" type="submit" onclick="return joincheck();">수정 완료</button>
-	            
+	            </form>
 	            <div style="position:absolute; bottom:90px;">
     				<form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">
 						<input type="file" name="fileimage"><input type="button" id="myButton" value="추가">
 					</form> 
   				</div>
 	            
-	          </form>
+	          
 	      </div>
 	  </div>
 	</div>
