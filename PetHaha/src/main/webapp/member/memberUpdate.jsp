@@ -40,12 +40,8 @@ $(function(){
 	        success : function(data){
 	            if(data.STATUS == 1){  	
 	            	$("#fileimage").val(data.FILENAME);
-<<<<<<< HEAD
 	            	$("#filename").html("<img src='images/profile/"+data.FILENAME+"' height='150'/>");
 	            	$("#OLDIMAGE").hide();
-=======
-	            	$("#filename").html("<img src='images/"+data.FILENAME+"' height='150'/>");
->>>>>>> refs/remotes/origin/develop
 	            }
 	        },
 	        error: function() {	alert("업로드 실패");}
