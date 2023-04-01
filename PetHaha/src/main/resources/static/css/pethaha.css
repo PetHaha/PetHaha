@@ -6,6 +6,8 @@ body {margin: 0;position: relative;}
 #mainname{position:relative;font-weight: bold;font-size:20px;color: white; width:90px; left:90px; top:-30px;}
 #mainlogo img {width: 80px;height: 80px; margin-top: 9px; float:left; position: relative;}
 .headbuttons {position: absolute; width: 210px;top: 23px;right:30px;}
+.headbuttons2 {position: absolute; width: 510px;top: 23px;right:30px; height:80px; border:1px solid black;}
+#welcome{width:200px; height:60px; border:1px solid green;}
 .headbutton {width: 100px;height: 50px;border-radius: 60px;text-decoration: none;font-weight: bold;font-size: 120%;
 background-color: #fff;line-height: 45px;color: #fff;background-color: transparent;
 border: 4px solid white;}
