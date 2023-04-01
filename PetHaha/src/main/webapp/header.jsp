@@ -29,18 +29,23 @@
       	<div id="mainlogo" onclick="location.href='index'">
         	<img src="images/petlogo.png"/><div id="mainname">펫하하</div>
       	</div>
-	    <div class="headbuttons">
+	    
 	        <c:choose>
 	          	<c:when test="${empty loginUser}">
+	          	<div class="headbuttons">
 	            	<input type="button" value="로그인" class="headbutton" onclick="location.href='loginForm'">
 	            	<input type="button" value="회원가입" class="headbutton" onclick="location.href='memberJoin'">
+	            </div>
 	          	</c:when>
 	          	<c:otherwise>
+	          	<div class="headbuttons2" style="position: absolute; width: 412px;top: 23px;right:30px; height:80px; ">
+	          		<div id="welcome" style="width:200px; height:60px;  float:left; color:white; font-weight:bold; line-height:60px;" ><span style="font-size:115%;">'${loginUser.NICK }'</span> 님 반가워요!</div>
  			        <input type="button" value="로그아웃" class="headbutton" onclick="checkLogout();">
 		    		<input type="button" value="내 정보" class="headbutton" onclick="location.href='memberUpdateForm'">
+		    	</div>
     			</c:otherwise>   
 	        </c:choose>
-	  	</div>
+	  	
     </div>
     
     <div class="menubar">
