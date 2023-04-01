@@ -56,7 +56,7 @@ public class MemberController {
 		String url = "member/memberLogin";{
 			HashMap<String, Object> prm = new HashMap<>();
 			prm.put("ID", mvo.getID());
-			ms.getMember(prm);
+			ms.PgetMember(prm);
 			ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 			if(list.size()==0) model.addAttribute("message","아이디가 없습니다.");
 			else { HashMap<String, Object> hvo = list.get(0);

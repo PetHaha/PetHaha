@@ -13,8 +13,8 @@ public class MemberService {
 	@Autowired
 	IMemberDao mdao;
 
-	public void getMember(HashMap<String, Object> prm) {
-		mdao.getMember(prm);		
+	public void PgetMember(HashMap<String, Object> prm) {
+		mdao.PgetMember(prm);		
 	}
 
 	public void PmemberUpdate(HashMap<String, Object> prm) {
