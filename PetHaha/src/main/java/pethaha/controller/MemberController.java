@@ -86,7 +86,7 @@ public class MemberController {
 	@RequestMapping(value="fileUp",method=RequestMethod.POST)
 	@ResponseBody	
 	public HashMap<String , Object> fileUp(Model model,HttpServletRequest request) throws IOException{
-		String path=context.getRealPath("");
+		String path=context.getRealPath("images/profile/");
 		HashMap<String,Object>result=new HashMap<String,Object>();		
 		MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
 		result.put("STATUS",1);
