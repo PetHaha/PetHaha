@@ -26,7 +26,7 @@
 </head>
 <body>
     <div class="headerbox">
-      	<div id="mainlogo" onclick="location.href='index'">
+      	<div id="mainlogo" onclick="location.href='index?first=y'">
         	<img src="images/petlogo.png"/><div id="mainname">펫하하</div>
       	</div>
 	    
@@ -50,10 +50,10 @@
     
     <div class="menubar">
       	<ul style="margin-top:15px;">
-		        <li style="text-decoration: none;">베스트</li>
-		        <li style="text-decoration: none;">강아지</li>
-		        <li style="text-decoration: none;">고양이</li>
-		        <li style="text-decoration: none;">정보</li>
+		        <li style="text-decoration: none;" onclick="location.href='index?first=y'">베스트</li>
+		        <li style="text-decoration: none;" onclick="location.href='dogBoard?first=y'">강아지</li>
+		        <li style="text-decoration: none;" onclick="location.href='dogBoard?first=y'">고양이</li>
+		        <li style="text-decoration: none;" onclick="location.href='info'">정보</li>
       	</ul>
     </div>
  <br>
