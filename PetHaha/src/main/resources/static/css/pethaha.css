@@ -12,12 +12,13 @@ body {margin: 0;position: relative;}
 background-color: #fff;line-height: 45px;color: #fff;background-color: transparent;
 border: 4px solid white;}
 .headbutton:hover {background-color: white;color: #dfb4ff;cursor: pointer;}
-.menubar {width: 930px;height: 50px;background-color: #ca9bee;margin:0 auto; margin-top: 20px; }
+.menubar {width: 930px;height: 50px;background-color: #ca9bee;margin:0 auto !important; }
 .menubar ul {list-style-type: none;float: left;}
-.menubar ul li {display: inline;margin-right: 40px;position: relative;top: -4px;cursor: pointer;font-weight: bold;
-text-align: center; text-align: center;text-decoration: none;color: white;}
+.menubar ul li {display: inline;margin-right: 40px;position: relative;cursor: pointer;font-weight: bold;
+text-align: center;text-decoration: none;color: white;}
 .menubar ul li:hover {color: rgb(119, 15, 167);}
 .footerbox {position: relative;height: 90px;width:930px;background-color: #dfb4ff; margin:0 auto;}
 .footerbox #copyright {position: absolute;top: 30px; right:50px;text-align: center;font-size: 17px;opacity: 80%;color: white;
   font-family: Verdana;}
 .footerbox  #logo{ position:absolute; width:50px; height: 50px;  right: 15px; opacity: 70%; top:18px}
+
