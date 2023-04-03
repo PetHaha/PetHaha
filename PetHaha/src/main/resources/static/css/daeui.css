@@ -2,7 +2,7 @@
 
 
 #1banner{height: 100px; width: 800px; margin:0 auto; border: 1px solid black;}
-.subjectt{font-weight: bold;  color: rgb(119, 15, 167);width: 100px; position: relative;}
+.subjectt{font-weight: bold;  color: rgb(119, 15, 167);width: 120px; position: relative;}
 #borderlist a { text-decoration: none; position: relative; color: var(--default-anchor-color); float: left; border-bottom: 1px solid gainsboro ;}
 #borderlist a:-webkit-any-link { color: -webkit-link;  cursor: pointer; }
 #rb{width: 1600px; height:100px; float:left; border: 1px solid black;}
@@ -10,7 +10,7 @@
 .items{height: 80px; width: 100%; position: relative; float: left;}
 .images{height: 64px; width:82px ; position: relative;float: left; margin: 8px;}
 .images img{height: 64px; border: 1px solid gray;width: 70px; border-radius: 5px; margin: 0 auto;}
-
+.text img{height:40px; }
 .info{width: 800px;height: 60px;  margin: 10px;color: black; padding: 4px;}
 .etc{position: relative; float: left;}
 .as{float: left; margin-right: 4px;}

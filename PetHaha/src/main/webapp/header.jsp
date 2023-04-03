@@ -42,7 +42,7 @@
                 <div class="headbuttons2" style="position: absolute; width: 412px;top: 23px;right:30px; height:80px; ">
                    <div id="welcome" style="width:200px; height:60px;  float:left; color:white; font-weight:bold; line-height:60px;" ><span style="font-size:115%;">'${loginUser.NICK }'</span> 님 반가워요!</div>
                   <input type="button" value="로그아웃" class="headbutton" onclick="checkLogout();">
-                <input type="button" value="내 정보" class="headbutton" onclick="location.href='memberUpdateForm'">
+                <input type="button" value="내 정보" class="headbutton" onclick="location.href='memberUpdateChkForm'">
              </div>
              </c:otherwise>   
            </c:choose>
