@@ -52,8 +52,8 @@
     <div class="menubar">
          <ul style="margin-top:15px;">
               <li style="text-decoration: none;" onclick="location.href='index?first=y'">베스트</li>
-              <li style="text-decoration: none;" onclick="location.href='dogBoard?first=y'">강아지</li>
-              <li style="text-decoration: none;" onclick="location.href='dogBoard?first=y'">고양이</li>
+              <li style="text-decoration: none;" onclick="location.href='dogcat?first=y&category=1'">강아지</li>
+              <li style="text-decoration: none;" onclick="location.href='dogcat?first=y&category=2'">고양이</li>
               <li style="text-decoration: none;" onclick="location.href='info'">정보</li>
          </ul>
     </div>
