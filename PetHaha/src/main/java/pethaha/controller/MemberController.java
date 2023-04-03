@@ -113,6 +113,12 @@ public class MemberController {
 	         
 	      return "member/memberUpdate";
 	   }
+	  
+	  @RequestMapping("/memberUpdateChkForm") 
+		public String memberUpdateChkForm(HttpSession session) {
+			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			return "member/memberUpdateCheck";
+		}
 
 
 	

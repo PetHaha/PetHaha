@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/member/myheader.jsp"%>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,17 +18,12 @@
     .error_text{color:#dc3545; font-size:80%}
   </style>
   
-  <style type=text/css>
-	.up_menubar {width: 930px;height: 50px; margin:0 auto;}
-	.up_menubar ul {list-style-type: none;}
-	.up_menubar ul li {display: inline;position: relative;cursor: pointer;font-weight: bold;
-	text-align: center; text-decoration: none;color: rgb(119, 15, 167);}
-  </style>
 
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.6.1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script type="text/javascript">
+<%@ include file="/member/myheader.jsp"%>
 
 
 // file upload ajax
@@ -103,16 +99,6 @@ $(function(){
       location.href="index";
    </script>
 </c:if>
-
- <div class="up_menubar">
-         <ul style="margin-top:2px;">
-         	  <li style="text-decoration: none;" onclick="location.href=''">정보확인 &nbsp; </li>|
-              <li style="text-decoration: none;" onclick="location.href='memberUpdateForm'">&nbsp; 정보수정 &nbsp; </li>|
-              <li style="text-decoration: none;" onclick="location.href=''">&nbsp; 작성한 글 &nbsp; </li>|
-              <li style="text-decoration: none;" onclick="location.href=''">&nbsp; 메세지</li>         
-         </ul>
- </div>
-
 
 <div class="jbody">
    <div class="container">
