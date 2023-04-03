@@ -11,7 +11,8 @@
          <ul style="margin-top:2px;">
          	  <li style="text-decoration: none;" onclick="location.href='memberUpdateChkForm'">정보확인 &nbsp; </li>|
               <li style="text-decoration: none;" onclick="location.href='memberUpdateForm'">&nbsp; 정보수정 &nbsp; </li>|
-              <li style="text-decoration: none;" onclick="location.href=''">&nbsp; 작성한 글 &nbsp; </li>|
+              <li style="text-decoration: none;" onclick="location.href='myBoard?first=y'">&nbsp; 작성한 글 &nbsp; </li>|
+              <li style="text-decoration: none;" onclick="location.href='myReply?first=y'">&nbsp; 작성한 댓글 &nbsp; </li>|
               <li style="text-decoration: none;" onclick="location.href=''">&nbsp; 메세지</li>         
          </ul>
  </div>

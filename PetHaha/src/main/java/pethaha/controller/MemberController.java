@@ -23,6 +23,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pethaha.dto.MemberVO;
+import pethaha.dto.Paging;
 import pethaha.service.MemberService;
 
 @Controller
@@ -114,11 +115,27 @@ public class MemberController {
 	      return "member/memberUpdate";
 	   }
 	  
-	  @RequestMapping("/memberUpdateChkForm") 
+	  @RequestMapping("/memberUpdateChkForm") // 회원 정보 확인 폼으로 이동
 		public String memberUpdateChkForm(HttpSession session) {
 			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 			return "member/memberUpdateCheck";
 		}
+	  
+	  @RequestMapping("/myBoard") // 내가 쓴 글로 이동 
+		public String myBoard( HttpSession session, HttpServletRequest request, Model model) {
+			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+			HashMap<String,Object>prm=new HashMap<String,Object>();
+			prm.put("NICK", loginUser.get("NICK")+"");
+			prm.put("request", request);
+			ms.PmyBoard(prm);
+			ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+			model.addAttribute("paging", (Paging)prm.get("paging"));
+			model.addAttribute("list", list);
+			return "member/myBoard";
+		}
+	  
+	  
 
 
 	

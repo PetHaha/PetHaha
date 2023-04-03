@@ -11,4 +11,8 @@ public interface IMemberDao {
 
 	void PmemberUpdate(HashMap<String, Object> prm);
 
+	void PmyBoardCount(HashMap<String, Object> prm);
+
+	void PmyBoard(HashMap<String, Object> prm);
+
 }
