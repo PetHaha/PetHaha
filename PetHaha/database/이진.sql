@@ -22,3 +22,24 @@ begin
      OPEN p_curvar For select * from pmember where id=p_id;
 end;
 
+create or replace procedure PmyBoardCount(p_nick IN pmember.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from pboard where nick=p_nick;
+  
+END;
+
+create or replace procedure pmyBoard(
+    p_nick IN pmember.nick%type,
+    p_startNum in number,
+    p_endNum in number,
+    p_rc out sys_refcursor
+)
+is
+begin
+            open p_rc for
+            select * from (select * from (select rownum as rn, b.* from ((select * from pboard where nick=p_nick order by bnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+  
+
+end;
+
