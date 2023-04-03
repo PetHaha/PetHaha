@@ -27,7 +27,7 @@ if p_category= '0' then
        
     end if;
 else
-    if p_sc='1' then
+    if p_sc='3' then
         select count(*) into p_cnt from pboard where nick like '%'|| p_key ||'%' and category=p_category ;
     elsif p_sc='2' then
         select count(*) into p_cnt from pboard where content like '%'|| p_key ||'%'and category=p_category ;
@@ -61,7 +61,7 @@ begin
             select * from (select * from (select rownum as rn, b.* from ((select * from pboard where subject like '%'|| p_key ||'%' and thumbs>-1 order by bnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
         end if;       
     else
-        if p_sc='1' then
+        if p_sc='3' then
             open p_rc for
             select * from (select * from (select rownum as rn, b.* from ((select * from pboard where nick like '%'|| p_key ||'%' and category=p_category  order by bnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
         elsif p_sc='2' then

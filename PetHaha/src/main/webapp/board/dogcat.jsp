@@ -20,7 +20,14 @@ $(function(){
 
     <div id="borderlist">
     	<br>
-        <h2 class="subjectt">&nbsp;&nbsp;강아지</h2>
+    	<c:choose>
+    	<c:when test="${category =='1' }">
+        	<h2 class="subjectt">&nbsp;&nbsp;강아지</h2>
+        </c:when>
+        <c:when test="${category =='2' }">
+        	<h2 class="subjectt">&nbsp;&nbsp;고양이</h2>
+        </c:when>
+        </c:choose>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
         <div style="height:81px; flaot:left;	">
@@ -57,13 +64,12 @@ $(function(){
         </c:forEach>
         </div>
        
-        <jsp:include page="/board/paging.jsp">
-			<jsp:param name="command" value="index"/>
+        <jsp:include page="/board/paging2.jsp">
+			<jsp:param name="command" value="dogcat?category=${category}"/>
 		</jsp:include>	
 	
         <br>
-        <form name="frm" method="post" action="index">
-        <input type="hidden" name="category" value="0">
+        <form name="frm" method="post" action="dogcat?category=${category}">
 	        <table id="" style="float: right;">
 				<tr >
 					<td style="font-size:15px; width:642; " >

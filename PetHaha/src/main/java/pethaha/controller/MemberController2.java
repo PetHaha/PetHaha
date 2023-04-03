@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,6 +69,19 @@ public class MemberController2 {
 		return "index";
 	}
 	
+	@RequestMapping("/dogcat") // 메인화면으로 이동
+	public String dogcat(Model model,HttpServletRequest request ,@ModelAttribute("category") String category) {
+		HashMap<String,Object>prm=new HashMap<String,Object>();
+		
+		prm.put("category",category );
+		prm.put("request", request);
+		ms.Pgetboard(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		model.addAttribute("paging", (Paging)prm.get("paging"));
+		model.addAttribute("key", (String)prm.get("key"));
+		model.addAttribute("list", list);
+		return "board/dogcat";
+	}
 	
 	
 }
