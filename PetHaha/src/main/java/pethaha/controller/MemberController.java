@@ -135,6 +135,17 @@ public class MemberController {
 			return "member/myBoard";
 		}
 	  
+	  @RequestMapping("/myMsg_S") // 보낸 메세지 함으로 이동
+		public String myMsg_S(HttpSession session) {
+			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			return "member/myMsg_S";
+		}
+	  
+	  @RequestMapping("/myMsg_R") // 받은 메세지 함으로 이동
+		public String myMsg_R(HttpSession session) {
+			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			return "member/myMsg_R";
+		}
 	  
 
 
