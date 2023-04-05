@@ -4,7 +4,7 @@
 
     <div id="borderlist">
     	<br>
-        <h2 class="subjectt">작성한 글</h2>
+        <h2 class="subjectt">보낸 메세지</h2>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
         <div style="height:81px; flaot:left;	">
