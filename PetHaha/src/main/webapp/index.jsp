@@ -23,7 +23,7 @@ $(function(){
         <h2 class="subjectt">&nbsp;&nbsp;베스트</h2>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
-        <div style="height:81px; flaot:left;	">
+        <div style="height:81px;	">
         <a class="items" href="#">
             <div class="images">
             <c:choose>
