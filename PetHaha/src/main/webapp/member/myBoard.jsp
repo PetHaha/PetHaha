@@ -7,7 +7,7 @@
         <h2 class="subjectt">작성한 글</h2>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
-        <div style="height:81px; flaot:left;	">
+        <div style="height:81px;">
         <a class="items" href="#">
             <div class="images">
             <c:choose>

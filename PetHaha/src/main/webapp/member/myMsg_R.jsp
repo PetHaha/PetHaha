@@ -7,7 +7,7 @@
         <h2 class="subjectt">받은 메세지</h2>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
-        <div style="height:81px; flaot:left;	">
+        <div style="height:81px; flaot:left;">
         <a class="items" href="#">
             <div class="images">
             <c:choose>

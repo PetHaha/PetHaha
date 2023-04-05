@@ -6,8 +6,8 @@
 	.up_menubar ul li {display: inline;position: relative;cursor: pointer;font-weight: bold;
 	text-align: center; text-decoration: none;color: rgb(119, 15, 167);}
 	
-	.up_menubar:hover .menubar_drop {display:block;}
-	.up_menubar .menubar_drop{position:absolute; display:none; text-align:center; margin-left: 230px; width:400px;}
+	.messageb:hover .menubar_drop {display:block;}
+	.up_menubar .menubar_drop{position:absolute; display:none; text-align:center; margin-left: 230px; width:400px;padding-top:10px;}
 	.up_menubar .menubar_drop a{display:inline-block; width: 110px; color:rgb(119, 15, 167); float:left;}
   </style>
 
@@ -17,7 +17,7 @@
               <li style="text-decoration: none;" onclick="location.href='memberUpdateForm'">&nbsp; 정보수정 &nbsp; </li>|
               <li style="text-decoration: none;" onclick="location.href='myBoard?first=y'">&nbsp; 작성한 글 &nbsp; </li>|
               <li style="text-decoration: none;" onclick="location.href='myReply?first=y'">&nbsp; 작성한 댓글 &nbsp; </li>|
-              <li style="text-decoration: none;">&nbsp; 메세지
+              <li class="messageb" style="text-decoration: none;">&nbsp; 메세지
               	<ul class="menubar_drop">
                     <a href="myMsg_S">보낸 메세지</a> <a href="myMsg_R">받은 메세지</a> <a href="#">메세지 보내기</a>    
                 </ul> 
