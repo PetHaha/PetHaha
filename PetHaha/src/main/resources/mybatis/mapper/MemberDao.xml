@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="PmsgSend" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{ CALL PmsgSend(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
+		{ CALL PmsgSend(#{NICK},#{startNum}, #{endNum},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
 	</select>
 	
 </mapper>

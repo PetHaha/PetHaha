@@ -62,15 +62,22 @@ public class MemberService {
 	}
 
 	public void PmsgSend(HashMap<String, Object> prm) {
+		
 		HttpServletRequest request = (HttpServletRequest)prm.get("request");
 		HttpSession session = request.getSession();
 		int page = 1;
 		 
+		if(request.getParameter("first")!=null) {
+			session.removeAttribute("page");
+			request.removeAttribute("page");
+
+		} else {
 	        if (request.getParameter("page")!=null) {
 	           page = Integer.parseInt( request.getParameter("page") );
 	           session.setAttribute("page", page);
 	        } else if (session.getAttribute("page")!=null)
 	           page = (Integer)session.getAttribute("page");
+		}
 	
 		Paging paging = new Paging();
 		paging.setPage(page);

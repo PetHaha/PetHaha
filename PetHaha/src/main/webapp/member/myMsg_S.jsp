@@ -3,10 +3,12 @@
 <%@ include file="/member/myheader.jsp"%>
 
 <style type=text/css>
-.msgbox { height: 40px;width: 100%;position: relative;border: 1px solid;}
-.msgtitle { position: absolute;border: 1px solid salmon;height: 40px;width: 50%;margin-left: 150px;}
-.msgdate {position: absolute;height: 40px;width: 80px;border: 1px solid #ca9bee;margin-left: 650px;text-align: center;}
-.msgchk{position: absolute; height: 40px;width: 80px;border: 1px solid #ca9bee; margin-left: 800px;text-align: center;}
+.msgbox { height: 40px;width: 100%;position: relative;}
+.msgnick{position:absolute; width:130px; line-height:40px; text-align:center; font-weight:bold;}
+.msgtitle { position: absolute;height: 40px;width: 50%; margin-left: 150px;   text-align: left;
+            padding-left: 10px; line-height: 40px;}
+.msgdate {position: absolute;height: 40px;width: 130px;margin-left: 650px;text-align: center; line-height: 40px;}
+.msgchk{position: absolute; height: 40px;width: 80px;margin-left: 800px;text-align: center; line-height: 40px;}
 </style>
 
     <div id="borderlist">
@@ -14,11 +16,11 @@
         <h2 class="subjectt" style="width:160px;">보낸 메세지</h2>
         <div style="position:relative;">
        <c:forEach items="${list}" var="message">
-	        <div style="height:81px;">
-	        	<a class="msgbox" href="#">
-	           		<div class="msgnick" style="width: 80px; float: left;"><span>${message.NICK}</span></div>
+	        <div style="height:42px;">
+	        	<a class="msgbox" href="#" style="color:black">
+	           		<div class="msgnick"><span>${message.NICK}</span></div>
 	            		<div class="msgtitle">${message.MTITLE}</div>
-	            			<div class="msgdate">${message.INDATE}</div>
+	            		<div class="msgdate"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div> 
 	            				<div class="msgchk">${message.MCHECK}</div>
 	       		 </a>
 	        </div>
