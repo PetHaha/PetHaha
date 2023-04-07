@@ -67,9 +67,7 @@ public class MemberService2 {
 		prm.put("key", key);
 		prm.put("sc", sc);
 		mdao.PboardGetAllCount(prm);
-		System.out.println("cate : "+prm.get("category")+ " ,sc : "+prm.get("sc")+" , key : "+prm.get("key"));
 		int count = Integer.parseInt( prm.get("cnt")+"" );
-		System.out.println(count);
 		paging.setTotalCount(count);
 		paging.paging();
 		

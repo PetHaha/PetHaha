@@ -88,7 +88,7 @@ public class MemberController2 {
 		model.addAttribute("list", list);
 		return "board/dogcat";
 	}
-	
+	/*
 	@PostMapping(value = "/image/upload")
 	public ModelAndView image(MultipartHttpServletRequest request) throws Exception {
     
@@ -132,8 +132,7 @@ public class MemberController2 {
 
 		return mav;
 	}
-	
-	
+	*/
 	
 	
 }
