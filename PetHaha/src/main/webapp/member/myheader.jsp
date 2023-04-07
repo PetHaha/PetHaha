@@ -19,8 +19,8 @@
               <li style="text-decoration: none;" onclick="location.href='myReply?first=y'">&nbsp; 작성한 댓글 &nbsp; </li>|
               <li class="messageb" style="text-decoration: none;">&nbsp; 메세지
               	<ul class="menubar_drop">
-                    <a href='myMsg_S?first=y'>보낸 메세지</a> 
-                    <a href="myMsg_R">받은 메세지</a> 
+                    <a href="myMsg_S?first=y">보낸 메세지</a> 
+                    <a href="myMsg_R?first=y">받은 메세지</a> 
                     <a href="#">메세지 보내기</a>    
                 </ul> 
               </li>   

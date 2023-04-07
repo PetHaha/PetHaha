@@ -96,4 +96,39 @@ public class MemberService {
 		
 	}
 
+	public void PmsgReceive(HashMap<String, Object> prm) {
+		HttpServletRequest request = (HttpServletRequest)prm.get("request");
+		HttpSession session = request.getSession();
+		int page = 1;
+		 
+		if(request.getParameter("first")!=null) {
+			session.removeAttribute("page");
+			request.removeAttribute("page");
+
+		} else {
+	        if (request.getParameter("page")!=null) {
+	           page = Integer.parseInt( request.getParameter("page") );
+	           session.setAttribute("page", page);
+	        } else if (session.getAttribute("page")!=null)
+	           page = (Integer)session.getAttribute("page");
+		}
+	
+		Paging paging = new Paging();
+		paging.setPage(page);
+		
+		prm.put("cnt", 0);
+		mdao.PmessageCount2(prm);
+		int count = Integer.parseInt( prm.get("cnt")+"" );
+		paging.setTotalCount(count);
+		paging.paging();
+		
+		prm.put("startNum", paging.getStartNum());
+		prm.put("endNum", paging.getEndNum());
+		prm.put("paging", paging);
+		
+		mdao.PmsgReceive(prm);
+		
+		
+	}
+
 }

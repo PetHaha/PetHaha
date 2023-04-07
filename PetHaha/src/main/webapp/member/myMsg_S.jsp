@@ -5,8 +5,7 @@
 <style type=text/css>
 .msgbox { height: 40px;width: 100%;position: relative;}
 .msgnick{position:absolute; width:130px; line-height:40px; text-align:center; font-weight:bold;}
-.msgtitle { position: absolute;height: 40px;width: 50%; margin-left: 150px;   text-align: left;
-            padding-left: 10px; line-height: 40px;}
+.msgtitle { position: absolute;height: 40px;width: 50%; margin-left: 150px;   text-align: left;padding-left: 10px; line-height: 40px;}
 .msgdate {position: absolute;height: 40px;width: 130px;margin-left: 650px;text-align: center; line-height: 40px;}
 .msgchk{position: absolute; height: 40px;width: 80px;margin-left: 800px;text-align: center; line-height: 40px;}
 </style>

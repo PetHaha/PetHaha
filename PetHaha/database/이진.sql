@@ -44,13 +44,11 @@ begin
 end;
 
 
-create or replace procedure PmessageCount(p_nick in varchar2)
+create or replace procedure PmessageCount(p_nick IN pmessage.nick%type, p_cnt out number)
 IS
 BEGIN
-    if p_nick='1' then
-        select count(*) into p_cnt from pmessage where nick like '대의대의';
---    else p_nick='2' then
---        select count(*) into p_cnt from pboard where content like '%'|| p_key ||'%' and thumbs>-1;
+        select count(*) into p_cnt from pmessage where nick=p_nick;
+
 END;
 
 create or replace procedure pmsgSend(
@@ -62,7 +60,29 @@ create or replace procedure pmsgSend(
 is
 begin
             open p_rc for
-            select * from (select * from (select rownum as rn, b.* from ((select * from pmessage where nick=p_nick order by psnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+            select * from (select * from (select rownum as rn, b.* from ((select * from pmessage where nick=p_nick order by msnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
 
 end;
+
+create or replace procedure PmessageCount2(p_nick IN pmessage.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from pmessage where tonick=p_nick;
+
+END;
+
+
+create or replace procedure pmsgReceive(
+    p_nick IN pmessage.nick%type,
+    p_startNum in number,
+    p_endNum in number,
+    p_rc out sys_refcursor
+)
+is
+begin
+            open p_rc for
+            select * from (select * from (select rownum as rn, b.* from ((select * from pmessage where tonick=p_nick order by msnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+
+end;
+
 
