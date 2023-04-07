@@ -43,3 +43,46 @@ begin
 
 end;
 
+
+create or replace procedure PmessageCount(p_nick IN pmessage.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from pmessage where nick=p_nick;
+
+END;
+
+create or replace procedure pmsgSend(
+    p_nick IN pmessage.nick%type,
+    p_startNum in number,
+    p_endNum in number,
+    p_rc out sys_refcursor
+)
+is
+begin
+            open p_rc for
+            select * from (select * from (select rownum as rn, b.* from ((select * from pmessage where nick=p_nick order by msnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+
+end;
+
+create or replace procedure PmessageCount2(p_nick IN pmessage.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from pmessage where tonick=p_nick;
+
+END;
+
+
+create or replace procedure pmsgReceive(
+    p_nick IN pmessage.nick%type,
+    p_startNum in number,
+    p_endNum in number,
+    p_rc out sys_refcursor
+)
+is
+begin
+            open p_rc for
+            select * from (select * from (select rownum as rn, b.* from ((select * from pmessage where tonick=p_nick order by msnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+
+end;
+
+

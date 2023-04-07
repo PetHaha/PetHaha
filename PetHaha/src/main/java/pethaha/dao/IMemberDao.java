@@ -19,4 +19,8 @@ public interface IMemberDao {
 
 	void PmsgSend(HashMap<String, Object> prm);
 
+	void PmessageCount2(HashMap<String, Object> prm);
+
+	void PmsgReceive(HashMap<String, Object> prm);
+
 }
