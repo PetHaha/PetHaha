@@ -75,10 +75,10 @@ begin
 end;
 
 
- select count(*) as cnt from pboard where  content like '%'||'용'||'%' and thumbs>-1 ;
 
-select count(*) as cnt from pboard where subject like '%%' and thumbs<-1 ;
-
-select count(*) as p_cnt from pboard where subject like '%'||''||'%' and thumbs>-1;
-
-select*from pboard;
+create or replace procedure PboardView(p_bnum IN pboard.bnum%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from pboard where bnum=p_bnum;
+END;

@@ -76,6 +76,7 @@ CREATE TABLE PReply
 );
 
 
+
 CREATE TABLE PRe_Reply
 (
 	ReRnum number(10) NOT NULL,

@@ -70,9 +70,16 @@
             </div>
             <form action="boardReplyWrite" method="post">
 	            <div class="replycon" style="position: relative; margin-top: 5px; margin-bottom:10px;">
-	            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200"></textarea><input type="submit" value="등록" class="replysubmit"></div>
-	            <div>
-            </form>
+	            <input type="hidden" name="RWRITER" value="">
+	            <input type="hidden" name="BNUM" value="">
+	            <input type="hidden" name="ID" value="">
+	            <input type="hidden" name="NICK" value="">
+	            <input type="hidden" name="MEMIMG" value="">
+	            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200" name="RCONTENT"></textarea><input type="submit" value="등록" class="replysubmit">
+	            </div>
+	        </form>
+	        <div>
+            
                 <div class="bback">다음글</div><div class="bback">목록</div><div class="bback">이전글</div>
             </div>
         </div>
