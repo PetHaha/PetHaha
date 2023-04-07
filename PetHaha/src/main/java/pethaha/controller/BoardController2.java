@@ -43,4 +43,5 @@ public class BoardController2 {
 		return "board/boardView";
 	}
 	
+	
 }

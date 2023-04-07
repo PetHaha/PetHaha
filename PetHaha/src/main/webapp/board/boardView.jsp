@@ -68,16 +68,17 @@
                 <div class="brthumbs">추천</div>
                 <div class="brpolice">신고</div>
             </div>
-            <form action="boardReplyWrite" method="post">
-	            <div class="replycon" style="position: relative; margin-top: 5px; margin-bottom:10px;">
-	            <input type="hidden" name="RWRITER" value="">
-	            <input type="hidden" name="BNUM" value="">
-	            <input type="hidden" name="ID" value="">
-	            <input type="hidden" name="NICK" value="">
-	            <input type="hidden" name="MEMIMG" value="">
-	            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200" name="RCONTENT"></textarea><input type="submit" value="등록" class="replysubmit">
-	            </div>
-	        </form>
+            <c:if test="${!empty loginUser }">
+	            <form action="boardReplyWrite" method="post">
+		            <div class="replycon" style="position: relative; margin-top: 5px; margin-bottom:10px;">
+		            <input type="hidden" name="RWRITER" value="${writer.NICK }">
+		            <input type="hidden" name="BNUM" value="${board.BNUM }">
+		            <input type="hidden" name="ID" value="${loginUser.ID }">
+		            <input type="hidden" name="NICK" value="${loginUser.NICK }">
+		            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200" name="RCONTENT"></textarea><input type="submit" value="등록" class="replysubmit">
+		            </div>
+		        </form>
+	        </c:if>
 	        <div>
             
                 <div class="bback">다음글</div><div class="bback">목록</div><div class="bback">이전글</div>
