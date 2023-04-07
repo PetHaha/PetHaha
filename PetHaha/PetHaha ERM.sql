@@ -60,6 +60,7 @@ CREATE TABLE PMessage
 );
 
 ALTER TABLE PMessage ADD Mtitle VARCHAR(150) not null; -- 메세지 제목 컬럼 추가
+alter table pmessage drop column answer; -- 답장 컬럼 삭제
 
 CREATE TABLE PReply
 (

@@ -16,7 +16,7 @@
         <div style="position:relative;">
        <c:forEach items="${list}" var="message">
 	        <div style="height:42px;">
-	        	<a class="msgbox" href="msgDetail?MSnum=" style="color:black">
+	        	<a class="msgbox" href="msgDetail?MSNUM=${message.MSNUM}" style="color:black">
 	           		<div class="msgnick">From. <span>${message.NICK}</span></div>
 	            		<div class="msgtitle">${message.MTITLE}</div>
 	            			<div class="msgdate"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div> 

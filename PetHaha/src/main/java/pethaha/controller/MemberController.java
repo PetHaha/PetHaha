@@ -169,8 +169,7 @@ public class MemberController {
 		  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 		  	HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
 		  	HashMap<String,Object>prm=new HashMap<String,Object>();
-		  	prm.put("MSNUM", loginUser.get("MSNUM"));
-		  	prm.put("request", request);
+		  	prm.put("MSNUM",MSNUM);
 		  	ms.msgDetail(prm);
 		  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		  	HashMap<String,Object> message = list.get(0);

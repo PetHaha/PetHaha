@@ -28,9 +28,9 @@ function detailDelete(msnum){
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
 	  
 	<table class="msg_detail_table"><br>
-		<div class="detail_nick">보낸사람: 1111111 &nbsp;<span style="font-size:15px;">23:01:04</span></div>
-		<div class="detail_title">${message.TITLE}가나간간간ㄱ낙나ㅏ</div> 
-		<div class="detail_content">${message.CONTENT}ㄴㄱㄴ간간간가ㅏㄴ간간간간간간간간가ㅏㄴ간가난간</div>
+		<div class="detail_nick">보낸사람: ${message.NICK} &nbsp;<span style="font-size:15px;"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></span></div>
+		<div class="detail_title">${message.MTITLE}</div> 
+		<div class="detail_content">${message.MCONTENT}</div>
 	</table>
 	<form action="msgDetail">
 		<input type="hidden" value="${message.MSNUM}" name="MSNUM">
