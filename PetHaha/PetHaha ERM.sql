@@ -59,6 +59,7 @@ CREATE TABLE PMessage
 	PRIMARY KEY (MSnum)
 );
 
+ALTER TABLE PMessage ADD Mtitle VARCHAR(150) not null; -- 메세지 제목 컬럼 추가
 
 CREATE TABLE PReply
 (

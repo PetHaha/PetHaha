@@ -136,14 +136,30 @@ public class MemberController {
 		}
 	  
 	  @RequestMapping("/myMsg_S") // 보낸 메세지 함으로 이동
-		public String myMsg_S(HttpSession session) {
+		public String myMsg_S(HttpSession session, HttpServletRequest request, Model model) {
 			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+			HashMap<String,Object>prm=new HashMap<String,Object>();
+			prm.put("NICK", loginUser.get("NICK")+"");
+			prm.put("request", request);
+			ms.PmsgSend(prm);
+			ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+			model.addAttribute("paging", (Paging)prm.get("paging"));
+			model.addAttribute("list", list);
 			return "member/myMsg_S";
 		}
 	  
 	  @RequestMapping("/myMsg_R") // 받은 메세지 함으로 이동
-		public String myMsg_R(HttpSession session) {
-			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		public String myMsg_R(HttpSession session,  HttpServletRequest request, Model model) {
+		  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+			HashMap<String,Object>prm=new HashMap<String,Object>();
+			prm.put("NICK", loginUser.get("NICK")+"");
+			prm.put("request", request);
+			ms.PmsgReceive(prm);
+			ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+			model.addAttribute("paging", (Paging)prm.get("paging"));
+			model.addAttribute("list", list);
 			return "member/myMsg_R";
 		}
 	  

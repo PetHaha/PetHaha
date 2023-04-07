@@ -15,4 +15,12 @@ public interface IMemberDao {
 
 	void PmyBoard(HashMap<String, Object> prm);
 
+	void PmessageCount(HashMap<String, Object> prm);
+
+	void PmsgSend(HashMap<String, Object> prm);
+
+	void PmessageCount2(HashMap<String, Object> prm);
+
+	void PmsgReceive(HashMap<String, Object> prm);
+
 }
