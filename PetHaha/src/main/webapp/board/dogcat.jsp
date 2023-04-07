@@ -31,7 +31,7 @@ $(function(){
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
         <div style="height:81px; 	">
-        <a class="items" href="#">
+        <a class="items" href="boardView?BNUM=${board.BNUM }">
             <div class="images">
             <c:choose>
 	            <c:when test="${empty board.BIMG1 }">
@@ -52,7 +52,7 @@ $(function(){
                 <div class="etc">
                     <div class="as">${board.NICK }</div>
                     <div class="dot">.</div>
-                    <div class="as">${board.INDATE }</div>
+                    <div class="as"><fmt:formatDate value="${board.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                     <div class="dot">.</div>
                     <div class="as"><img src="images/eye.png" style="height:10px"> ${board.VIEWS }</div>
                     <div class="dot">.</div>
