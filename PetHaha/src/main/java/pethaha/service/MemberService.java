@@ -132,7 +132,7 @@ public class MemberService {
 	}
 
 	public void msgDetail(HashMap<String, Object> prm) {
-		
+		mdao.msgDetail(prm);
 	}
 
 }

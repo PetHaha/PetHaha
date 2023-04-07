@@ -23,4 +23,6 @@ public interface IMemberDao {
 
 	void PmsgReceive(HashMap<String, Object> prm);
 
+	void msgDetail(HashMap<String, Object> prm);
+
 }
