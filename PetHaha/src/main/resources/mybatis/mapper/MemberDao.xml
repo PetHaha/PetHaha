@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="PmessageCount" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{ CALL PmyBoardCount(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
+		{ CALL PmessageCount(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
 	</select>
 	
 	<select id="PmsgSend" statementType="CALLABLE" parameterType="java.util.HashMap">
@@ -32,11 +32,11 @@
 	</select>
 	
 	<select id="PmessageCount2" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{ CALL PmyBoardCount(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
+		{ CALL PmessageCount2(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
 	</select>
 	
 	<select id="PmsgReceive" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{ CALL PmsgSend(#{NICK},#{startNum}, #{endNum},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
+		{ CALL PmsgReceive(#{NICK},#{startNum}, #{endNum},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
 	</select>
 	
 	
