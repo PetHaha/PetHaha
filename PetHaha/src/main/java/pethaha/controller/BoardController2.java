@@ -37,6 +37,12 @@ public class BoardController2 {
 		ms.PgetMember(prm);
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		HashMap<String, Object> writer = list.get(0);
+		
+		bs.PgetReplyList(prm);
+		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		model.addAttribute("reply",list);
+		
+		
 		model.addAttribute("writer",writer);
 		model.addAttribute("board",bVO);
 		model.addAttribute("best", best);

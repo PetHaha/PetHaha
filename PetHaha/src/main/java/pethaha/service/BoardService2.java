@@ -18,4 +18,9 @@ public class BoardService2 {
 		bdao.PboardView(prm);
 		
 	}
+
+	public void PgetReplyList(HashMap<String, Object> prm) {
+		bdao.PgetReplyList(prm);
+		
+	}
 }
