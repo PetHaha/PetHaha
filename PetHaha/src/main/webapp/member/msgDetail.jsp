@@ -51,7 +51,7 @@ function detailDelete(msnum){
 			</c:otherwise>
 		</c:choose>
 			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="삭제" onclick="return detailDelete()">
-		</div>
+		</div> 
 	</form>
 </div>
 <br><br><br><br><br><br><br><br><br><br>
