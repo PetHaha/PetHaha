@@ -39,6 +39,14 @@
 		{ CALL PmsgReceive(#{NICK},#{startNum}, #{endNum},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
 	</select>
 	
+	<select id="msgDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL msgDetail(#{MSNUM},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
+	</select>
+	
+	<delete id="msgDelete">
+		{CALL msgDelete(#{MSNUM})}
+	</delete>
+	
 	
 	
 	

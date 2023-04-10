@@ -163,9 +163,34 @@ public class MemberController {
 			return "member/myMsg_R";
 		}
 	  
+	  @RequestMapping("/msgDetail")// 쪽지 디테일 내용 확인
+	  	public String msgDetail(HttpSession session,  HttpServletRequest request, Model model,
+	  			@RequestParam("MSNUM") int MSNUM) {
+		  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		  	HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+		  	HashMap<String,Object>prm=new HashMap<String,Object>();
+		  	prm.put("MSNUM",MSNUM);
+		  	ms.msgDetail(prm);
+		  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		  	HashMap<String,Object> message = list.get(0);
+		  	model.addAttribute("message",message);
+		  	return "member/msgDetail";
+	  }
+	  
+		
+		/*
+		 * @RequestMapping("/msgDelete") public String msgDelete( HttpSession
+		 * session, @RequestParam("MSNUM") int MSNUM) {
+		 * if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		 * HashMap<String, Object> prm = new HashMap<String,Object>(); prm.put("MSNUM",
+		 * MSNUM ); ms.msgDelete(prm); return "member/myMsg_R"; }
+		 */
+		 
+ }
+	  
 
 
 	
 	
 
-}
+
