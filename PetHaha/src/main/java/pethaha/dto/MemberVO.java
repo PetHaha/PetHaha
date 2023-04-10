@@ -28,7 +28,7 @@ public class MemberVO {
 	@NotNull(message="사진을 넣어주세요")
 	@NotEmpty(message="사진을 넣어주세요")
 	private String MEMIMG;
-	private Number POINT;
-	private Number KICK;
+	private int POINT;
+	private int KICK;
 	
 }

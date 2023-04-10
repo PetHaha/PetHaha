@@ -30,8 +30,8 @@ $(function(){
         </c:choose>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
-        <div style="height:81px; flaot:left;	">
-        <a class="items" href="#">
+        <div style="height:81px; 	">
+        <a class="items" href="boardView?BNUM=${board.BNUM }">
             <div class="images">
             <c:choose>
 	            <c:when test="${empty board.BIMG1 }">
@@ -52,7 +52,7 @@ $(function(){
                 <div class="etc">
                     <div class="as">${board.NICK }</div>
                     <div class="dot">.</div>
-                    <div class="as">${board.INDATE }</div>
+                    <div class="as"><fmt:formatDate value="${board.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                     <div class="dot">.</div>
                     <div class="as"><img src="images/eye.png" style="height:10px"> ${board.VIEWS }</div>
                     <div class="dot">.</div>
@@ -70,17 +70,19 @@ $(function(){
 	
         <br>
         <form name="frm" method="post" action="dogcat?category=${category}">
-	        <table id="" style="float: right;">
+	        <table id="" style="float: right; ">
 				<tr >
+					
 					<td style="font-size:15px; width:642; " >
-	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px;" name="sc">
+					<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 80px; margin-right: 68px; cursor:pointer; color:white; font-weight:bold;" type="button"   value="글쓰기">
+	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px; color:white; font-weight:bold;" name="sc">
 	                        <option value="1" >제목</option>
 	                        <option value="2">내용</option>
 	                        <option value="3">작성자</option>
 	                    </select>
 	                    <input type="hidden" name="page" value="1">
 	                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
-						<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
+						<input  style="background-color: #dcb1ff; border-radius: 8px; color:white; font-weight:bold; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
 					</td>
 				</tr>
 			</table>

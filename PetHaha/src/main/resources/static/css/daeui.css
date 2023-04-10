@@ -18,3 +18,29 @@
 .titleContainer{ font-size: 20px;}
 .category{border: 1px solid gray; border-radius: 4px; font-size: 15px;padding: 2px; }
 .etc{font-size: 13px; margin-top:4px ;color: gray;}
+
+
+#bwrap{width: 930px; margin: 0 auto}
+#bwhere{font-weight: 550; margin: 5px; cursor:pointer;}
+#bsubject{font-size: 130%; font-weight: bold; margin: 10px;}
+#bwrimg{width: 50px; float: left;margin-left: 5px;}
+#bwrimg img{height: 50px; width: 50px;}
+#betc{height: 60px; color:gray;}
+.bas{float: left; margin-left: 4px; margin-top: 16px;}
+.bdot{float: left; margin-left: 4px;color: gainsboro; margin-top: 16px;}
+#bitems{height: 100px; border-bottom:1px solid gainsboro ;}
+#bcontent{padding: 10px;}
+#thumbss{height: 45px; padding-bottom: 5px;  border-bottom: 1px solid gainsboro;}
+#bthumbs{position: relative;left: 380px;height: 40px; width: 80px; border-radius: 5px; background-color:#dbadff; font-weight:bold; color: white; border: 0; }
+#bpolice{position: relative;left: 390px;height: 40px; width: 80px; border-radius: 5px; background-color:#7a7878; font-weight:bold; color: white; border: 0; }
+#brwrimg{width: 40px; float: left;margin-left: 5px;}
+#brwrimg img{height: 40px; width: 40px;}
+.breplylist{height: 50px; color:gray; font-size: 80%;position: relative; border-bottom: 1px solid gainsboro;padding-top: 2px;}
+.bras{float: left; margin-left: 4px; margin-top: 2px;}
+.brdot{float: left; margin-left: 4px;color: gainsboro; margin-top: 2px;}
+.brcontent{position: absolute;bottom: 8px; left: 53px; font-size: 115%; color: black;}
+.brthumbs{position:absolute; right: 47px; height: 20px; top: 15px; color: white; background-color:#dbadff; border: 0; border-radius: 15%;}
+.brpolice{position:absolute; right: 12px; height: 20px; top: 15px; color: white; background-color:#7a7878; border: 0; border-radius: 15%;}
+.replytext{resize: none; background-color: rgb(247, 247, 247);height: 60px; width: 830px;border: 0;border-radius: 15px;padding: 10px;}
+.replysubmit{height: 80px; width:76px ;position: absolute;top: 0px;right: 0px;border-radius: 15px;border: 0;background-color:#dbadff; color: white;}
+.bback{float:right; margin: 5px; background-color: #dbadff;color: white;padding: 2px;border: 0;border-radius: 10%;}
