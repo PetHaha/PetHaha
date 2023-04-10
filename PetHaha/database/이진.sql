@@ -85,7 +85,7 @@ begin
 
 end;
 
-create or replace procedure PgetMember(p_id IN pmessage.msnum%type, p_curvar OUT SYS_REFCURSOR)
+create or replace procedure msgDetail(p_msnum IN pmessage.msnum%type, p_curvar OUT SYS_REFCURSOR)
 IS
 BEGIN
     OPEN p_curvar For 
