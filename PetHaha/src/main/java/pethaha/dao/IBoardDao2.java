@@ -9,4 +9,6 @@ public interface IBoardDao2 {
 
 	void PboardView(HashMap<String, Object> prm);
 
+	void PgetReplyList(HashMap<String, Object> prm);
+
 }

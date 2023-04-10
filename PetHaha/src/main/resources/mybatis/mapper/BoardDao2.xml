@@ -12,4 +12,8 @@
 		{CALL PboardView(#{ BNUM },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
 	</select>
 	
+	<select id="PgetReplyList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PgetReplyList(#{ BNUM },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
+	</select>
+	
 </mapper>

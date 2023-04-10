@@ -82,3 +82,21 @@ BEGIN
     OPEN p_curvar For 
     select * from pboard where bnum=p_bnum;
 END;
+
+create or replace procedure PgetReplyList(p_bnum IN pboard.bnum%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from replyview where bnum=p_bnum order by rnum desc;
+END;
+
+
+create or replace view replyview
+as
+select
+    a.rnum, a.rthumbs, a.rreport,a.bnum,a.rwriter,a.rcontent,a.id,a.nick,a.indate,
+    b.intro,b.memimg
+from preply a, pmember b
+where a.id=b.id ;
+
+

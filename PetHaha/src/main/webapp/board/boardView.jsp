@@ -26,7 +26,7 @@
             </div>
 
         </div>
-        <div id="bcontent">
+        <div id="bcontent" style="min-height:130px;">
         <c:if test="${!empty board.BIMG1 }">
         	<img src="images/boardimg/${board.BIMG1 }" style="max-width:600px; "><br><br>
         </c:if>
@@ -35,39 +35,21 @@
         </div>
         <div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs"><input type="button" value="신고" id="bpolice"></div>
         <div id="brlist">
+        <div  style="min-height:50px;">
+        	<c:forEach items="${reply}" var="reply">
             <div class="breplylist">
-                <div id="brwrimg"> <img src="images/boardimg/noimg.jpg" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  ></div>
-                <div class="bras">겨울배가맛있단다배가달아</div>
+                <div id="brwrimg"> <img src="images/profile/${reply.MEMIMG }" alt="${reply.INTRO }"  ></div>
+                <div class="bras">${reply.NICK }</div>
                 <div class="brdot">.</div>
-                <div class="bras">25초전</div>
+                <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="brdot">.</div>
-                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;2</div>
-                <div class="brcontent">이거재밌네어쩌구저쩌구저쩌구</div>    
-                <div class="brthumbs">추천</div>
+                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
+                <div class="brcontent">${reply.RCONTENT }</div>    
+                <div class="brthumbs">추천 </div>
                 <div class="brpolice">신고</div>
             </div>
-            <div class="breplylist">
-                <div id="brwrimg"> <img src="images/boardimg/noimg.jpg" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  ></div>
-                <div class="bras">겨울배가맛있단다배가달아</div>
-                <div class="brdot">.</div>
-                <div class="bras">25초전</div>
-                <div class="brdot">.</div>
-                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;2</div>
-                <div class="brcontent">이거재밌네어쩌구저쩌구저쩌구</div>    
-                <div class="brthumbs">추천</div>
-                <div class="brpolice">신고</div>
-            </div>
-            <div class="breplylist">
-                <div id="brwrimg"> <img src="images/boardimg/noimg.jpg" alt="시공설치기사 시절 유튜브 뜨길래 오랜만에 봤는데 ㅋㅋ"  ></div>
-                <div class="bras">겨울배가맛있단다배가달아</div>
-                <div class="brdot">.</div>
-                <div class="bras">25초전</div>
-                <div class="brdot">.</div>
-                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;2</div>
-                <div class="brcontent">이거재밌네어쩌구저쩌구저쩌구</div>    
-                <div class="brthumbs">추천</div>
-                <div class="brpolice">신고</div>
-            </div>
+            </c:forEach>
+            
             <c:if test="${!empty loginUser }">
 	            <form action="boardReplyWrite" method="post">
 		            <div class="replycon" style="position: relative; margin-top: 5px; margin-bottom:10px;">
@@ -79,6 +61,7 @@
 		            </div>
 		        </form>
 	        </c:if>
+	        </div>
 	        <div>
             
                 <div class="bback">다음글</div><div class="bback">목록</div><div class="bback">이전글</div>
