@@ -177,13 +177,15 @@ public class MemberController {
 		  	return "member/msgDetail";
 	  }
 	  
+		
 		/*
 		 * @RequestMapping("/msgDelete") public String msgDelete( HttpSession
 		 * session, @RequestParam("MSNUM") int MSNUM) {
 		 * if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-		 * HashMap<String, Object> prm = new HashMap<>(); prm.put("MSNUM", MSNUM );
-		 * //ms.msgDelete(prm); return "member/myMsg_R"; }
+		 * HashMap<String, Object> prm = new HashMap<String,Object>(); prm.put("MSNUM",
+		 * MSNUM ); ms.msgDelete(prm); return "member/myMsg_R"; }
 		 */
+		 
  }
 	  
 

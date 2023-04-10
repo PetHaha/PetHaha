@@ -20,7 +20,7 @@
 	           		<div class="msgnick">From. <span>${message.NICK}</span></div>
 	            		<div class="msgtitle">${message.MTITLE}</div>
 	            			<div class="msgdate"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div> 
-	            				<c:choose>
+            				<c:choose>
 	            				<c:when test='${message.MCHECK=="0"}'>
 	            					<div class="msgchk"><img src="images/unopened.png"></div>
 	            				</c:when>
