@@ -29,4 +29,9 @@ public class BoardService2 {
 		bdao.PReplyWrite(rVO);
 		
 	}
+
+	public void PReplydelete(String rNUM) {
+		bdao.PReplydelete(rNUM);
+		
+	}
 }

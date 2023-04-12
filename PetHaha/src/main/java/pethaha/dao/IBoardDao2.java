@@ -15,4 +15,6 @@ public interface IBoardDao2 {
 
 	void PReplyWrite(ReplyVO rVO);
 
+	void PReplydelete(String rNUM);
+
 }

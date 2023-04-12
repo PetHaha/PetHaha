@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -54,7 +55,13 @@ public class BoardController2 {
 	@RequestMapping("/boardReplyWrite") 
 	public String boardReplyWrite(@RequestParam(value="best", required=false)String best, Model model, HttpServletRequest request,ReplyVO RVO) {
 		bs.PReplyWrite(RVO);
-		
 		return "redirect:/boardView?BNUM="+RVO.getBNUM()+"&best="+best;
+	}
+	
+	@RequestMapping("/replydelete") 
+	public String replydelete(@RequestParam(value="BNUM", required=false)String BNUM,@RequestParam(value="RNUM", required=false)String RNUM,
+			@RequestParam(value="best", required=false)String best, Model model) {
+		bs.PReplydelete(RNUM);
+		return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
 	}
 }

@@ -12,7 +12,11 @@
 	   }else return true;
 	}
 
-
+	function replydelete(rnum,bnum,best){
+		if (confirm("댓글을 삭제하시겠습니까?")) {
+			    location.href = "replydelete?RNUM="+rnum+"&BNUM="+bnum+"&best="+best;
+		}
+	}
 
 </script>
 
@@ -58,7 +62,10 @@
                 <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
-                <div class="brcontent">${reply.RCONTENT }</div>    
+                <div class="brcontent">${reply.RCONTENT }</div> 
+                <c:if test="${loginUser.ID ==reply.ID }">
+                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                </c:if>   
                 <div class="brthumbs">추천 </div>
                 <div class="brpolice">신고</div>
             </div>
