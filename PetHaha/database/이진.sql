@@ -93,12 +93,16 @@ BEGIN
 END;
 
 create or replace procedure msgWrite(
-p_tonick IN pmessage.tonick%type, 
-p_msnum IN pmessage.msnum%type,  
-p_curvar OUT SYS_REFCURSOR)
+
+p_tonick IN pmessage.tonick%type,
+p_mtitle IN pmessage.mtitle%type,
+p_mcontent IN pmessage.mcontent%type,
+p_nick IN pmessage.nick%type,
+p_id IN pmessage.id%type
+)
 IS
 BEGIN
-    insert into pmessage(pmessage_seq,tonick,msnum) values(pmessage_seq.nextVal,p_tonick,p_msnum);
+    insert into pmessage(msnum,tonick,mtitle,mcontent,nick,id) values(pmessage_seq.nextval,p_tonick,p_mtitle,p_mcontent,p_nick,p_id);
     commit;
 END;
 
