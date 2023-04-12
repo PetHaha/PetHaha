@@ -27,6 +27,7 @@ public interface IMemberDao {
 
 	void msgWrite(HashMap<String, Object> prm);
 
-	/* void msgDelete(HashMap<String, Object> prm); */
+	void msgDelete(HashMap<String, Object> prm);
+
 
 }

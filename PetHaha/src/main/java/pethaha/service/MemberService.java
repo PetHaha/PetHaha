@@ -140,10 +140,10 @@ public class MemberService {
 		
 	}
 
-	/*
-	 * public void msgDelete(HashMap<String, Object> prm) { mdao.msgDelete(prm);
-	 * 
-	 * }
-	 */
+	public void msgDelete(HashMap<String, Object> prm) {
+		mdao.msgDelete(prm);
+		
+	}
+
 
 }
