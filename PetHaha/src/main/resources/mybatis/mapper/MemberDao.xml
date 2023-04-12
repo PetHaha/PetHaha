@@ -44,11 +44,11 @@
 	</select>
 	
 	<select id="msgWrite" statementType="CALLABLE" parameterType="java.util.HashMap">
-		{ CALL msgWrite(#{TONICK},#{MSNUM})}
+		{ CALL msgWrite( #{TONICK},#{MTITLE},#{MCONTENT},#{NICK},#{ID} )}
 	</select>
 	
-	<delete id="msgDelete">
-		{CALL msgDelete(#{MSNUM})}
+	<delete id="msgDelete" parameterType="Integer">
+		delete from pmessage where MSNUM=${MSNUM}
 	</delete>
 	
 	

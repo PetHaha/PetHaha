@@ -22,9 +22,11 @@
 #detail_btn {margin-left: 200px;}
 </style>
 
+<form action="msgWrite" method="post" name="msgWrite">
 <div class="msg_detail">
 	<div class="detail_index">메세지 보내기</div>		
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
+	받는사람: <input type="text" name="TONICK" value="${message.TONICK}"/> <!-- 나중에 닉네임 중복이라던지, 고르게 설정하기 -->
 	  
 	<table class="msg_detail_table"><br>
 		<div class="write_box" style="position:relative; width:600px;">
@@ -32,11 +34,12 @@
 			<textarea name="MCONTENT" value="${message.MCONTENT}" style="height:160px; width: 600px; resize:none; border:none" class="detail_content" placeholder="내용을 입력해주세요.&#10;*욕설 및 비방이 담긴 메세지는 관리자에 의해 삭제될 수 있습니다."></textarea>
 		</div>
 	</table><br>
-	<form action="msgWrite">
-		<input type="hidden" value="${message.MSNUM}" name="MSNUM">
+		<input type="hidden" value="${loginUser.ID}" name="ID">
 		<input type="hidden" value="${message.TONICK}" name="TONICK">
+		<input type="hidden" value="${loginUser.NICK}" name="NICK">
+		<input type="hidden" value="${message.MSNUM}" name="MSNUM">
 		<div id="detail_btn" style="margin:0 auto; width: 210px;">
-			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="전송">		
+			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="전송" >		
 			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="취소" onclick="return cancelMsg()">
 		</div> 
 	</form>

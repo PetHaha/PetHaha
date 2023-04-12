@@ -137,7 +137,7 @@ public class MemberController {
 	  
 	  @RequestMapping("/myMsg_S") // 보낸 메세지 함으로 이동
 		public String myMsg_S(HttpSession session, HttpServletRequest request, Model model) {
-			if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 			HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
 			HashMap<String,Object>prm=new HashMap<String,Object>();
 			prm.put("NICK", loginUser.get("NICK")+"");
@@ -183,31 +183,32 @@ public class MemberController {
 	  		return "member/msgWrite";
 	  }
 	  
-	  @RequestMapping("/msgWrite")// 메세지 보내기
+	  @RequestMapping(value="/msgWrite", method=RequestMethod.POST)// 메세지 보내기
 	  	public String msgWrite(HttpSession session,  HttpServletRequest request, Model model,
-	  			@RequestParam(value="TONICK", required=false) String TONICK,
-	  			@RequestParam(value="MSNUM", required=false) int MSNUM) {
+	  			@RequestParam(value="TONICK",required=false) String TONICK,
+	  			@RequestParam(value="ID",required=false) String ID){
 	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 	  	  	HashMap<String,Object>prm=new HashMap<String,Object>();
 	  	  	prm.put("TONICK", TONICK);
-	  	  	prm.put("MSNUM", MSNUM);
-		  	model.addAttribute("TONICK",TONICK);
-		  	model.addAttribute("MSNUM",MSNUM);
-		  	System.out.println(TONICK+"dddd");
-		  	System.out.println(MSNUM+"ggg");
+	  	  	prm.put("ID", ID);
+	  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
+	  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
+	  	  	prm.put("NICK", request.getParameter("NICK"));  
+	  	  	System.out.println(TONICK+"ㅇㅇㅇㅇ");
+	  	  	System.out.println(ID+"ㅇㅇㅇㅇ");
+	  	  	System.out.println(request.getParameter("MTITLE")+"dhdld");
 	  	  	ms.msgWrite(prm);
-	  		return "member/myMsg_S";
+	  		return "redirect:/myMsg_S";
 	  }
 	  
-	  
-		
-		/*
-		 * @RequestMapping("/msgDelete") public String msgDelete( HttpSession
-		 * session, @RequestParam("MSNUM") int MSNUM) {
-		 * if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-		 * HashMap<String, Object> prm = new HashMap<String,Object>(); prm.put("MSNUM",
-		 * MSNUM ); ms.msgDelete(prm); return "member/myMsg_R"; }
-		 */
+  		@RequestMapping("/msgDelete") public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM) {
+		 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+			 HashMap<String, Object> prm = new HashMap<String,Object>(); 
+			 prm.put("MSNUM",MSNUM ); 
+			 ms.msgDelete(prm); 
+			 return "redirect:/myMsg_R";
+  		}
+		 
 		 
  }
 	  
