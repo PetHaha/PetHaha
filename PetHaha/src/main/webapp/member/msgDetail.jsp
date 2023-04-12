@@ -13,13 +13,14 @@ function detailDelete(msnum){
 <style type="text/css">
 .msg_detail {position:relative; width: 700px; overflow: hidden; margin:50px auto;}
 .detail_index { text-align: left; font-size: 26px;font-weight: bold; color:rgb(119, 15, 167);}
-.detail_title {margin: 30px; font-weight: bold; font-size: 120%; background-color: rgb(240, 238, 238);}
-.detail_content {margin: 30px; margin-top:20px; font-weight: bold; font-size: 100%; height:200px; line-height: 170%; background-color:rgb(240, 238, 238);}
+.detail_title {margin: 30px; font-weight: bold; font-size: 19px; background-color: rgb(240, 238, 238);}
+.detail_content {margin: 30px; margin-top:20px; font-weight: bold; font-size: 16px; height:200px; line-height: 170%; background-color:rgb(240, 238, 238);}
 #detail_btn1{margin-left: 200px;}
 #detail_btn .detail_btn1 {width: 100px; height: 40px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 100%; background-color: #ca9bee; line-height: 40px; color:#fff; border: 1px solid white; text-align: center;}
-#detail_btn .detail_btn1:hover {background-color: white; color: #859bd6; cursor: pointer; border:2px solid #859bd6;}
+#detail_btn .detail_btn1:hover {background-color: white; color: rgb(119, 15, 167); cursor: pointer; border:2px solid rgb(119, 15, 167);}
 #detail_btn {margin-left: 200px;}
 .de_reply{position:absolute;margin-left:450px; font-weight:bold; height:40px; width:100px; color: white; background-color: #ca9bee; cursor: pointer; font-size:15px; border-radius:20px; border:none;}
+.de_reply:hover{color: rgb(119, 15, 167); cursor: pointer; border:2px solid rgb(119, 15, 167);}
 
 </style>
 
@@ -35,7 +36,7 @@ function detailDelete(msnum){
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
 	  
 	<table class="msg_detail_table"><br>
-		<div class="detail_nick" style="font-weight:bold;">보낸사람: ${message.NICK} &nbsp;<span style="font-size:15px;"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></span></div>
+		<div class="detail_nick" style="font-weight:bold; margin-left:30px;">보낸사람: ${message.NICK} &nbsp;<span style="font-size:14px; font-weight:500;"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></span></div>
 		<div class="detail_title">${message.MTITLE}</div> 
 		<div class="detail_content">${message.MCONTENT}</div>
 	</table>
