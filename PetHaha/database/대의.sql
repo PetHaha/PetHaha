@@ -106,5 +106,7 @@ IS
 BEGIN
     insert into preply(rnum,rwriter,bnum,id,nick,rcontent) 
     values(preply_seq.nextval,p_rwriter,p_bnum,p_id,p_nick,p_rcontent);
+    update pboard set replycnt=replycnt+1 where bnum=p_bnum;
     commit;
 END;
+

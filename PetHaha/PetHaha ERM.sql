@@ -30,6 +30,7 @@ CREATE TABLE PBoard
 	PRIMARY KEY (Bnum)
 );
 
+alter table pboard add (replycnt number default 0); --게시물 당 댓글 개수를 알려주는 콜롬
 
 CREATE TABLE PMember
 (
