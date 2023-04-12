@@ -163,7 +163,7 @@ public class MemberController {
 			return "member/myMsg_R";
 		}
 	  
-	  @RequestMapping("/msgDetail")// 쪽지 디테일 내용 확인
+	  @RequestMapping("/msgDetail")// 메세지 디테일 내용 확인
 	  	public String msgDetail(HttpSession session,  HttpServletRequest request, Model model,
 	  			@RequestParam("MSNUM") int MSNUM) {
 		  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
@@ -176,6 +176,15 @@ public class MemberController {
 		  	model.addAttribute("message",message);
 		  	return "member/msgDetail";
 	  }
+	  
+	  @RequestMapping("/msgWrite")// 메세지 보내기
+	  	public String msgWrite(HttpSession session,  HttpServletRequest request, Model model) {
+	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+	  		HashMap<String,Object> loginUser = (HashMap<String,Object>) session.getAttribute("loginUser");
+	  		
+	  		return "member/msgWrite";
+	  }	
+	  
 	  
 		
 		/*

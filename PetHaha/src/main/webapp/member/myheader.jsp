@@ -21,7 +21,7 @@
               	<ul class="menubar_drop">
                     <a href="myMsg_S?first=y">보낸 메세지</a> 
                     <a href="myMsg_R?first=y">받은 메세지</a> 
-                    <a href="#">메세지 보내기</a>    
+                    <a href="msgWrite">메세지 보내기</a>    
                 </ul> 
               </li>   
          </ul>

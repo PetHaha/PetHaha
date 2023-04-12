@@ -30,7 +30,7 @@ function detailDelete(msnum){
 		<div class="detail_index">보낸 메세지</div>	
 	</c:when>
 	<c:otherwise>
-		<div class="detail_index">받은 메세지 <input class="de_reply" type="button" value="답장 보내기" onclick="msgWrite" ></div>
+		<div class="detail_index">받은 메세지 <input class="de_reply" type="button" value="답장 보내기" onclick="location.href='msgWrite'" ></div>
 	</c:otherwise>
 </c:choose>	 	
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
