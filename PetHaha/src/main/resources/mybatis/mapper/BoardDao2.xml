@@ -29,6 +29,9 @@
 		update pboard set views=views+1 where bnum=#{bnum}
 	</update>
 	
+	<update id="PReplyCountUpdate" parameterType="String">
+		update pboard set replycnt=replycnt+1 where bnum=#{bnum}
+	</update>
 	
 	
 	

@@ -45,9 +45,11 @@ $(function(){
                     		<span class="category">고양이</span>
                     	</c:otherwise>
                     </c:choose>
-                    <span class="title">
-                    <span class="text"> ${board.SUBJECT}</span>
+                    <span class="title"> ${board.SUBJECT}
                     </span>
+                    <c:if test="${board.REPLYCNT != '0' }">
+                    	<span style=" font-weight:bold;color:#7DD4FF; font-size:15px;">&nbsp;${board.REPLYCNT }</span>
+                    </c:if>
                 </div>
                 <div class="etc">
                     <div class="as">${board.NICK }</div>

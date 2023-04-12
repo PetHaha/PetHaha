@@ -33,7 +33,11 @@
         </c:when>
     </c:choose>
         <div id="bitems">
-            <div id="bsubject">${board.SUBJECT }</div>
+            <div id="bsubject">${board.SUBJECT }
+           		 	<c:if test="${board.REPLYCNT != '0' }">
+                    	<span style=" font-weight:bold;color:#7DD4FF; font-size:15px;">&nbsp;${board.REPLYCNT }</span>
+                    </c:if>
+            </div>
             <div id="betc">
                 <div id="bwrimg"> <img src="images/profile/${writer.MEMIMG }"></div>
                 <div class="bas">${board.NICK }</div>

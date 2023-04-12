@@ -39,4 +39,9 @@ public class BoardService2 {
 		bdao.readCountPlus(bnum);
 		
 	}
+
+	public void PReplyCountUpdate(String bnum) {
+		bdao.PReplyCountUpdate(bnum);
+		
+	}
 }

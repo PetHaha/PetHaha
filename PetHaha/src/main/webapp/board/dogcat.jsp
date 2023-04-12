@@ -45,9 +45,10 @@ $(function(){
             <div class="info" >
                 <div class="titleContainer">
                 	
-                    <span class="title">
                     <span class="text"> ${board.SUBJECT}</span>
-                    </span>
+					<c:if test="${board.REPLYCNT != '0' }">
+                    	<span style=" font-weight:bold;color:#7DD4FF; font-size:15px;">&nbsp;${board.REPLYCNT }</span>
+                    </c:if>
                 </div>
                 <div class="etc">
                     <div class="as">${board.NICK }</div>

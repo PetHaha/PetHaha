@@ -19,4 +19,6 @@ public interface IBoardDao2 {
 
 	void readCountPlus(String bnum);
 
+	void PReplyCountUpdate(String bnum);
+
 }

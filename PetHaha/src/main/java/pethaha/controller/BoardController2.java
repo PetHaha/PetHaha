@@ -94,6 +94,7 @@ public class BoardController2 {
 	public String replydelete(@RequestParam(value="BNUM", required=false)String BNUM,@RequestParam(value="RNUM", required=false)String RNUM,
 			@RequestParam(value="best", required=false)String best, Model model) {
 		bs.PReplydelete(RNUM);
+		bs.PReplyCountUpdate(BNUM);
 		return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
 	}
 }
