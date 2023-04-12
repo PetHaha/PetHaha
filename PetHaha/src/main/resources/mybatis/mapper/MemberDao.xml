@@ -43,6 +43,10 @@
 		{ CALL msgDetail(#{MSNUM},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
 	</select>
 	
+	<select id="msgWrite" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL msgWrite(#{TONICK},#{MSNUM})}
+	</select>
+	
 	<delete id="msgDelete">
 		{CALL msgDelete(#{MSNUM})}
 	</delete>

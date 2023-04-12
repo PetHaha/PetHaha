@@ -92,4 +92,14 @@ BEGIN
     select * from pmessage where msnum=p_msnum;
 END;
 
+create or replace procedure msgWrite(
+p_tonick IN pmessage.tonick%type, 
+p_msnum IN pmessage.msnum%type,  
+p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    insert into pmessage(pmessage_seq,tonick,msnum) values(pmessage_seq.nextVal,p_tonick,p_msnum);
+    commit;
+END;
+
 

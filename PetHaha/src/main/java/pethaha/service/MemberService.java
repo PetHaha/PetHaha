@@ -135,6 +135,11 @@ public class MemberService {
 		mdao.msgDetail(prm);
 	}
 
+	public void msgWrite(HashMap<String, Object> prm) {
+		mdao.msgWrite(prm);
+		
+	}
+
 	/*
 	 * public void msgDelete(HashMap<String, Object> prm) { mdao.msgDelete(prm);
 	 * 
