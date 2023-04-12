@@ -34,4 +34,9 @@ public class BoardService2 {
 		bdao.PReplydelete(rNUM);
 		
 	}
+
+	public void readCountPlus(String bnum) {
+		bdao.readCountPlus(bnum);
+		
+	}
 }

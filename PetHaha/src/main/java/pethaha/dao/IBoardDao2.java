@@ -17,4 +17,6 @@ public interface IBoardDao2 {
 
 	void PReplydelete(String rNUM);
 
+	void readCountPlus(String bnum);
+
 }

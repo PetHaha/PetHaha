@@ -20,12 +20,14 @@
 		{CALL PReplyWrite(#{RWRITER},#{BNUM},#{ID},#{NICK},#{RCONTENT})}
 	</insert>
 	
-	<delete id="PReplydelete" parameterType="Integer">
-		delete from preply where RNUM=${rNUM}
+	<delete id="PReplydelete" parameterType="String">
+		delete from preply where RNUM=#{rNUM}
 	</delete>
 	
 	
-	
+	<update id="readCountPlus" parameterType="String">
+		update pboard set views=views+1 where bnum=#{bnum}
+	</update>
 	
 	
 	
