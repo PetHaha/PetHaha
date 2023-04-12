@@ -2,6 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
+<script type="text/javascript">
+	function replycheck(){
+	
+	   if( document.replyform.RCONTENT.value==""){
+	      alert("댓글을 작성해주세요" );
+	      document.replyform.RCONTENT.focus();
+	      return false;
+	   }else return true;
+	}
+
+	function replydelete(rnum,bnum,best){
+		if (confirm("댓글을 삭제하시겠습니까?")) {
+			    location.href = "replydelete?RNUM="+rnum+"&BNUM="+bnum+"&best="+best;
+		}
+	}
+
+</script>
+
     <div id="bwrap">
     <c:choose>
     	<c:when test="${best =='1' }">
@@ -15,7 +33,11 @@
         </c:when>
     </c:choose>
         <div id="bitems">
-            <div id="bsubject">${board.SUBJECT }</div>
+            <div id="bsubject">${board.SUBJECT }
+           		 	<c:if test="${board.REPLYCNT != '0' }">
+                    	<span style=" font-weight:bold;color:#7DD4FF; font-size:15px;">&nbsp;${board.REPLYCNT }</span>
+                    </c:if>
+            </div>
             <div id="betc">
                 <div id="bwrimg"> <img src="images/profile/${writer.MEMIMG }"></div>
                 <div class="bas">${board.NICK }</div>
@@ -44,20 +66,24 @@
                 <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
-                <div class="brcontent">${reply.RCONTENT }</div>    
+                <div class="brcontent">${reply.RCONTENT }</div> 
+                <c:if test="${loginUser.ID ==reply.ID }">
+                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                </c:if>   
                 <div class="brthumbs">추천 </div>
                 <div class="brpolice">신고</div>
             </div>
             </c:forEach>
             
             <c:if test="${!empty loginUser }">
-	            <form action="boardReplyWrite" method="post">
+	            <form action="boardReplyWrite" method="post" name="replyform">
 		            <div class="replycon" style="position: relative; margin-top: 5px; margin-bottom:10px;">
 		            <input type="hidden" name="RWRITER" value="${writer.NICK }">
 		            <input type="hidden" name="BNUM" value="${board.BNUM }">
 		            <input type="hidden" name="ID" value="${loginUser.ID }">
 		            <input type="hidden" name="NICK" value="${loginUser.NICK }">
-		            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200" name="RCONTENT"></textarea><input type="submit" value="등록" class="replysubmit">
+		            <input type="hidden" name="best" value="${best}">
+		            	<textarea class="replytext" placeholder="댓글을 작성해주세요" maxlength="200" name="RCONTENT"></textarea><input type="submit" value="등록" class="replysubmit" onclick="return replycheck()">
 		            </div>
 		        </form>
 	        </c:if>

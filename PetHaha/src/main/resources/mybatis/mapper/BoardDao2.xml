@@ -16,4 +16,31 @@
 		{CALL PgetReplyList(#{ BNUM },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
 	</select>
 	
+	<insert id="PReplyWrite" statementType="CALLABLE" parameterType="pethaha.dto.ReplyVO">
+		{CALL PReplyWrite(#{RWRITER},#{BNUM},#{ID},#{NICK},#{RCONTENT})}
+	</insert>
+	
+	<delete id="PReplydelete" parameterType="String">
+		delete from preply where RNUM=#{rNUM}
+	</delete>
+	
+	
+	<update id="readCountPlus" parameterType="String">
+		update pboard set views=views+1 where bnum=#{bnum}
+	</update>
+	
+	<update id="PReplyCountUpdate" parameterType="String">
+		update pboard set replycnt=replycnt+1 where bnum=#{bnum}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

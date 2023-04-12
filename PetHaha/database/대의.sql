@@ -87,7 +87,7 @@ create or replace procedure PgetReplyList(p_bnum IN pboard.bnum%type, p_curvar O
 IS
 BEGIN
     OPEN p_curvar For 
-    select * from replyview where bnum=p_bnum order by rnum desc;
+    select * from replyview where bnum=p_bnum order by rnum;
 END;
 
 
@@ -99,4 +99,14 @@ select
 from preply a, pmember b
 where a.id=b.id ;
 
+
+
+create or replace procedure PReplyWrite(p_rwriter in varchar2 , p_bnum in number, p_id in varchar2, p_nick in varchar2, p_rcontent in varchar2)
+IS
+BEGIN
+    insert into preply(rnum,rwriter,bnum,id,nick,rcontent) 
+    values(preply_seq.nextval,p_rwriter,p_bnum,p_id,p_nick,p_rcontent);
+    update pboard set replycnt=replycnt+1 where bnum=p_bnum;
+    commit;
+END;
 
