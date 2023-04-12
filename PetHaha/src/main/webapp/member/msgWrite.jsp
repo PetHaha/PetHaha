@@ -3,14 +3,13 @@
 <%@ include file="/member/myheader.jsp"%>
 
 <script type="text/javascript">
-function cancelMsg(){
-	var bool = confirm('작성을 취소하시겠습니까?');
-	if (bool) return true;
-	else return false;
-}
+	function cancelMsg(){
+        if( confirm("작성을 취소하시겠습니까?") ) {
+            location.href = "msgWrite";
+        }
+	}
+	
 </script>
-
-
 
 <style type="text/css">
 .msg_detail {position:relative; width: 700px; overflow: hidden; margin:50px auto;}
@@ -28,16 +27,16 @@ function cancelMsg(){
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
 	  
 	<table class="msg_detail_table"><br>
-		<span style="font-size:14px; font-weight:500;"><fmt:formatDate value="${message.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></span></div>
 		<div class="write_box" style="position:relative; width:600px;">
-			<input type="text" style="border:none;" class="detail_title" placeholder="제목을 입력해주세요."/><br><br>
-			<textarea style="height:160px; width: 600px; resize:none; border:none" class="detail_content" placeholder="내용을 입력해주세요.&#10;*욕설 및 비방이 담긴 메세지는 관리자에 의해 삭제될 수 있습니다."></textarea>
+			<input type="text" style="border:none;" class="detail_title" name="MTITLE" value="${message.MTITLE}" placeholder="제목을 입력해주세요."/><br><br>
+			<textarea name="MCONTENT" value="${message.MCONTENT}" style="height:160px; width: 600px; resize:none; border:none" class="detail_content" placeholder="내용을 입력해주세요.&#10;*욕설 및 비방이 담긴 메세지는 관리자에 의해 삭제될 수 있습니다."></textarea>
 		</div>
 	</table><br>
-	<form action="msgDetail">
+	<form action="msgWrite">
 		<input type="hidden" value="${message.MSNUM}" name="MSNUM">
+		<input type="hidden" value="${message.TONICK}" name="TONICK">
 		<div id="detail_btn" style="margin:0 auto; width: 210px;">
-			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="전송" onclick="location.href='myMsg_R'">		
+			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="전송">		
 			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="취소" onclick="return cancelMsg()">
 		</div> 
 	</form>

@@ -177,13 +177,27 @@ public class MemberController {
 		  	return "member/msgDetail";
 	  }
 	  
-	  @RequestMapping("/msgWrite")// 메세지 보내기
-	  	public String msgWrite(HttpSession session,  HttpServletRequest request, Model model) {
-	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-	  		HashMap<String,Object> loginUser = (HashMap<String,Object>) session.getAttribute("loginUser");
-	  		
+	  @RequestMapping("/msgWriteForm")// 메세지 보내기 폼으로 이동
+	  	public String msgWriteForm(HttpSession session,  HttpServletRequest request, Model model) {
+	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";	  		
 	  		return "member/msgWrite";
-	  }	
+	  }
+	  
+	  @RequestMapping("/msgWrite")// 메세지 보내기
+	  	public String msgWrite(HttpSession session,  HttpServletRequest request, Model model,
+	  			@RequestParam(value="TONICK", required=false) String TONICK,
+	  			@RequestParam(value="MSNUM", required=false) int MSNUM) {
+	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+	  	  	HashMap<String,Object>prm=new HashMap<String,Object>();
+	  	  	prm.put("TONICK", TONICK);
+	  	  	prm.put("MSNUM", MSNUM);
+		  	model.addAttribute("TONICK",TONICK);
+		  	model.addAttribute("MSNUM",MSNUM);
+		  	System.out.println(TONICK+"dddd");
+		  	System.out.println(MSNUM+"ggg");
+	  	  	ms.msgWrite(prm);
+	  		return "member/myMsg_S";
+	  }
 	  
 	  
 		
