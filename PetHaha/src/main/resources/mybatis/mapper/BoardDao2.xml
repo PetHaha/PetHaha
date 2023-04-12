@@ -16,4 +16,23 @@
 		{CALL PgetReplyList(#{ BNUM },#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
 	</select>
 	
+	<select id="PReplyWrite" statementType="CALLABLE" parameterType="pethaha.dto.ReplyVO">
+		{CALL PReplyWrite(#{RWRITER},#{BNUM},#{ID},#{NICK},#{RCONTENT})}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

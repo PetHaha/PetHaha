@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pethaha.dto.ReplyVO;
 import pethaha.service.BoardService2;
 import pethaha.service.MemberService;
 
@@ -50,4 +51,10 @@ public class BoardController2 {
 	}
 	
 	
+	@RequestMapping("/boardReplyWrite") 
+	public String boardReplyWrite(@RequestParam(value="best", required=false)String best, Model model, HttpServletRequest request,ReplyVO RVO) {
+		bs.PReplyWrite(RVO);
+		
+		return "redirect:/boardView?BNUM="+RVO.getBNUM()+"&best="+best;
+	}
 }

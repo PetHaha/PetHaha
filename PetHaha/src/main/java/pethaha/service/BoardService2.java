@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pethaha.dao.IBoardDao2;
+import pethaha.dto.ReplyVO;
 
 @Service
 public class BoardService2 {
@@ -21,6 +22,11 @@ public class BoardService2 {
 
 	public void PgetReplyList(HashMap<String, Object> prm) {
 		bdao.PgetReplyList(prm);
+		
+	}
+
+	public void PReplyWrite(ReplyVO rVO) {
+		bdao.PReplyWrite(rVO);
 		
 	}
 }
