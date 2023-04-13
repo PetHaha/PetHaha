@@ -29,5 +29,7 @@ public interface IMemberDao {
 
 	void msgDelete(HashMap<String, Object> prm);
 
+	void nickok(HashMap<String, Object> prm);
+
 
 }

@@ -88,6 +88,7 @@ end;
 create or replace procedure msgDetail(p_msnum IN pmessage.msnum%type, p_curvar OUT SYS_REFCURSOR)
 IS
 BEGIN
+    update pmessage set mcheck='1' where msnum=p_msnum; 
     OPEN p_curvar For 
     select * from pmessage where msnum=p_msnum;
 END;
@@ -106,4 +107,9 @@ BEGIN
     commit;
 END;
 
-
+create or replace procedure nickok(p_tonick IN pmessage.tonick%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from pmember where nick=p_tonick;
+END;

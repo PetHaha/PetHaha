@@ -48,8 +48,12 @@
 	</select>
 	
 	<delete id="msgDelete" parameterType="Integer">
-		delete from pmessage where MSNUM=${MSNUM}
+		delete from pmessage where MSNUM=#{MSNUM}
 	</delete>
+	
+	<select id="nickok" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL nickok(#{TONICK},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
+	</select>
 	
 	
 	

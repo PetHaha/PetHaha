@@ -145,5 +145,10 @@ public class MemberService {
 		
 	}
 
+	public void nickok(HashMap<String, Object> prm) { //닉네임 중복확인
+		mdao.nickok(prm);
+		
+	}
+
 
 }

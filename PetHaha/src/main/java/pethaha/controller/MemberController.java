@@ -147,7 +147,7 @@ public class MemberController {
 			model.addAttribute("paging", (Paging)prm.get("paging"));
 			model.addAttribute("list", list);
 			return "member/myMsg_S";
-		}
+	}
 	  
 	  @RequestMapping("/myMsg_R") // 받은 메세지 함으로 이동
 		public String myMsg_R(HttpSession session,  HttpServletRequest request, Model model) {
@@ -190,23 +190,42 @@ public class MemberController {
 	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 	  	  	HashMap<String,Object>prm=new HashMap<String,Object>();
 	  	  	prm.put("TONICK", TONICK);
-	  	  	prm.put("ID", ID);
-	  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
-	  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
-	  	  	prm.put("NICK", request.getParameter("NICK"));  
-	  	  	System.out.println(TONICK+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(ID+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(request.getParameter("MTITLE")+"dhdld");
-	  	  	ms.msgWrite(prm);
-	  		return "redirect:/myMsg_S";
-	  }
+	  	  	//xml 통해 닉네임 유무 확인
+	  	  	ms.nickok(prm); 
+	  	  	
+	  	  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>) prm.get("ref_cursor");
+	  	  	if(list.size()==0) {
+	  	  		model.addAttribute("message","닉네임을 확인해주세요.");
+	  	  		model.addAttribute("MTITLE", request.getParameter("MTITLE"));
+	  	  		model.addAttribute("MCONTENT", request.getParameter("MCONTENT"));
+	  	  		return "member/msgWrite";
+	  	  	}
+	  			
+	  	  	//닉네임이 없다면 필드에러를 가지고 MTITLE,MCONTENT,NICK값을 가지고 되돌아간다
+	  	  	else {
+		  	  	prm.put("TONICK", TONICK);
+		  	  	prm.put("ID", ID);
+		  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
+		  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
+		  	  	prm.put("NICK", request.getParameter("NICK"));  
+		  	  	ms.msgWrite(prm);
+		  		return "redirect:/myMsg_S";
+	  	  		}
+	  	 }
+	  	  		
+	  	  	
 	  
-  		@RequestMapping("/msgDelete") public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM) {
-		 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-			 HashMap<String, Object> prm = new HashMap<String,Object>(); 
-			 prm.put("MSNUM",MSNUM ); 
-			 ms.msgDelete(prm); 
-			 return "redirect:/myMsg_R";
+  		@RequestMapping("/msgDelete") 
+  		 public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM
+  				,@RequestParam("a") int a) {
+			 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+				 HashMap<String, Object> prm = new HashMap<String,Object>(); 
+				 prm.put("MSNUM",MSNUM );
+				 ms.msgDelete(prm);
+				 if(a==1)
+					 return "redirect:/myMsg_S";
+				 else
+					 return "redirect:/myMsg_R";
   		}
 		 
 		 
