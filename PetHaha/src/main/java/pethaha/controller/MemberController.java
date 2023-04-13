@@ -190,13 +190,32 @@ public class MemberController {
 	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 	  	  	HashMap<String,Object>prm=new HashMap<String,Object>();
 	  	  	prm.put("TONICK", TONICK);
-	  	  	prm.put("ID", ID);
-	  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
-	  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
-	  	  	prm.put("NICK", request.getParameter("NICK"));  
-	  	  	ms.msgWrite(prm);
-	  		return "redirect:/myMsg_S";
-	  }
+	  	  	//xml 통해 닉네임 유무 확인
+	  	  	ms.nickok(prm); 
+	  	  	
+	  	  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>) prm.get("ref_cursor");
+	  	  	if(list.size()==0) {
+	  	  		model.addAttribute("message","닉네임이 없습니다.");
+	  	  		model.addAttribute("MTITLE", request.getParameter("MTITLE"));
+	  	  		model.addAttribute("MCONTENT", request.getParameter("MCONTENT"));
+	  	  		return "member/msgWrite";
+	  	  	}
+	  			
+	  	  	//닉네임이 없다면 필드에러를 가지고 MTITLE,MCONTENT,NICK값을 가지고 되돌아간다
+	  	  	else {
+		  	  	prm.put("TONICK", TONICK);
+		  	  	prm.put("ID", ID);
+		  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
+		  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
+		  	  	prm.put("NICK", request.getParameter("NICK"));  
+		  	  	ms.msgWrite(prm);
+		  		return "redirect:/myMsg_S";
+	  	  		}
+	  	 }
+	  	  		
+	  	  	
+	  	  	//닉네임이 있다면 메세지 전송
+	  	  	
 	  
   		@RequestMapping("/msgDelete") 
   		 public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM
