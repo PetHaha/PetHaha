@@ -195,7 +195,7 @@ public class MemberController {
 	  	  	
 	  	  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>) prm.get("ref_cursor");
 	  	  	if(list.size()==0) {
-	  	  		model.addAttribute("message","닉네임이 없습니다.");
+	  	  		model.addAttribute("message","닉네임을 확인해주세요.");
 	  	  		model.addAttribute("MTITLE", request.getParameter("MTITLE"));
 	  	  		model.addAttribute("MCONTENT", request.getParameter("MCONTENT"));
 	  	  		return "member/msgWrite";
@@ -213,8 +213,6 @@ public class MemberController {
 	  	  		}
 	  	 }
 	  	  		
-	  	  	
-	  	  	//닉네임이 있다면 메세지 전송
 	  	  	
 	  
   		@RequestMapping("/msgDelete") 

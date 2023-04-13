@@ -38,8 +38,7 @@
 <div class="msg_detail">
 	<div class="detail_index">메세지 보내기</div>		
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
-	${message}
-	<div class="toNick">받는사람: <input type="text" style="border:none;" class="toNick2" name="TONICK" value="${TONICK}" placeholder="닉네임을 입력해주세요."/></div>
+	<div class="toNick">받는사람: <input type="text" style="border:none;" class="toNick2" name="TONICK" value="${TONICK}" placeholder="닉네임을 입력해주세요."/></div> <div style="font-weight:bold; color:gray;">${message}</div>
 	<!-- 나중에 닉네임 중복이라던지, 고르게 설정하기 -->
 	  
 	<table class="msg_detail_table"><br>
