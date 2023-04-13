@@ -97,4 +97,20 @@ public class BoardController2 {
 		bs.PReplyCountUpdate(BNUM);
 		return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
 	}
+	@RequestMapping("/BThumbsUp") 
+	public String BThumbsUp(@RequestParam(value="BNUM", required=false)String BNUM,@RequestParam(value="ID", required=false)String ID,
+			@RequestParam(value="best", required=false)String best,@RequestParam(value="NICK", required=false)String NICK, Model model) {
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("ID", ID);
+		prm.put("NICK", NICK);
+		prm.put("BNUM", BNUM);
+		bs.PLikeOX(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()==0) { 
+			bs.PThumbsUp(prm);
+			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
+		}else
+			//써야함
+			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
+	}
 }
