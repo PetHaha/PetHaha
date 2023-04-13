@@ -147,7 +147,7 @@ public class MemberController {
 			model.addAttribute("paging", (Paging)prm.get("paging"));
 			model.addAttribute("list", list);
 			return "member/myMsg_S";
-		}
+	}
 	  
 	  @RequestMapping("/myMsg_R") // 받은 메세지 함으로 이동
 		public String myMsg_R(HttpSession session,  HttpServletRequest request, Model model) {
@@ -194,19 +194,21 @@ public class MemberController {
 	  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
 	  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
 	  	  	prm.put("NICK", request.getParameter("NICK"));  
-	  	  	System.out.println(TONICK+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(ID+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(request.getParameter("MTITLE")+"dhdld");
 	  	  	ms.msgWrite(prm);
 	  		return "redirect:/myMsg_S";
 	  }
 	  
-  		@RequestMapping("/msgDelete") public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM) {
-		 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-			 HashMap<String, Object> prm = new HashMap<String,Object>(); 
-			 prm.put("MSNUM",MSNUM ); 
-			 ms.msgDelete(prm); 
-			 return "redirect:/myMsg_R";
+  		@RequestMapping("/msgDelete") 
+  		 public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM
+  				,@RequestParam("a") int a) {
+			 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+				 HashMap<String, Object> prm = new HashMap<String,Object>(); 
+				 prm.put("MSNUM",MSNUM );
+				 ms.msgDelete(prm);
+				 if(a==1)
+					 return "redirect:/myMsg_S";
+				 else
+					 return "redirect:/myMsg_R";
   		}
 		 
 		 

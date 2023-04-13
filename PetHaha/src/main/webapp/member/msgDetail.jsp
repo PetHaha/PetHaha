@@ -3,11 +3,11 @@
 <%@ include file="/member/myheader.jsp"%>
  
 <script type="text/javascript">
-function detailDelete(msnum){
-	var bool = confirm('정말로 삭제하시겠습니까?');
-	if (bool) return true;
-	else return false;
-}
+	function detailDelete(msnum,a){
+		if (confirm('정말로 삭제하시겠습니까?')) {
+			location.href="msgDelete?MSNUM="+msnum+"&a="+a;
+		}
+	}
 </script>
 
 <style type="text/css">
@@ -46,12 +46,14 @@ function detailDelete(msnum){
 		<c:choose>
 			<c:when test='${message.NICK==loginUser.NICK}'>
 				<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="button" value="목록" onclick="location.href='myMsg_S'">
+				<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="button" value="삭제" onclick="return detailDelete('${message.MSNUM}','1')">
 			</c:when>
 			<c:otherwise>
 				<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="button" value="목록" onclick="location.href='myMsg_R'">
+				<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="button" value="삭제" onclick="return detailDelete('${message.MSNUM}','2')">
 			</c:otherwise>
 		</c:choose>
-			<input style="margin:auto; background-color:#ca9bee;" class="detail_btn1" type="submit" value="삭제" onclick="return detailDelete()">
+			
 		</div> 
 	</form>
 </div>

@@ -48,7 +48,7 @@
 	</select>
 	
 	<delete id="msgDelete" parameterType="Integer">
-		delete from pmessage where MSNUM=${MSNUM}
+		delete from pmessage where MSNUM=#{MSNUM}
 	</delete>
 	
 	
