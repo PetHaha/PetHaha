@@ -59,6 +59,24 @@
         <div id="brlist">
         <div  style="min-height:50px;">
         	<c:forEach items="${reply}" var="reply">
+            <c:choose>
+            <c:when test="${reply.ID==board.ID }">
+            <div class="breplylist" style="background:#FFE7E7">
+                <div id="brwrimg"> <img src="images/profile/${reply.MEMIMG }" alt="${reply.INTRO }"  ></div>
+                <div class="bras">${reply.NICK }</div>
+                <div class="brdot">.</div>
+                <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
+                <div class="brdot">.</div>
+                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
+                <div class="brcontent">${reply.RCONTENT }</div> 
+                <c:if test="${loginUser.ID ==reply.ID }">
+                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                </c:if>   
+                <div class="brthumbs">추천 </div>
+                <div class="brpolice">신고</div>
+            </div>
+            </c:when>
+            <c:otherwise>
             <div class="breplylist">
                 <div id="brwrimg"> <img src="images/profile/${reply.MEMIMG }" alt="${reply.INTRO }"  ></div>
                 <div class="bras">${reply.NICK }</div>
@@ -73,6 +91,8 @@
                 <div class="brthumbs">추천 </div>
                 <div class="brpolice">신고</div>
             </div>
+            </c:otherwise>
+            </c:choose>
             </c:forEach>
             
             <c:if test="${!empty loginUser }">
