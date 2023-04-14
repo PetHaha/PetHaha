@@ -86,6 +86,7 @@ $(function(){
 <script type="text/javascript">  
      function joincheck(){
          if(document.joinform.PWD.value != document.joinform.PWDCHECK.value){
+        	 document.joinform.PWDCHECK.focus();
             $('#error1').text('비밀번호를 확인해주세요.');
             return false;
          }else {return true;}
