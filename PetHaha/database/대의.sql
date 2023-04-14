@@ -110,3 +110,17 @@ BEGIN
     commit;
 END;
 
+create or replace procedure PLikeOX(p_id in varchar2,p_bnum in number, p_curvar OUT SYS_REFCURSOR)
+is
+begin
+    open p_curvar For
+    select*from pblike where id=p_id and bnum=p_bnum;
+end;
+
+
+create or replace procedure PLikeOX(p_id in varchar2,p_bnum in number, p_nick in varchar2)
+is
+begin
+    insert into pblike (lnum,bnum,id,nick)
+    values(pblike_seq.nextval,p_bnum,p_id,p_nick);
+end;
