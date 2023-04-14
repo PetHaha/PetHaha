@@ -179,7 +179,9 @@ public class MemberController {
 	  
 	  @RequestMapping("/msgWriteForm")// 메세지 보내기 폼으로 이동
 	  	public String msgWriteForm(HttpSession session,  HttpServletRequest request, Model model) {
-	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";	  		
+	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";	  
+	  	  model.addAttribute("AN",request.getParameter("AN"));
+	  	  model.addAttribute("TONICK",request.getParameter("TONICK"));
 	  		return "member/msgWrite";
 	  }
 	  

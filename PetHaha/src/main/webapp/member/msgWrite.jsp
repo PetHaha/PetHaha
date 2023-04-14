@@ -34,17 +34,24 @@
 .toNick2{margin-top:17px; background-color: rgb(240, 238, 238); color: gray; height:24px;}
 </style>
 
-<form action="msgWrite" method="post" name="msgWrite">
+
 <div class="msg_detail">
+<form action="msgWrite" method="post" name="msgWrite">
 	<div class="detail_index">메세지 보내기</div>		
 	<div style="border-top: 2px solid rgb(119, 15, 167); margin-top:15px;"></div>
-	<div class="toNick">받는사람: <input type="text" style="border:none;" class="toNick2" name="TONICK" value="${TONICK}" placeholder="닉네임을 입력해주세요."/></div> <div style="font-weight:bold; color:gray;">${message}</div>
-	<!-- 나중에 닉네임 중복이라던지, 고르게 설정하기 -->
+	<c:choose>
+		<c:when test='${AN eq "1" }'>
+			<div class="toNick">받는사람: ${TONICK}</div>
+		</c:when>
+		<c:otherwise>
+			<div class="toNick">받는사람: <input type="text" style="border:none;" class="toNick2" name="TONICK" value="${TONICK}" placeholder="닉네임을 입력해주세요."/></div> <div style="font-weight:bold; color:red; margin-left:30px; font-size:13px;">${message}</div>		
+		</c:otherwise>
+	</c:choose>
 	  
 	<table class="msg_detail_table"><br>
 		<div class="write_box" style="position:relative; width:600px;">
 			<input type="text" style="border:none;" class="detail_title" name="MTITLE" value="${MTITLE}" placeholder="제목을 입력해주세요."/><br><br>
-			<textarea name="MCONTENT" value="${MCONTENT}" style="height:160px; width: 600px; resize:none; border:none" class="detail_content" placeholder="내용을 입력해주세요.&#10;*욕설 및 비방이 담긴 메세지는 관리자에 의해 삭제될 수 있습니다."></textarea>
+			<textarea name="MCONTENT" style="height:160px; width: 600px; resize:none; border:none" class="detail_content" placeholder="내용을 입력해주세요.&#10;*욕설 및 비방이 담긴 메세지는 관리자에 의해 삭제될 수 있습니다.">${MCONTENT}</textarea>
 		</div>
 	</table><br>
 		<input type="hidden" value="${loginUser.ID}" name="ID">
