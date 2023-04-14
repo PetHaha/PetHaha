@@ -93,7 +93,15 @@ CREATE TABLE PRe_Reply
 	PRIMARY KEY (ReRnum)
 );
 
-
+-- 게시글 추천 테이블
+CREATE TABLE pBlike(
+    lnum NUMBER(5)    NOT NULL , 
+    bnum NUMBER(5)    NOT NULL,    
+    id varchar2(20)    NOT NULL,
+    nick varchar2(20) not null,
+    likeOX NUMBER(5)    DEFAULT 0 NULL,
+    PRIMARY KEY (lnum)
+);
 
 /* Create Foreign Keys */
 
@@ -138,6 +146,16 @@ ALTER TABLE PRe_Reply
 	REFERENCES PReply (Rnum)
 ;
 
+ALTER TABLE Pblike
+	ADD FOREIGN KEY (Bnum)
+	REFERENCES PBoard (Bnum)
+;
+
+ALTER TABLE Pblike
+	ADD FOREIGN KEY (id,nick)
+	REFERENCES Pmember (id,nick)
+;
+
 drop sequence pmessage_seq;
 create sequence pmessage_seq start with 1;	
 
@@ -152,6 +170,9 @@ create sequence pre_reply_seq start with 1;
 
 drop sequence pbanner_seq; -- 롤링 배너 시퀀스 
 create sequence pbanner_seq start with 1;
+
+drop sequence pblike_seq;
+create sequence pblike_seq start with 1;	
 
 CREATE TABLE PBanner -- 롤링 배너 테이블 
 (

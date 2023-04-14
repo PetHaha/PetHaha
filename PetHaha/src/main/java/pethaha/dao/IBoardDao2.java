@@ -21,4 +21,8 @@ public interface IBoardDao2 {
 
 	void PReplyCountUpdate(String bnum);
 
+	void PLikeOX(HashMap<String, Object> prm);
+
+	void PThumbsUp(HashMap<String, Object> prm);
+
 }

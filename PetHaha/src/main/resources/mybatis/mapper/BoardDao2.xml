@@ -33,8 +33,13 @@
 		update pboard set replycnt=replycnt+1 where bnum=#{bnum}
 	</update>
 	
+	<select id="PLikeOX" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PLikeOX(#{ ID},#{BNUM},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
+	</select>
 	
-	
+	<insert id="PThumbsUp" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PThumbsUp(#{ ID},#{BNUM},#{ NICK })}
+	</insert>
 	
 	
 	
