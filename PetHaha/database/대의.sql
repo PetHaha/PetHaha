@@ -117,10 +117,13 @@ begin
     select*from pblike where id=p_id and bnum=p_bnum;
 end;
 
+select*from pblike where id='daeui' and bnum='37';
 
-create or replace procedure PLikeOX(p_id in varchar2,p_bnum in number, p_nick in varchar2)
+create or replace procedure PThumbsUp(p_id in varchar2,p_bnum in number, p_nick in varchar2)
 is
 begin
     insert into pblike (lnum,bnum,id,nick)
     values(pblike_seq.nextval,p_bnum,p_id,p_nick);
+    update pboard set thumbs=thumbs+1 where bnum=p_bnum;
+    commit;
 end;

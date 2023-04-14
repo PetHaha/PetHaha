@@ -45,6 +45,8 @@
                 <div class="bas"><fmt:formatDate value="${board.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="bdot">.</div>
                 <div class="bas"><img src="images/eye.png" style="height:10px">&nbsp; ${board.VIEWS }</div>
+                <div class="bdot">.</div>
+                <div class="bas"><img src="images/thumb.png" style="height:9px"> ${board.THUMBS}</div>
             </div>
 
         </div>
@@ -56,11 +58,14 @@
 
         </div>
         <c:choose>
-        <c:when test="${!empty loginUser }">
-        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="location.href='BThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&best=${best}'"><input type="button" value="신고" id="bpolice"></div>
+        <c:when test="${empty loginUser }">
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')"><input type="button" value="신고" id="bpolice"></div>
+        </c:when>
+        <c:when test="${!empty LikeOX }">
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 완료!" id="bthumbs" ><input type="button" value="신고" id="bpolice"></div>
         </c:when>
         <c:otherwise>
-        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')"><input type="button" value="신고" id="bpolice"></div>
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="location.href='BThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&best=${best}'"><input type="button" value="신고" id="bpolice"></div>       	
         </c:otherwise>
         </c:choose>
         

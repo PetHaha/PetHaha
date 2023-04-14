@@ -6,6 +6,7 @@ import java.util.HashMap;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +29,11 @@ public class BoardController2 {
 	
 
 	@RequestMapping("/boardView") 
-	public String boardView(@RequestParam("BNUM") String BNUM, Model model, HttpServletRequest request,
+	public String boardView( HttpSession session,@RequestParam("BNUM") String BNUM, Model model, HttpServletRequest request,
 			@RequestParam(value="best", required=false)String best, HttpServletResponse response) {
 		HashMap<String, Object> prm = new HashMap<>();
 		prm.put("BNUM", BNUM);
-		bs.PboardView(prm);
+		bs.PboardView(prm); //게시글 내용 조회
 		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		HashMap<String,Object>bVO=list.get(0);
 		prm.put("ID", bVO.get("ID")+"");
@@ -67,14 +68,21 @@ public class BoardController2 {
         
 		
 		
-		ms.PgetMember(prm);
+		ms.PgetMember(prm); //글쓴이 정보 조회
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		HashMap<String, Object> writer = list.get(0);
 		
-		bs.PgetReplyList(prm);
+		bs.PgetReplyList(prm); //댓글리스트 조회
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		model.addAttribute("reply",list);
 		
+		if(session.getAttribute("loginUser")!=null) { //로그인 유저의 추천 유무 체크
+		HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+		prm.put("ID",  loginUser.get("ID")+"");
+		bs.PLikeOX(prm);
+		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0)model.addAttribute("LikeOX",1);
+		}
 		
 		model.addAttribute("writer",writer);
 		model.addAttribute("board",bVO);
@@ -104,13 +112,9 @@ public class BoardController2 {
 		prm.put("ID", ID);
 		prm.put("NICK", NICK);
 		prm.put("BNUM", BNUM);
-		bs.PLikeOX(prm);
-		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
-		if(list.size()==0) { 
-			bs.PThumbsUp(prm);
-			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
-		}else
-			//써야함
-			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;
+		bs.PThumbsUp(prm);
+		return "redirect:/boardView?BNUM="+BNUM+"&best="+best;			
 	}
+	
+	
 }
