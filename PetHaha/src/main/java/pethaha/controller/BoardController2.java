@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -115,6 +116,14 @@ public class BoardController2 {
 		bs.PThumbsUp(prm);
 		return "redirect:/boardView?BNUM="+BNUM+"&best="+best;			
 	}
+	
+	@RequestMapping("/boardreportform") 
+	public String boardreportform(@ModelAttribute("BNUM")String BNUM,@ModelAttribute("best")String best,@ModelAttribute("ID")String ID,
+			@ModelAttribute("NICK")String NICK) {
+		return "board/boardpolice";			
+	}
+	
+	//신고하기 jsp 작업과 매핑 추가 해야함
 	
 	
 }
