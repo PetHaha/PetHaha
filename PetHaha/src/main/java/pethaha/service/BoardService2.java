@@ -44,4 +44,14 @@ public class BoardService2 {
 		bdao.PReplyCountUpdate(bnum);
 		
 	}
+
+	public void PLikeOX(HashMap<String, Object> prm) {
+		bdao.PLikeOX(prm);
+		
+	}
+
+	public void PThumbsUp(HashMap<String, Object> prm) {
+		bdao.PThumbsUp(prm);
+		
+	}
 }

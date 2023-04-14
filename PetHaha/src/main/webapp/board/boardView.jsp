@@ -45,6 +45,8 @@
                 <div class="bas"><fmt:formatDate value="${board.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="bdot">.</div>
                 <div class="bas"><img src="images/eye.png" style="height:10px">&nbsp; ${board.VIEWS }</div>
+                <div class="bdot">.</div>
+                <div class="bas"><img src="images/thumb.png" style="height:9px"> ${board.THUMBS}</div>
             </div>
 
         </div>
@@ -55,10 +57,39 @@
             ${board.CONTENT}
 
         </div>
-        <div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs"><input type="button" value="신고" id="bpolice"></div>
+        <c:choose>
+        <c:when test="${empty loginUser }">
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')"><input type="button" value="신고" id="bpolice"></div>
+        </c:when>
+        <c:when test="${!empty LikeOX }">
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 완료!" id="bthumbs" ><input type="button" value="신고" id="bpolice"></div>
+        </c:when>
+        <c:otherwise>
+        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="location.href='BThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&best=${best}'"><input type="button" value="신고" id="bpolice"></div>       	
+        </c:otherwise>
+        </c:choose>
+        
         <div id="brlist">
         <div  style="min-height:50px;">
         	<c:forEach items="${reply}" var="reply">
+            <c:choose>
+            <c:when test="${reply.ID==board.ID }">
+            <div class="breplylist" style="background:#FFE7E7">
+                <div id="brwrimg"> <img src="images/profile/${reply.MEMIMG }" alt="${reply.INTRO }"  ></div>
+                <div class="bras">${reply.NICK }</div>
+                <div class="brdot">.</div>
+                <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
+                <div class="brdot">.</div>
+                <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
+                <div class="brcontent">${reply.RCONTENT }</div> 
+                <c:if test="${loginUser.ID ==reply.ID }">
+                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                </c:if>   
+                <div class="brthumbs">추천 </div>
+                <div class="brpolice">신고</div>
+            </div>
+            </c:when>
+            <c:otherwise>
             <div class="breplylist">
                 <div id="brwrimg"> <img src="images/profile/${reply.MEMIMG }" alt="${reply.INTRO }"  ></div>
                 <div class="bras">${reply.NICK }</div>
@@ -73,6 +104,8 @@
                 <div class="brthumbs">추천 </div>
                 <div class="brpolice">신고</div>
             </div>
+            </c:otherwise>
+            </c:choose>
             </c:forEach>
             
             <c:if test="${!empty loginUser }">
