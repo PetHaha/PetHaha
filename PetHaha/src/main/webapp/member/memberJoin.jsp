@@ -90,10 +90,23 @@
 			return false;
 		}else {
 			$('#iderr').text('');
-			if(document.joinform.PWD.value != document.joinform.PWDCHECK.value){
-				$('#error1').text('비밀번호를 확인해주세요.');
-				return false;
-			}else {return true;}
+		}
+			
+		if(document.joinform.PWD.value != document.joinform.PWDCHECK.value){
+			$('#error1').text('비밀번호를 확인해주세요.');
+			return false;
+		}else {
+			$('#error1').text('');
+		}
+		
+		if(document.joinform.RENICK.value.length==0){
+			$('#nickerr').text('닉네임 중복확인을 해주세요.');
+			return false;
+		}else if(document.joinform.RENICK.value!=document.joinform.NICK.value){
+			$('#nickerr').text('닉네임 중복확인을 해주세요.');
+			return false;
+		}else {
+			return true;
 		}
 	}
 </script>
@@ -113,7 +126,7 @@
 	              </div>
 	              <input type="button" class="btn btn-primary btn-lg btn-block" 
 	              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
-	              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인"  onclick="idcheck()">
+	              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="idcheck()">
 	            </div>
 	            
 				<div class="mb-3">
@@ -135,11 +148,11 @@
 		              <input type="text" class="form-control" name="NICK" value="" required/>
 		              <div class="invalid-feedback">닉네임을 입력해주세요.</div>
 	     	          <input type="hidden" name="RENICK" value=""/>
-		              <p class="error_text" id="iderr"></p>
+		              <p class="error_text" id="nickerr"></p>
 		            </div> 
 		             <input type="button" class="btn btn-primary btn-lg btn-block" 
 		              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
-		              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인"  onclick="nickcheck()">
+		              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="nickcheck()">
 				</div>
 	
 	            <div class="mb-3">

@@ -136,4 +136,11 @@ BEGIN
   
 END;
 
+create or replace procedure PgetNick(p_id IN pmember.nick%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from pmember where nick=p_nick;
+END;
+
 

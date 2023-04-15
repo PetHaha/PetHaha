@@ -22,8 +22,11 @@ text-align: center;text-decoration: none;color: white;}
   font-family: Verdana;}
 .footerbox  #logo{ position:absolute; width:50px; height: 50px;  right: 15px; opacity: 70%; top:18px}
 
-#idcheck_box{width: 100%; color: rgb(0, 0, 0); height:300px; padding:1px;}
+#idcheck_box{height:300px; padding:1px;}
 #idcheck_text{padding-left: 30px; }
+#idcheckbutton1{background-color:#dfb4ff; font-weight:bold; color:white; width:70px; height:30px; border:white; cursor:pointer;}
+.checkmsg{font-weight:bold; font-size:16px; margin-left:150px; color: red;}
+.checklabel{margin-left:130px;}
 
 
 
