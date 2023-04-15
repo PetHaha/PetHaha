@@ -2,20 +2,10 @@
 <%@ include file="../header.jsp"%>
 <%@ include file="/member/myheader.jsp"%>
 
-<script type="text/javascript">
-	function replydelete1(rnum){
-		if (confirm("댓글을 삭제하시겠습니까?")) {
-			    location.href = "replydelete?RNUM="+rnum;
-		}
-	}
-</script>
-
   <div id="borderlist">
   	<br>
   	 <h2 class="subjectt" style="width:140px;">작성한 댓글</h2>
-     <div style="position:relative;">
         <div  style="min-height:50px;">
-        	<a class="items" href="#">
         	<c:forEach items="${list}" var="reply">
             <div class="breplylist">
                 <div id="brwrimg"> 
@@ -36,30 +26,15 @@
                 <div class="brcontent">${reply.RCONTENT }</div> 
             </div>
             </c:forEach>
-            </a>
-         </div>
-     </div>     
         <jsp:include page="/board/paging.jsp">
 			<jsp:param name="command" value="index"/>
 		</jsp:include>
+         </div>   
+          
+
          
   	 
    </div>
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <%@ include file="../footer.jsp"%>
