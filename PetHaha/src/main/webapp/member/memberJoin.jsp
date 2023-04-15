@@ -126,7 +126,7 @@
 	              </div>
 	              <input type="button" class="btn btn-primary btn-lg btn-block" 
 	              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
-	              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인"  onclick="idcheck()">
+	              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="idcheck()">
 	            </div>
 	            
 				<div class="mb-3">
@@ -152,7 +152,7 @@
 		            </div> 
 		             <input type="button" class="btn btn-primary btn-lg btn-block" 
 		              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
-		              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인"  onclick="nickcheck()">
+		              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="nickcheck()">
 				</div>
 	
 	            <div class="mb-3">
