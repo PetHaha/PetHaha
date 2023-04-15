@@ -36,4 +36,5 @@ public interface IMemberDao {
 	void PmyReplyCount(HashMap<String, Object> prm);
 
 
+
 }

@@ -244,6 +244,7 @@ public class MemberController {
  			 
  			 return "member/myReply";
   		 }
+  		 
 		 
 		 
  }
