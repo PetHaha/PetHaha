@@ -245,9 +245,21 @@ public class MemberController {
  			 return "member/myReply";
   		 }
   		 
+  		@RequestMapping("/memberNickCheck") // 회원가입 닉네임 중복체크(메세지보내기 때문에)
+  		public String member_nick_check( @RequestParam("NICK") String NICK, Model model, HttpServletRequest request ) {
+  			HashMap<String, Object> prm = new HashMap<String, Object>();
+  			prm.put("NICK", NICK);
+  			ms.PgetNick( prm );
+  			ArrayList< HashMap<String,Object> > list = (ArrayList< HashMap<String,Object> >) prm.get("ref_cursor");
+  			if( list.size()==0 ) model.addAttribute("result" , -1);
+  			else model.addAttribute("result" , 1);
+  			model.addAttribute("NICK", NICK);		
+  			return "member/memberNickCheck";
+  		}
+  		 
+} 
 		 
-		 
- }
+ 
 	  
 
 

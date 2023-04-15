@@ -184,6 +184,11 @@ public class MemberService {
 		
 	}
 
+	public void PgetNick(HashMap<String, Object> prm) {
+		mdao.PgetNick(prm);
+		
+	}
+
 
 
 }

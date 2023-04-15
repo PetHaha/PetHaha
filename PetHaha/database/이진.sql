@@ -135,3 +135,5 @@ BEGIN
         select count(*) into p_cnt from preply where nick=p_nick;
   
 END;
+
+
