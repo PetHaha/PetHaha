@@ -55,6 +55,16 @@
 		{ CALL nickok(#{TONICK},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap})}
 	</select>
 	
+	<select id="PmyReply" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PmyReply(#{NICK},#{startNum}, #{endNum},#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap} )}
+	</select>
+	
+	<select id="PmyReplyCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL PmyReplyCount(#{NICK},#{cnt, mode=OUT, jdbcType=INTEGER })}
+	</select>
+	
+	
+	
 	
 	
 	
