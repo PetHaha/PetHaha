@@ -31,5 +31,12 @@ public interface IMemberDao {
 
 	void nickok(HashMap<String, Object> prm);
 
+	void PmyReply(HashMap<String, Object> prm);
+
+	void PmyReplyCount(HashMap<String, Object> prm);
+
+	void PgetNick(HashMap<String, Object> prm);
+
+
 
 }
