@@ -16,19 +16,30 @@
       .error_text{color:#dc3545; font-size:80%}
   </style>
 <script type="text/javascript" src="/code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.6.1.js"></script>  
+<script type="text/javascript" src="js/jquery-3.6.1.js"></script>
+  
 <script type="text/javascript">
 
-	function idcheck(){
-			
+	function idcheck(){			
 	   if( document.joinform.ID.value=="" ){
 	      alert("아이디를 입력하고 중복체크를 진행하세요" );
-	      documnet.joinform.ID.focus();
+	      document.joinform.ID.focus();
 	      return;
 	   }
 	   var ID = document.joinform.ID.value;
 	   var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=250, scrollbars=no";
 	   window.open("memberIdCheck?ID=" + ID, "Id check", opt);   
+	}
+	
+	function nickcheck(){		
+	   if( document.joinform.NICK.value=="" ){
+	      alert("닉네임을 입력하고 중복체크를 진행하세요" );
+	      document.joinform.NICK.focus();
+	      return;
+	   }
+	   var NICK = document.joinform.NICK.value;
+	   var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=250, scrollbars=no";
+	   window.open("memberNickCheck?NICK=" + NICK, "Nick check", opt);   
 	}
 	
 
@@ -64,7 +75,7 @@
 		
 	})
 	
-
+	
 
 </script>
   
@@ -79,10 +90,23 @@
 			return false;
 		}else {
 			$('#iderr').text('');
-			if(document.joinform.PWD.value != document.joinform.PWDCHECK.value){
-				$('#error1').text('비밀번호를 확인해주세요.');
-				return false;
-			}else {return true;}
+		}
+			
+		if(document.joinform.PWD.value != document.joinform.PWDCHECK.value){
+			$('#error1').text('비밀번호를 확인해주세요.');
+			return false;
+		}else {
+			$('#error1').text('');
+		}
+		
+		if(document.joinform.RENICK.value.length==0){
+			$('#nickerr').text('닉네임 중복확인을 해주세요.');
+			return false;
+		}else if(document.joinform.RENICK.value!=document.joinform.NICK.value){
+			$('#nickerr').text('닉네임 중복확인을 해주세요.');
+			return false;
+		}else {
+			return true;
 		}
 	}
 </script>
@@ -102,7 +126,7 @@
 	              </div>
 	              <input type="button" class="btn btn-primary btn-lg btn-block" 
 	              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
-	              width: 200px; height: 60px; margin-top: 10px; margin-left: 100px;" value="중복 확인"  onclick="idcheck()">
+	              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="idcheck()">
 	            </div>
 	            
 				<div class="mb-3">
@@ -118,11 +142,18 @@
 	                <p class="error_text" id="error1"></p>
 	              </div>
 		
-	            <div class="mb-3">
-	              <label for="nickname">닉네임 *</label>
-	              <input type="text" class="form-control" name="NICK" value="" required/>
-	              <div class="invalid-feedback">닉네임을 입력해주세요.</div>
-	            </div>
+				 <div class="row"> <!--닉네임 중복체크 추가(메세지 보내기)-->
+		            <div class="col-md-6 mb-3">
+		              <label for="nickname">닉네임 *</label>
+		              <input type="text" class="form-control" name="NICK" value="" required/>
+		              <div class="invalid-feedback">닉네임을 입력해주세요.</div>
+	     	          <input type="hidden" name="RENICK" value=""/>
+		              <p class="error_text" id="nickerr"></p>
+		            </div> 
+		             <input type="button" class="btn btn-primary btn-lg btn-block" 
+		              style="background-color:#ca9bee; font-weight:bold; border:1px solid white; 
+		              width: 180px; height: 45px; margin-top: 25px; margin-left: 120px;" value="중복 확인"  onclick="nickcheck()">
+				</div>
 	
 	            <div class="mb-3">
 	              <label for="phone">전화번호 *</label>

@@ -29,5 +29,14 @@ public interface IMemberDao {
 
 	void msgDelete(HashMap<String, Object> prm);
 
+	void nickok(HashMap<String, Object> prm);
+
+	void PmyReply(HashMap<String, Object> prm);
+
+	void PmyReplyCount(HashMap<String, Object> prm);
+
+	void PgetNick(HashMap<String, Object> prm);
+
+
 
 }

@@ -54,8 +54,7 @@
 	
         <br>
         <form name="frm" method="post" action="index">
-        <input type="hidden" name="category" value="0">
-	        
+        	<input type="hidden" name="category" value="0">       
 		</form>
         
 

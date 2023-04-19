@@ -88,6 +88,7 @@ end;
 create or replace procedure msgDetail(p_msnum IN pmessage.msnum%type, p_curvar OUT SYS_REFCURSOR)
 IS
 BEGIN
+    update pmessage set mcheck='1' where msnum=p_msnum; 
     OPEN p_curvar For 
     select * from pmessage where msnum=p_msnum;
 END;
@@ -104,6 +105,42 @@ IS
 BEGIN
     insert into pmessage(msnum,tonick,mtitle,mcontent,nick,id) values(pmessage_seq.nextval,p_tonick,p_mtitle,p_mcontent,p_nick,p_id);
     commit;
+END;
+
+create or replace procedure nickok(p_tonick IN pmessage.tonick%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from pmember where nick=p_tonick;
+END;
+
+
+create or replace procedure pmyReply(
+    p_nick IN pmember.nick%type,
+    p_startNum in number,
+    p_endNum in number,
+    p_rc out sys_refcursor
+)
+is
+begin
+            open p_rc for
+            select * from (select * from (select rownum as rn, b.* from ((select * from preply where nick=p_nick order by bnum desc) b)) where rn>=p_startNum) where rn<=p_endNum;
+  
+
+end;
+
+create or replace procedure PmyReplyCount(p_nick IN pmember.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from preply where nick=p_nick;
+  
+END;
+
+create or replace procedure PgetNick(p_id IN pmember.nick%type, p_curvar OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN p_curvar For 
+    select * from pmember where nick=p_nick;
 END;
 
 

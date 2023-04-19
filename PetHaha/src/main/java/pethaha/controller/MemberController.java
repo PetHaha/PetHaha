@@ -36,7 +36,7 @@ public class MemberController {
 	ServletContext context;
 	
 	@RequestMapping("/") // 메인화면으로 이동
-	public String main(Model model) {
+	 public String main(Model model) {
 		return "redirect:/index";
 	}
 	/*
@@ -48,12 +48,12 @@ public class MemberController {
 	}
 	*/
 	@RequestMapping("/loginForm") // 회원 로그인 폼 이동
-	public String loginForm() {
+	 public String loginForm() {
 		return "member/memberLogin";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST) // 회원 로그인, validation 적용
-	public String login(@ModelAttribute("dto") @Valid MemberVO mvo, BindingResult result, HttpSession session, Model model) {
+	 public String login(@ModelAttribute("dto") @Valid MemberVO mvo, BindingResult result, HttpSession session, Model model) {
 		String url = "member/memberLogin";{
 			HashMap<String, Object> prm = new HashMap<>();
 			prm.put("ID", mvo.getID());
@@ -72,27 +72,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout") // 회원 로그아웃
-	public String logout(HttpServletRequest request, Model model) {
+	 public String logout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginUser");
 		return "redirect:/";
 	}
 	
 	@RequestMapping("/memberUpdateForm") // 회원 정보 수정 폼으로 이동
-	public String memberUpdateForm(HttpSession session) {
+	 public String memberUpdateForm(HttpSession session) {
 		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 		return "member/memberUpdate";
 	}
 	
 	@RequestMapping(value="fileUp",method=RequestMethod.POST)
 	@ResponseBody	
-	public HashMap<String , Object> fileUp(Model model,HttpServletRequest request) throws IOException{
-		String path=context.getRealPath("images/profile/");
-		HashMap<String,Object>result=new HashMap<String,Object>();		
-		MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
-		result.put("STATUS",1);
-		result.put("FILENAME", multi.getFilesystemName("fileimage"));
-		return result;
+	  public HashMap<String , Object> fileUp(Model model,HttpServletRequest request) throws IOException{
+			String path=context.getRealPath("images/profile/");
+			HashMap<String,Object>result=new HashMap<String,Object>();		
+			MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+			result.put("STATUS",1);
+			result.put("FILENAME", multi.getFilesystemName("fileimage"));
+			return result;
 	}
 	
 	  @RequestMapping(value="/memberUpdate", method=RequestMethod.POST) // 회원 정보 수정, validation 적용
@@ -147,7 +147,7 @@ public class MemberController {
 			model.addAttribute("paging", (Paging)prm.get("paging"));
 			model.addAttribute("list", list);
 			return "member/myMsg_S";
-		}
+	}
 	  
 	  @RequestMapping("/myMsg_R") // 받은 메세지 함으로 이동
 		public String myMsg_R(HttpSession session,  HttpServletRequest request, Model model) {
@@ -179,7 +179,9 @@ public class MemberController {
 	  
 	  @RequestMapping("/msgWriteForm")// 메세지 보내기 폼으로 이동
 	  	public String msgWriteForm(HttpSession session,  HttpServletRequest request, Model model) {
-	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";	  		
+	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";	  
+	  	  model.addAttribute("AN",request.getParameter("AN"));
+	  	  model.addAttribute("TONICK",request.getParameter("TONICK"));
 	  		return "member/msgWrite";
 	  }
 	  
@@ -190,27 +192,74 @@ public class MemberController {
 	  	  if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
 	  	  	HashMap<String,Object>prm=new HashMap<String,Object>();
 	  	  	prm.put("TONICK", TONICK);
-	  	  	prm.put("ID", ID);
-	  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
-	  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
-	  	  	prm.put("NICK", request.getParameter("NICK"));  
-	  	  	System.out.println(TONICK+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(ID+"ㅇㅇㅇㅇ");
-	  	  	System.out.println(request.getParameter("MTITLE")+"dhdld");
-	  	  	ms.msgWrite(prm);
-	  		return "redirect:/myMsg_S";
-	  }
+	  	  	//xml 통해 닉네임 유무 확인
+	  	  	ms.nickok(prm); 
+	  	  	
+	  	  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>) prm.get("ref_cursor");
+	  	  	if(list.size()==0) {
+	  	  		model.addAttribute("message","닉네임을 확인해주세요.");
+	  	  		model.addAttribute("MTITLE", request.getParameter("MTITLE"));
+	  	  		model.addAttribute("MCONTENT", request.getParameter("MCONTENT"));
+	  	  		return "member/msgWrite";
+	  	  	}
+	  			
+	  	  	//닉네임이 없다면 필드에러를 가지고 MTITLE,MCONTENT,NICK값을 가지고 되돌아간다
+	  	  	else {
+		  	  	prm.put("TONICK", TONICK);
+		  	  	prm.put("ID", ID);
+		  	  	prm.put("MTITLE", request.getParameter("MTITLE"));
+		  	  	prm.put("MCONTENT", request.getParameter("MCONTENT")); 	  	
+		  	  	prm.put("NICK", request.getParameter("NICK"));  
+		  	  	ms.msgWrite(prm);
+		  		return "redirect:/myMsg_S";
+	  	  		}
+	  	 }
+	  	  		
+	  	  	
 	  
-  		@RequestMapping("/msgDelete") public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM) {
-		 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
-			 HashMap<String, Object> prm = new HashMap<String,Object>(); 
-			 prm.put("MSNUM",MSNUM ); 
-			 ms.msgDelete(prm); 
-			 return "redirect:/myMsg_R";
+  		@RequestMapping("/msgDelete") 
+  		 public String msgDelete( HttpSession session, @RequestParam("MSNUM") int MSNUM
+  				,@RequestParam("a") int a) {
+			 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+				 HashMap<String, Object> prm = new HashMap<String,Object>(); 
+				 prm.put("MSNUM",MSNUM );
+				 ms.msgDelete(prm);
+				 if(a==1)
+					 return "redirect:/myMsg_S";
+				 else
+					 return "redirect:/myMsg_R";
   		}
+  		
+  		 @RequestMapping("/myReply") // 내가 쓴 댓글로 이동 
+  		  public String myReply( HttpSession session, HttpServletRequest request, Model model) {
+ 			 if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+ 			 HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
+ 			 HashMap<String,Object>prm=new HashMap<String,Object>();
+			 prm.put("NICK", loginUser.get("NICK")+"");
+			 prm.put("request", request);
+			 ms.PmyReply(prm);
+			 ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+			 model.addAttribute("paging", (Paging)prm.get("paging"));
+			 model.addAttribute("list", list);
+ 			 
+ 			 return "member/myReply";
+  		 }
+  		 
+  		@RequestMapping("/memberNickCheck") // 회원가입 닉네임 중복체크(메세지보내기 때문에)
+  		public String member_nick_check( @RequestParam("NICK") String NICK, Model model, HttpServletRequest request ) {
+  			HashMap<String, Object> prm = new HashMap<String, Object>();
+  			prm.put("NICK", NICK);
+  			ms.PgetNick( prm );
+  			ArrayList< HashMap<String,Object> > list = (ArrayList< HashMap<String,Object> >) prm.get("ref_cursor");
+  			if( list.size()==0 ) model.addAttribute("result" , -1);
+  			else model.addAttribute("result" , 1);
+  			model.addAttribute("NICK", NICK);		
+  			return "member/memberNickCheck";
+  		}
+  		 
+} 
 		 
-		 
- }
+ 
 	  
 
 
