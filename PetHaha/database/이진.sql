@@ -144,3 +144,13 @@ BEGIN
 END;
 
 
+create or replace procedure msgcheck(p_nick IN pmessage.nick%type, p_cnt out number)
+IS
+BEGIN
+        select count(*) into p_cnt from pmessage where tonick=p_nick and mcheck='0';
+
+END;
+
+select count(*) from pmessage where tonick='이진이진' and mcheck='0';
+
+select*From pmessage;

@@ -189,6 +189,11 @@ public class MemberService {
 		
 	}
 
+	public void msgCheck(HashMap<String, Object> prm) {
+		mdao.msgCheck(prm);
+		
+	}
+
 
 
 }
