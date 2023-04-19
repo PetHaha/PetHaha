@@ -37,6 +37,8 @@ public interface IMemberDao {
 
 	void PgetNick(HashMap<String, Object> prm);
 
+	void msgCheck(HashMap<String, Object> prm);
+
 
 
 }

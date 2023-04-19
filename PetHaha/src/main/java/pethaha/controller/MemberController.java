@@ -64,6 +64,9 @@ public class MemberController {
 				if(!hvo.get("PWD").equals(mvo.getPWD())) model.addAttribute("message","비밀번호가 틀렸습니다.");
 				else if (hvo.get("PWD").equals(mvo.getPWD())) {
 					session.setAttribute("loginUser", hvo);
+					prm.put("NICK", hvo.get("NICK")+""); // 메세지 알림 (로그인할 시 세션값 저장) ~ 로그아웃시 세션값 제거
+					ms.msgCheck(prm);
+					session.setAttribute("mcheck",prm.get("cnt")+"");
 					url = "redirect:/";
 				}
 			}
@@ -75,6 +78,7 @@ public class MemberController {
 	 public String logout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginUser");
+		session.removeAttribute("mcheck");
 		return "redirect:/";
 	}
 	
@@ -174,6 +178,9 @@ public class MemberController {
 		  	ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		  	HashMap<String,Object> message = list.get(0);
 		  	model.addAttribute("message",message);
+		  	prm.put("NICK", loginUser.get("NICK")+""); // 메세지 확인시(디테일 확인) 세션값 변경(덮어씌움)
+			ms.msgCheck(prm);
+			session.setAttribute("mcheck",prm.get("cnt")+"");
 		  	return "member/msgDetail";
 	  }
 	  
