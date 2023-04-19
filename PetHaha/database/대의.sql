@@ -117,6 +117,13 @@ begin
     select*from pblike where id=p_id and bnum=p_bnum;
 end;
 
+create or replace procedure PreportOX(p_id in varchar2,p_bnum in number, p_curvar OUT SYS_REFCURSOR)
+is
+begin
+    open p_curvar For
+    select*from pbreport where id=p_id and bnum=p_bnum;
+end;
+
 select*from pblike where id='daeui' and bnum='37';
 
 create or replace procedure PThumbsUp(p_id in varchar2,p_bnum in number, p_nick in varchar2)
@@ -127,3 +134,14 @@ begin
     update pboard set thumbs=thumbs+1 where bnum=p_bnum;
     commit;
 end;
+
+
+select*from pbreport;
+
+create or replace procedure Pboardreport(p_rcategory in number , p_bnum in number, p_id in varchar2, p_nick in varchar2, p_rcontent in varchar2)
+IS
+BEGIN
+    insert into pbreport(reportnum,rcategory,bnum,id,nick,rcontent) 
+    values(pbreport_seq.nextval,p_rcategory,p_bnum,p_id,p_nick,p_rcontent);
+    commit;
+END;

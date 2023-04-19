@@ -18,9 +18,9 @@
 		}
 	}
 	
-	function boardreport(BNUM,ID,NICK,best){
+	function boardreport(BNUM,ID,NICK){
 		let opt = "toolbar=no, menubar=no, resizable=no, width=420, height=400, scrollbars=no, left=500, top=100";
-		 let a= "boardreportform?ID="+ID+"&BNUM="+BNUM+"&NICK="+NICK+"&best="+best;
+		 let a= "boardreportform?ID="+ID+"&BNUM="+BNUM+"&NICK="+NICK;
 		   window.open(a, "신고하기", opt);   
 	}
 
@@ -63,17 +63,30 @@
             ${board.CONTENT}
 
         </div>
+        <div id="thumbss" style="position: relative;">
         <c:choose>
         <c:when test="${empty loginUser }">
-        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')"><input type="button" value="신고" id="bpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')"></div>
+        	<input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">
         </c:when>
         <c:when test="${!empty LikeOX }">
-        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 완료!" id="bthumbs" ><input type="button" value="신고" id="bpolice" onclick="boardreport('${board.BNUM}','${loginUser.ID }','${loginUser.NICK }','${best }')"></div>
+        	<input type="button" value="추천 완료!" id="bthumbs" >
         </c:when>
         <c:otherwise>
-        	<div id="thumbss" style="position: relative;"> <input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="location.href='BThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&best=${best}'"><input type="button" value="신고" id="bpolice" onclick="boardreport('${board.BNUM}','${loginUser.ID }','${loginUser.NICK }','${best }')"></div>       	
+        	<input type="button" value="추천 ${board.THUMBS }" id="bthumbs" onclick="location.href='BThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&best=${best}'">     	
         </c:otherwise>
         </c:choose>
+        <c:choose>
+        <c:when test="${empty loginUser }">
+        	<input type="button" value="신고" id="bpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')">
+        </c:when>
+        <c:when test="${!empty ReportOX }">
+        	<input type="button" value="신고완료" id="bpolice">
+        </c:when>
+        <c:otherwise>
+        	<input type="button" value="신고" id="bpolice" onclick="boardreport('${board.BNUM}','${loginUser.ID }','${loginUser.NICK }')">     	
+        </c:otherwise>
+        </c:choose>
+        </div>
         
         <div id="brlist">
         <div  style="min-height:50px;">

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pethaha.dto.ReplyVO;
+import pethaha.dto.ReportVO;
 import pethaha.service.BoardService2;
 import pethaha.service.MemberService;
 
@@ -77,13 +78,18 @@ public class BoardController2 {
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		model.addAttribute("reply",list);
 		
-		if(session.getAttribute("loginUser")!=null) { //로그인 유저의 추천 유무 체크
+		if(session.getAttribute("loginUser")!=null) { //로그인 유저의 추천,신고 유무 체크
 		HashMap<String,Object> loginUser = (HashMap<String , Object>)session.getAttribute("loginUser");
 		prm.put("ID",  loginUser.get("ID")+"");
-		bs.PLikeOX(prm);
+		bs.PLikeOX(prm); //추천유무
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		if(list.size()!=0)model.addAttribute("LikeOX",1);
+		
+		bs.PReportOX(prm); //신고유무
+		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0)model.addAttribute("ReportOX",1);
 		}
+		
 		
 		model.addAttribute("writer",writer);
 		model.addAttribute("board",bVO);
@@ -118,11 +124,17 @@ public class BoardController2 {
 	}
 	
 	@RequestMapping("/boardreportform") 
-	public String boardreportform(@ModelAttribute("BNUM")String BNUM,@ModelAttribute("best")String best,@ModelAttribute("ID")String ID,
+	public String boardreportform(@ModelAttribute("BNUM")String BNUM,@ModelAttribute("ID")String ID,
 			@ModelAttribute("NICK")String NICK) {
 		return "board/boardpolice";			
 	}
 	
+	@RequestMapping("/boardReport") 
+	public String boardReport(ReportVO rvo,Model model) {
+		bs.PboardReport(rvo);
+		model.addAttribute("result","1");
+		return "board/boardpolice";			
+	}
 	//신고하기 jsp 작업과 매핑 추가 해야함
 	
 	

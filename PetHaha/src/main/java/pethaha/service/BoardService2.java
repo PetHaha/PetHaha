@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import pethaha.dao.IBoardDao2;
 import pethaha.dto.ReplyVO;
+import pethaha.dto.ReportVO;
 
 @Service
 public class BoardService2 {
@@ -54,4 +55,15 @@ public class BoardService2 {
 		bdao.PThumbsUp(prm);
 		
 	}
+
+	public void PboardReport(ReportVO rvo) {
+		bdao.PboardReport(rvo);
+		
+	}
+
+	public void PReportOX(HashMap<String, Object> prm) {
+		bdao.PReportOX(prm);
+		
+	}
+
 }

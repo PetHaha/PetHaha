@@ -30,7 +30,7 @@
 	</update>
 	
 	<update id="PReplyCountUpdate" parameterType="String">
-		update pboard set replycnt=replycnt+1 where bnum=#{bnum}
+		update pboard set replycnt=replycnt-1 where bnum=#{bnum}
 	</update>
 	
 	<select id="PLikeOX" statementType="CALLABLE" parameterType="java.util.HashMap">
@@ -41,9 +41,13 @@
 		{CALL PThumbsUp(#{ ID},#{BNUM},#{ NICK })}
 	</insert>
 	
+	<insert id="PboardReport" statementType="CALLABLE" parameterType="pethaha.dto.ReportVO">
+		{CALL PboardReport(#{RCATEGORY},#{BNUM},#{ID},#{NICK},#{RCONTENT})}
+	</insert>
 	
-	
-	
+	<select id="PReportOX" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PReportOX(#{ ID},#{BNUM},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
+	</select>
 	
 	
 	

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 
 import pethaha.dto.ReplyVO;
+import pethaha.dto.ReportVO;
 
 @Mapper
 public interface IBoardDao2 {
@@ -24,5 +25,9 @@ public interface IBoardDao2 {
 	void PLikeOX(HashMap<String, Object> prm);
 
 	void PThumbsUp(HashMap<String, Object> prm);
+
+	void PboardReport(ReportVO rvo);
+
+	void PReportOX(HashMap<String, Object> prm);
 
 }
