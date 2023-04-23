@@ -99,7 +99,6 @@ CREATE TABLE pBlike(
     bnum NUMBER(5)    NOT NULL,    
     id varchar2(20)    NOT NULL,
     nick varchar2(20) not null,
-    likeOX NUMBER(5)    DEFAULT 0 NULL,
     PRIMARY KEY (lnum)
 );
 
@@ -107,6 +106,26 @@ CREATE TABLE pBlike(
 create table pBreport(
 	reportnum NUMBER(5)    NOT NULL , 
     bnum NUMBER(5)    NOT NULL,    
+    id varchar2(20)    NOT NULL,
+    nick varchar2(20) not null,
+    rcontent varchar2(500) NOT NULL,
+    rcategory NUMBER(2) NOT NULL,
+    PRIMARY KEY (reportnum)
+);
+
+-- 댓글 추천 테이블
+CREATE TABLE prelike(
+    lnum NUMBER(5)    NOT NULL , 
+    rnum NUMBER(5)    NOT NULL,    
+    id varchar2(20)    NOT NULL,
+    nick varchar2(20) not null,
+    PRIMARY KEY (lnum)
+);
+
+--댓글 신고 테이블
+create table prereport(
+	reportnum NUMBER(5)    NOT NULL , 
+    rnum NUMBER(5)    NOT NULL,    
     id varchar2(20)    NOT NULL,
     nick varchar2(20) not null,
     rcontent varchar2(500) NOT NULL,
@@ -177,6 +196,28 @@ ALTER TABLE Pbreport
 	REFERENCES Pmember (id,nick)
 ;
 
+
+ALTER TABLE Prelike
+	ADD FOREIGN KEY (rnum)
+	REFERENCES Preply (rnum)
+;
+
+ALTER TABLE Prelike
+	ADD FOREIGN KEY (id,nick)
+	REFERENCES Pmember (id,nick)
+;
+
+ALTER TABLE Prereport
+	ADD FOREIGN KEY (rnum)
+	REFERENCES Preply (rnum)
+;
+
+ALTER TABLE Prereport
+	ADD FOREIGN KEY (id,nick)
+	REFERENCES Pmember (id,nick)
+;
+
+
 drop sequence pmessage_seq;
 create sequence pmessage_seq start with 1;	
 
@@ -198,6 +239,11 @@ create sequence pblike_seq start with 1;
 drop sequence pbreport_seq;
 create sequence pbreport_seq start with 1;	
 
+drop sequence prelike_seq;
+create sequence prelike_seq start with 1;	
+
+drop sequence prereport_seq;
+create sequence prereport_seq start with 1;	
 
 CREATE TABLE PBanner -- 롤링 배너 테이블 
 (
