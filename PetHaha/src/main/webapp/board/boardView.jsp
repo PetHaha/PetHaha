@@ -25,6 +25,12 @@
 	}
 
 </script>
+	<c:if test="${replycheck =='1' }">
+		<script type="text/javascript">
+			alert('이미 추천된 댓글입니다');
+		</script>
+	</c:if>
+
 
     <div id="bwrap">
     <c:choose>
@@ -103,8 +109,15 @@
                 <div class="brcontent">${reply.RCONTENT }</div> 
                 <c:if test="${loginUser.ID ==reply.ID }">
                 	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
-                </c:if>   
-                <div class="brthumbs">추천 </div>
+                </c:if>
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
+                	</c:otherwise>
+                </c:choose>   
                 <div class="brpolice">신고</div>
             </div>
             </c:when>
@@ -120,7 +133,14 @@
                 <c:if test="${loginUser.ID ==reply.ID }">
                 	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
                 </c:if>   
-                <div class="brthumbs">추천 </div>
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
+                	</c:otherwise>
+                </c:choose>   
                 <div class="brpolice">신고</div>
             </div>
             </c:otherwise>

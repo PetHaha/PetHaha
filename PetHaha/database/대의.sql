@@ -99,8 +99,6 @@ select
 from preply a, pmember b
 where a.id=b.id ;
 
-
-
 create or replace procedure PReplyWrite(p_rwriter in varchar2 , p_bnum in number, p_id in varchar2, p_nick in varchar2, p_rcontent in varchar2)
 IS
 BEGIN
@@ -124,7 +122,6 @@ begin
     select*from pbreport where id=p_id and bnum=p_bnum;
 end;
 
-select*from pblike where id='daeui' and bnum='37';
 
 create or replace procedure PThumbsUp(p_id in varchar2,p_bnum in number, p_nick in varchar2)
 is
@@ -136,8 +133,6 @@ begin
 end;
 
 
-select*from pbreport;
-
 create or replace procedure Pboardreport(p_rcategory in number , p_bnum in number, p_id in varchar2, p_nick in varchar2, p_rcontent in varchar2)
 IS
 BEGIN
@@ -145,3 +140,21 @@ BEGIN
     values(pbreport_seq.nextval,p_rcategory,p_bnum,p_id,p_nick,p_rcontent);
     commit;
 END;
+
+
+create or replace procedure PRThumbsUp(p_id in varchar2,p_rnum in number, p_nick in varchar2)
+is
+begin
+    insert into prelike (lnum,rnum,id,nick)
+    values(prelike_seq.nextval,p_rnum,p_id,p_nick);
+    update preply set rthumbs=rthumbs+1 where rnum=p_rnum;
+    commit;
+end;
+
+
+create or replace procedure PreLikeOX(p_id in varchar2,p_rnum in number, p_curvar OUT SYS_REFCURSOR)
+is
+begin
+    open p_curvar For
+    select*from prelike where id=p_id and rnum=p_rnum;
+end;

@@ -66,4 +66,16 @@ public class BoardService2 {
 		
 	}
 
+	public void PRThumbsUp(HashMap<String, Object> prm) {
+		bdao.PRThumbsUp(prm);
+		
+	}
+
+	public void PReLikeOX(HashMap<String, Object> prm) {
+		bdao.PReLikeOX(prm);
+		
+	}
+
+	
+
 }

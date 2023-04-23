@@ -42,6 +42,6 @@
 .brdelete{position:absolute; right: 82px; height: 20px; top: 15px; color: white; background-color:#ff8080; border: 0; border-radius: 15%; cursor:pointer;}
 .brthumbs{position:absolute; right: 47px; height: 20px; top: 15px; color: white; background-color:#dbadff; border: 0; border-radius: 15%; cursor:pointer;}
 .brpolice{position:absolute; right: 12px; height: 20px; top: 15px; color: white; background-color:#7a7878; border: 0; border-radius: 15%; cursor:pointer;}
-.replytext{resize: none; background-color: rgb(247, 247, 247);height: 60px; width: 830px;border: 0;border-radius: 15px;padding: 10px;}
-.replysubmit{height: 80px; width:76px ;position: absolute;top: 0px;right: 0px;border-radius: 15px;border: 0;background-color:#dbadff; color: white;}
+.replytext{resize: none; background-color: rgb(247, 247, 247);height: 80px; width: 840px;border: 0;border-radius: 15px;padding: 10px;}
+.replysubmit{height: 80px; width:86px ;position: absolute;top: 0px;right: 0px;border-radius: 15px;border: 0;background-color:#dbadff; color: white;}
 .bback{float:right; margin: 5px; background-color: #dbadff;color: white;padding: 2px;border: 0;border-radius: 10%;}

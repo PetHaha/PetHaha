@@ -30,4 +30,8 @@ public interface IBoardDao2 {
 
 	void PReportOX(HashMap<String, Object> prm);
 
+	void PRThumbsUp(HashMap<String, Object> prm);
+
+	void PReLikeOX(HashMap<String, Object> prm);
+
 }

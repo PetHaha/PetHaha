@@ -32,7 +32,7 @@ public class BoardController2 {
 
 	@RequestMapping("/boardView") 
 	public String boardView( HttpSession session,@RequestParam("BNUM") String BNUM, Model model, HttpServletRequest request,
-			@RequestParam(value="best", required=false)String best, HttpServletResponse response) {
+			@RequestParam(value="best", required=false)String best, @ModelAttribute("replycheck")String replycheck,HttpServletResponse response) {
 		HashMap<String, Object> prm = new HashMap<>();
 		prm.put("BNUM", BNUM);
 		bs.PboardView(prm); //게시글 내용 조회
@@ -88,6 +88,7 @@ public class BoardController2 {
 		bs.PReportOX(prm); //신고유무
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		if(list.size()!=0)model.addAttribute("ReportOX",1);
+		
 		}
 		
 		
@@ -135,7 +136,24 @@ public class BoardController2 {
 		model.addAttribute("result","1");
 		return "board/boardpolice";			
 	}
-	//신고하기 jsp 작업과 매핑 추가 해야함
+	
+	@RequestMapping("/RThumbsUp") 
+	public String RThumbsUp(@RequestParam(value="RNUM", required=false)String RNUM,@RequestParam(value="ID", required=false)String ID,
+			@RequestParam(value="best", required=false)String best,@RequestParam(value="BNUM", required=false)String BNUM,
+			@RequestParam(value="NICK", required=false)String NICK, Model model) {
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("ID", ID);
+		prm.put("NICK", NICK);
+		prm.put("RNUM", RNUM);
+		bs.PReLikeOX(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0) {return "redirect:/boardView?BNUM="+BNUM+"&best="+best+"&replycheck=1";	}	
+		else {
+			bs.PRThumbsUp(prm);
+			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;	
+		}		
+	}
+	
 	
 	
 }
