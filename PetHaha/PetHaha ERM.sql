@@ -103,6 +103,17 @@ CREATE TABLE pBlike(
     PRIMARY KEY (lnum)
 );
 
+--게시글 신고 테이블
+create table pBreport(
+	reportnum NUMBER(5)    NOT NULL , 
+    bnum NUMBER(5)    NOT NULL,    
+    id varchar2(20)    NOT NULL,
+    nick varchar2(20) not null,
+    rcontent varchar2(500) NOT NULL,
+    rcategory NUMBER(2) NOT NULL,
+    PRIMARY KEY (reportnum)
+);
+
 /* Create Foreign Keys */
 
 ALTER TABLE PReply
@@ -156,6 +167,16 @@ ALTER TABLE Pblike
 	REFERENCES Pmember (id,nick)
 ;
 
+ALTER TABLE Pbreport
+	ADD FOREIGN KEY (Bnum)
+	REFERENCES PBoard (Bnum)
+;
+
+ALTER TABLE Pbreport
+	ADD FOREIGN KEY (id,nick)
+	REFERENCES Pmember (id,nick)
+;
+
 drop sequence pmessage_seq;
 create sequence pmessage_seq start with 1;	
 
@@ -173,6 +194,10 @@ create sequence pbanner_seq start with 1;
 
 drop sequence pblike_seq;
 create sequence pblike_seq start with 1;	
+
+drop sequence pbreport_seq;
+create sequence pbreport_seq start with 1;	
+
 
 CREATE TABLE PBanner -- 롤링 배너 테이블 
 (
