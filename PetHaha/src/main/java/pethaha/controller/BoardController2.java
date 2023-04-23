@@ -155,5 +155,24 @@ public class BoardController2 {
 	}
 	
 	
+	@RequestMapping("/replyreportform") 
+	public String replyreportform(@ModelAttribute("RNUM")String RNUM,@ModelAttribute("ID")String ID,
+			@ModelAttribute("NICK")String NICK,Model model) {
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("RNUM", RNUM);
+		prm.put("ID", ID);
+		bs.PreplyReportOX(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0) model.addAttribute("result","0");	
+		return "board/replypolice";			
+	}
+	
+	@RequestMapping("/replyReport") 
+	public String replyReport(ReportVO rvo,Model model) {
+		bs.PreplyReport(rvo);
+		model.addAttribute("result","1");
+		return "board/replypolice";			
+	}
+	
 	
 }

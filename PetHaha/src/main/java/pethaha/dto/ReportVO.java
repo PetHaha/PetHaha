@@ -11,4 +11,6 @@ public class ReportVO {
 	private String RCONTENT;
 	private String ID;
 	private String NICK;
+	private int RNUM;
+	
 }

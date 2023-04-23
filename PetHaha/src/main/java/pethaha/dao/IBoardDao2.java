@@ -18,6 +18,10 @@ public interface IBoardDao2 {
 
 	void PReplydelete(String rNUM);
 
+	void PReplythdelete(String rNUM);
+
+	void PReplyredelete(String rNUM);
+
 	void readCountPlus(String bnum);
 
 	void PReplyCountUpdate(String bnum);
@@ -33,5 +37,11 @@ public interface IBoardDao2 {
 	void PRThumbsUp(HashMap<String, Object> prm);
 
 	void PReLikeOX(HashMap<String, Object> prm);
+
+	void PreplyReport(ReportVO rvo);
+
+	void PreplyReportOX(HashMap<String, Object> prm);
+
+
 
 }

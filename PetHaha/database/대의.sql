@@ -158,3 +158,20 @@ begin
     open p_curvar For
     select*from prelike where id=p_id and rnum=p_rnum;
 end;
+
+
+create or replace procedure Preplyreport(p_rcategory in number , p_rnum in number, p_id in varchar2, p_nick in varchar2, p_rcontent in varchar2)
+IS
+BEGIN
+    insert into prereport(reportnum,rcategory,rnum,id,nick,rcontent) 
+    values(prereport_seq.nextval,p_rcategory,p_rnum,p_id,p_nick,p_rcontent);
+    commit;
+END;
+
+
+create or replace procedure PreplyReportOX(p_rnum in number,p_id in varchar2, p_curvar OUT SYS_REFCURSOR)
+is
+begin
+    open p_curvar For
+    select*from prereport where id=p_id and rnum=p_rnum;
+end;

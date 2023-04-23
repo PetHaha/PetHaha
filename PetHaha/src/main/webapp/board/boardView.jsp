@@ -21,7 +21,13 @@
 	function boardreport(BNUM,ID,NICK){
 		let opt = "toolbar=no, menubar=no, resizable=no, width=420, height=400, scrollbars=no, left=500, top=100";
 		 let a= "boardreportform?ID="+ID+"&BNUM="+BNUM+"&NICK="+NICK;
-		   window.open(a, "신고하기", opt);   
+		   window.open(a, "게시글 신고하기", opt);   
+	}
+	
+	function replyreport(RNUM,ID,NICK){
+		let opt = "toolbar=no, menubar=no, resizable=no, width=420, height=400, scrollbars=no, left=500, top=100";
+		 let a= "replyreportform?ID="+ID+"&RNUM="+RNUM+"&NICK="+NICK;
+		   window.open(a, "댓글 신고하기", opt);   
 	}
 
 </script>
@@ -107,9 +113,7 @@
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
                 <div class="brcontent">${reply.RCONTENT }</div> 
-                <c:if test="${loginUser.ID ==reply.ID }">
-                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
-                </c:if>
+               
                 <c:choose>
                 	<c:when test="${empty loginUser }">
                 		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
@@ -117,8 +121,18 @@
                 	<c:otherwise>
                 		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
                 	</c:otherwise>
-                </c:choose>   
-                <div class="brpolice">신고</div>
+                </c:choose> 
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')">신고 </div>
+                	</c:when>
+                	<c:when test="${loginUser.ID != reply.ID }">
+                		<div class="brpolice" onclick="replyreport('${reply.RNUM}','${loginUser.ID }','${loginUser.NICK }')">신고 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                	</c:otherwise>
+                </c:choose>    
             </div>
             </c:when>
             <c:otherwise>
@@ -129,10 +143,7 @@
                 <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
-                <div class="brcontent">${reply.RCONTENT }</div> 
-                <c:if test="${loginUser.ID ==reply.ID }">
-                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
-                </c:if>   
+                <div class="brcontent">${reply.RCONTENT }</div>   
                 <c:choose>
                 	<c:when test="${empty loginUser }">
                 		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
@@ -141,7 +152,17 @@
                 		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
                 	</c:otherwise>
                 </c:choose>   
-                <div class="brpolice">신고</div>
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')">신고 </div>
+                	</c:when>
+                	<c:when test="${loginUser.ID != reply.ID }">
+                		<div class="brpolice" onclick="replyreport('${reply.RNUM}','${loginUser.ID }','${loginUser.NICK }')">신고 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                	</c:otherwise>
+                </c:choose>    
             </div>
             </c:otherwise>
             </c:choose>

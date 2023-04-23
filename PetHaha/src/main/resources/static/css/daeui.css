@@ -39,7 +39,7 @@
 .bras{float: left; margin-left: 4px; margin-top: 2px;}
 .brdot{float: left; margin-left: 4px;color: gainsboro; margin-top: 2px;}
 .brcontent{position: absolute;bottom: 8px; left: 53px; font-size: 115%; color: black;}
-.brdelete{position:absolute; right: 82px; height: 20px; top: 15px; color: white; background-color:#ff8080; border: 0; border-radius: 15%; cursor:pointer;}
+.brdelete{position:absolute; right: 12px; height: 20px; top: 15px; color: white; background-color:#ff8080; border: 0; border-radius: 15%; cursor:pointer;}
 .brthumbs{position:absolute; right: 47px; height: 20px; top: 15px; color: white; background-color:#dbadff; border: 0; border-radius: 15%; cursor:pointer;}
 .brpolice{position:absolute; right: 12px; height: 20px; top: 15px; color: white; background-color:#7a7878; border: 0; border-radius: 15%; cursor:pointer;}
 .replytext{resize: none; background-color: rgb(247, 247, 247);height: 80px; width: 840px;border: 0;border-radius: 15px;padding: 10px;}

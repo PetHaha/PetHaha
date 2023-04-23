@@ -32,6 +32,8 @@ public class BoardService2 {
 	}
 
 	public void PReplydelete(String rNUM) {
+		bdao.PReplyredelete(rNUM);
+		bdao.PReplythdelete(rNUM);
 		bdao.PReplydelete(rNUM);
 		
 	}
@@ -73,6 +75,16 @@ public class BoardService2 {
 
 	public void PReLikeOX(HashMap<String, Object> prm) {
 		bdao.PReLikeOX(prm);
+		
+	}
+
+	public void PreplyReport(ReportVO rvo) {
+		bdao.PreplyReport(rvo);
+		
+	}
+
+	public void PreplyReportOX(HashMap<String, Object> prm) {
+		bdao.PreplyReportOX(prm);
 		
 	}
 
