@@ -184,3 +184,10 @@ BEGIN
     values(pboard_seq.nextval,p_category,p_subject,p_content,p_id,p_nick,p_bimg1);
     commit;
 END;
+
+create or replace procedure pboardedit(p_bnum in number, p_subject in varchar2, p_content in varchar2, p_bimg1 in varchar2)
+is
+begin
+    update pboard set subject=p_subject , content=p_content, bimg1=p_bimg1 where bnum=p_bnum;
+    commit;
+end;
