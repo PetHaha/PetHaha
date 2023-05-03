@@ -40,7 +40,6 @@
 <body>
 <c:if test="${result =='1' }">
 	<script type="text/javascript">
-	opener.location.reload();
 	window.close();
 	</script>
 </c:if>
@@ -48,7 +47,6 @@
 <c:if test="${result =='0' }">
 	<script type="text/javascript">
 	alert('이미 신고하셨습니다.');
-	opener.location.reload();
 	window.close();
 	</script>
 </c:if>
