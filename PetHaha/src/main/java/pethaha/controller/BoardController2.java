@@ -209,4 +209,26 @@ public class BoardController2 {
 		bs.PboardWrite(bvo);
 		return "redirect:/dogcat?category="+bvo.getCATEGORY();
 	}
+	
+	@RequestMapping("/boardEditForm")
+	public String boardEditForm(@RequestParam("BNUM") String BNUM,HttpSession session,Model model) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("BNUM", BNUM);
+		bs.PboardView(prm); //게시글 내용 조회
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		HashMap<String,Object>bVO=list.get(0);
+		model.addAttribute("board",bVO);
+		return "board/boardEdit";
+	}
+	
+	@RequestMapping("/boardEdit")
+	public String boardEdit(@RequestParam(value="oldImg", required=false) String oldImg,BoardVO bvo,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		if(oldImg==null)oldImg="";
+		if(bvo.getBIMG1()==null||bvo.getBIMG1().equals(""))bvo.setBIMG1(oldImg);
+		bs.PboardEdit(bvo);
+		return "redirect:/boardView?BNUM="+bvo.getBNUM();
+	}
+
 }

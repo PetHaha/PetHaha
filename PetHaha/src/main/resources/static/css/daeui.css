@@ -52,4 +52,6 @@
 #bbsub{width: 600px; height: 30px; padding: 10px; margin: 5px; margin-top:10px;}
 #bbcont{width: 602px; min-height: 300px; padding: 10px;resize: none;margin: 5px; margin-bottom:10px;}
 #bbwrite{position: relative; top:20px ;left:540px;height: 40px; width: 80px; border-radius: 5px; background-color:#dbadff; font-weight:bold; color: white; border: 0; }
+#bbwrite2{position: relative; top:20px ;left:440px;height: 40px; width: 80px; border-radius: 5px; background-color:#dbadff; font-weight:bold; color: white; border: 0; }
+#bbcancel{position: relative; top:20px ;left:440px;height: 40px; width: 80px; border-radius: 5px; background-color:#7a7878; font-weight:bold; color: white; border: 0; }
 #imnam{margin: 10px;color: gray; font-size: 90%; font-weight: 100;}

@@ -45,6 +45,8 @@ public interface IBoardDao2 {
 
 	void PboardWrite(BoardVO bvo);
 
+	void PboardEdit(BoardVO bvo);
+
 
 
 }

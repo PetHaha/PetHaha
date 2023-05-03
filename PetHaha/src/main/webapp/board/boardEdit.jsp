@@ -29,18 +29,21 @@ $(function(){
 });
 
 function boardCheck(){
-	
-		if( document.writeform.SUBJECT.value==""){
-	      alert("제목을 입력하세요" );
-	      document.writeform.SUBJECT.focus();
-	      return false;
-	    }else if( document.writeform.CONTENT.value==""){
-	      alert("내용을 입력하세요" );
-	      document.writeform.CONTENT.focus();
-	      return false;
-	    }else return true;
-	}
 
+	if( document.writeform.SUBJECT.value==""){
+      alert("제목을 입력하세요" );
+      document.writeform.SUBJECT.focus();
+      return false;
+    }else if( document.writeform.CONTENT.value==""){
+      alert("내용을 입력하세요" );
+      document.writeform.CONTENT.focus();
+      return false;
+    }else if(confirm("게시글을 수정하시겠습니까?")) return true;
+}
+
+function boardcancel(){
+	if(confirm("게시글 수정을 취소하시겠습니까?"))history.go(-1);
+}
 </script>
 
 
@@ -49,9 +52,9 @@ function boardCheck(){
         <div>
         <form action="boardEdit" method="post" name="writeform">
         	<input type="hidden" name="BNUM" value="${board.BNUM }">
-            <input type="text"  id="bbsub" maxlength="30" name="SUBJECT" value="${board.SUBJECT }">
+            <input type="text"  id="bbsub" maxlength="15" name="SUBJECT" value="${board.SUBJECT }">
             <br>
-            <textarea id="bbcont" maxlength="1000" name="CONTENT" >${board.CONTENT}</textarea>
+            <textarea id="bbcont" maxlength="300" name="CONTENT" >${board.CONTENT}</textarea>
             <br>
              <br>
             <label for="img" id="imnam"> º 이미지 수정</label>
@@ -65,7 +68,8 @@ function boardCheck(){
               </c:if>
               </div>
            </div>
-            <input id="bbwrite" type="submit" value="등록" onclick="return boardCheck();">
+            <input id="bbwrite2" type="submit" value="수정" onclick="return boardCheck();">
+            <input id="bbcancel" type="button" value="취소" onclick="boardcancel()">
             </form>
         </div>
         

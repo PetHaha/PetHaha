@@ -65,6 +65,9 @@
                 <div class="bas"><img src="images/eye.png" style="height:10px">&nbsp; ${board.VIEWS }</div>
                 <div class="bdot">.</div>
                 <div class="bas"><img src="images/thumb.png" style="height:9px"> ${board.THUMBS}</div>
+                <c:if test="${board.ID == loginUser.ID }">
+                	<input type="button" id="bthumbs" style="left:500px; color:white; margin-top:10px" value="글 수정" onclick="location.href='boardEditForm?BNUM=${board.BNUM}'">
+                </c:if>
             </div>
 
         </div>

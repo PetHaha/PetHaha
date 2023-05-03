@@ -93,6 +93,11 @@ public class BoardService2 {
 		bdao.PboardWrite(bvo);
 	}
 
+	public void PboardEdit(BoardVO bvo) {
+		bdao.PboardEdit(bvo);
+		
+	}
+
 	
 
 }
