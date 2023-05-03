@@ -45,15 +45,22 @@ function boardCheck(){
 
 	<div id="bbwrap">
         <div id="bbsubject">게시글 쓰기</div>
-        <div id="bbwhere"> &lt;고양이게시판 &gt;</div>
+        <c:choose>
+        	<c:when test="${category=='1' }">
+        		<div id="bbwhere"> &lt;강아지게시판 &gt;</div>
+        	</c:when>
+        	<c:otherwise>
+        		<div id="bbwhere"> &lt;고양이게시판 &gt;</div>
+        	</c:otherwise>
+        </c:choose>
         <div>
         <form action="boardWrite" method="post" name="writeform">
         	<input type="hidden" name="CATEGORY" value="${category }">
         	<input type="hidden" name="NICK" value="${loginUser.NICK}">
         	<input type="hidden" name="ID" value="${loginUser.ID }">
-            <input type="text" placeholder="제목을 입력하세요. (30글자 이내)" id="bbsub" maxlength="30" name="SUBJECT" >
+            <input type="text" placeholder="제목을 입력하세요. (15글자 이내)" id="bbsub" maxlength="15" name="SUBJECT" >
             <br>
-            <textarea id="bbcont" placeholder="내용을 입력하세요. (1000글자 이내)" maxlength="1000" name="CONTENT"></textarea>
+            <textarea id="bbcont" placeholder="내용을 입력하세요." maxlength="300" name="CONTENT"></textarea>
             <br>
              <br>
             <label for="img" id="imnam"> º 이미지 등록</label>
