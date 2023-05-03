@@ -45,3 +45,11 @@
 .replytext{resize: none; background-color: rgb(247, 247, 247);height: 80px; width: 840px;border: 0;border-radius: 15px;padding: 10px;}
 .replysubmit{height: 80px; width:86px ;position: absolute;top: 0px;right: 0px;border-radius: 15px;border: 0;background-color:#dbadff; color: white;}
 .bback{float:right; margin: 5px; background-color: #dbadff;color: white;padding: 2px;border: 0;border-radius: 10%;}
+
+#bbwrap{width: 635px; margin: 0 auto; border: 1px solid; height: 780px;}
+#bbwhere{font-weight: 550; margin-left: 7px; font-size: 90%;}
+#bbsubject{font-size: 130%; font-weight: bold; margin: 15px; color: rgb(119, 15, 167);;}
+#bbsub{width: 600px; height: 20px; padding: 10px; margin: 5px;}
+#bbcont{width: 602px; min-height: 300px; padding: 10px;resize: none;margin: 5px;}
+#bbwrite{position: relative; top:20px ;left:540px;height: 40px; width: 80px; border-radius: 5px; background-color:#dbadff; font-weight:bold; color: white; border: 0; }
+#imnam{margin: 10px;color: gray; font-size: 90%; font-weight: 100;}

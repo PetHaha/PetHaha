@@ -75,7 +75,7 @@ $(function(){
         <input type="hidden" name="category" value="0">
 	        <table id="" style="float: right;">
 				<tr >
-					<td style="font-size:15px; width:642; " >
+					<td style="font-size:15px; width:342; " >
 	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px; font-weight:bold; color:white;" name="sc" >
 	                        <option value="1" >제목</option>
 	                        <option value="2">내용</option>
