@@ -72,4 +72,16 @@
 		{CALL PreplyReportOX(#{RNUM},#{ID},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
 	</insert>
 	
+	<insert id="PboardWrite" statementType="CALLABLE" parameterType="pethaha.dto.BoardVO">
+		{CALL PboardWrite(#{CATEGORY},#{SUBJECT},#{CONTENT},#{ID},#{NICK},#{BIMG1})}
+	</insert>
+
+
+
+
+
+
+
+
+
 </mapper>

@@ -1,26 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<script type="text/javascript">
+
+$(function(){
+	$('#myButton').click( function(){
+		var formselect = $("#boardfileupForm")[0];   
+		var formdata = new FormData(formselect); 
+		$.ajax({    
+			url:"<%=request.getContextPath() %>/boardImgfileUp",
+			type:"POST",
+			enctype:"multipart/form-data",
+			async: false,
+			data: formdata,
+	    	timeout: 10000,
+	    	contentType : false,
+	        processData : false,
+	        success : function(data){
+	            if(data.STATUS == 1){  	
+	            	$("#fileimage").val(data.FILENAME);
+	            	$("#filename").html("<img src='images/boardimg/"+data.FILENAME+"' height='150'/>");
+	            }
+	        },
+	        error: function() {	alert("업로드 실패");}
+		});
+	});
+});
+
+function boardcheck(){
+	
+		if( document.writeform.SUBJECT.value==""){
+	      alert("제목을 입력하세요" );
+	      document.writeform.SUBJECT.focus();
+	      return false;
+	    }else if( document.writeform.CONTENT.value==""){
+	      alert("내용을 입력하세요" );
+	      document.writeform.CONTENT.focus();
+	      return false;
+	    }else return true;
+	}
+
+</script>
+
+
 	<div id="bbwrap">
         <div id="bbsubject">게시글 쓰기</div>
-        <div id="bbwhere">고양이게시판 &gt;</div>
+        <div id="bbwhere"> &lt;고양이게시판 &gt;</div>
         <div>
-            <input type="text" placeholder="제목을 입력하세요. (30글자 이내)" id="bbsub" maxlength="30">
+        <form action="boardWrite" method="post" name="writeform">
+        	<input type="hidden" name="CATEGORY" value="${category }">
+        	<input type="hidden" name="NICK" value="${loginUser.NICK}">
+        	<input type="hidden" name="ID" value="${loginUser.ID }">
+            <input type="text" placeholder="제목을 입력하세요. (30글자 이내)" id="bbsub" maxlength="30" name="SUBJECT" >
             <br>
-            <textarea id="bbcont" placeholder="내용을 입력하세요. (1000글자 이내)" maxlength="1000"></textarea>
+            <textarea id="bbcont" placeholder="내용을 입력하세요. (1000글자 이내)" maxlength="1000" name="CONTENT"></textarea>
+            <br>
+             <br>
             <label for="img" id="imnam"> º 이미지 등록</label>
             <br>
-            <br>
             <div style="height:200px; width:100%;"> 
-               
-              <div id="filename" style="float:left; margin-right:30px;">
-                    <img src="thumb.png" height='150'/>
+               <input type="hidden" name="BIMG1" id="fileimage">
+              <div id="filename" style="float:left; margin:10px;" >
               </div>
            </div>
-            <input id="bbwrite" type="submit" value="등록">
+            <input id="bbwrite" type="submit" value="등록" onclick="return boardCheck();">
+            </form>
         </div>
-        <div style="position:absolute; bottom:-30px; margin-left: 5px;" >
-            <form name="fromm" id="fileupForm" method="post" enctype="multipart/form-data">
+        
+        <div style="position:absolute; bottom:210px; margin-left: 5px;" >
+            <form name="fromm" id="boardfileupForm" method="post" enctype="multipart/form-data">
               <input type="file" name="fileimage"><input type="button" id="myButton" value="추가">
            </form> 
         </div>

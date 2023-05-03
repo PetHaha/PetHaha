@@ -1,8 +1,10 @@
 package pethaha.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import pethaha.dto.BoardVO;
 import pethaha.dto.ReplyVO;
 import pethaha.dto.ReportVO;
 import pethaha.service.BoardService2;
@@ -174,5 +182,31 @@ public class BoardController2 {
 		return "board/replypolice";			
 	}
 	
+	@RequestMapping("/boardwriteform")
+	public String boardwriteform(@ModelAttribute("category")String category,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		return "board/boardWrite";
+	}
 	
+	@Autowired
+	ServletContext context;
+
+	@RequestMapping(value="/boardImgfileUp",method=RequestMethod.POST)
+	@ResponseBody	
+	  public HashMap<String , Object> boardImgfileUp(Model model,HttpServletRequest request) throws IOException{
+		String path=context.getRealPath("images/boardimg/");
+		HashMap<String,Object>result=new HashMap<String,Object>();		
+		MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+		result.put("STATUS",1);
+		result.put("FILENAME", multi.getFilesystemName("fileimage"));
+		return result;
+	}
+	
+	@RequestMapping("/boardWrite")
+	public String boardWriteform(BoardVO bvo,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		if(bvo.getBIMG1()==null)bvo.setBIMG1("");
+		bs.PboardWrite(bvo);
+		return "redirect:/dogcat?category="+bvo.getCATEGORY();
+	}
 }

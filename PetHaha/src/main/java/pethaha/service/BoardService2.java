@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pethaha.dao.IBoardDao2;
+import pethaha.dto.BoardVO;
 import pethaha.dto.ReplyVO;
 import pethaha.dto.ReportVO;
 
@@ -86,6 +87,10 @@ public class BoardService2 {
 	public void PreplyReportOX(HashMap<String, Object> prm) {
 		bdao.PreplyReportOX(prm);
 		
+	}
+
+	public void PboardWrite(BoardVO bvo) {
+		bdao.PboardWrite(bvo);
 	}
 
 	

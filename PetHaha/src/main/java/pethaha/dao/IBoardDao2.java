@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import pethaha.dto.BoardVO;
 import pethaha.dto.ReplyVO;
 import pethaha.dto.ReportVO;
 
@@ -41,6 +42,8 @@ public interface IBoardDao2 {
 	void PreplyReport(ReportVO rvo);
 
 	void PreplyReportOX(HashMap<String, Object> prm);
+
+	void PboardWrite(BoardVO bvo);
 
 
 

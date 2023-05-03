@@ -175,3 +175,12 @@ begin
     open p_curvar For
     select*from prereport where id=p_id and rnum=p_rnum;
 end;
+
+
+create or replace procedure PboardWrite(p_category in number, p_subject in varchar2, p_content in varchar2 , p_id in varchar2, p_nick in varchar2, p_bimg1 in varchar2)
+IS
+BEGIN
+    insert into pboard(bnum,category,subject,content,id,nick,bimg1) 
+    values(pboard_seq.nextval,p_category,p_subject,p_content,p_id,p_nick,p_bimg1);
+    commit;
+END;

@@ -93,7 +93,7 @@ $(function(){
 	        <table id="" style="float: right; ">
 				<tr>	
 					<td>
-							<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 80px; margin-right: 450px; cursor:pointer; color:white; font-weight:bold;" type="button"   value="글쓰기">
+							<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 80px; margin-right: 450px; cursor:pointer; color:white; font-weight:bold;" type="button"   value="글쓰기" onclick="location.href='boardwriteform?category=${category}'">
 					</td>
 					<td style="font-size:15px; width:342; " >
 					<form name="frm" method="post" action="dogcat?category=${category}">
