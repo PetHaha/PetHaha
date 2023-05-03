@@ -27,7 +27,7 @@ $(function(){
 	});
 });
 
-function boardcheck(){
+function boardCheck(){
 	
 		if( document.writeform.SUBJECT.value==""){
 	      alert("제목을 입력하세요" );
