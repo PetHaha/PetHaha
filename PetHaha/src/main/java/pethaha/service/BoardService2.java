@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pethaha.dao.IBoardDao2;
+import pethaha.dto.BoardVO;
 import pethaha.dto.ReplyVO;
 import pethaha.dto.ReportVO;
 
@@ -32,6 +33,8 @@ public class BoardService2 {
 	}
 
 	public void PReplydelete(String rNUM) {
+		bdao.PReplyredelete(rNUM);
+		bdao.PReplythdelete(rNUM);
 		bdao.PReplydelete(rNUM);
 		
 	}
@@ -65,5 +68,36 @@ public class BoardService2 {
 		bdao.PReportOX(prm);
 		
 	}
+
+	public void PRThumbsUp(HashMap<String, Object> prm) {
+		bdao.PRThumbsUp(prm);
+		
+	}
+
+	public void PReLikeOX(HashMap<String, Object> prm) {
+		bdao.PReLikeOX(prm);
+		
+	}
+
+	public void PreplyReport(ReportVO rvo) {
+		bdao.PreplyReport(rvo);
+		
+	}
+
+	public void PreplyReportOX(HashMap<String, Object> prm) {
+		bdao.PreplyReportOX(prm);
+		
+	}
+
+	public void PboardWrite(BoardVO bvo) {
+		bdao.PboardWrite(bvo);
+	}
+
+	public void PboardEdit(BoardVO bvo) {
+		bdao.PboardEdit(bvo);
+		
+	}
+
+	
 
 }

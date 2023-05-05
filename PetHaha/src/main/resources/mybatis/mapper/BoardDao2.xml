@@ -24,6 +24,13 @@
 		delete from preply where RNUM=#{rNUM}
 	</delete>
 	
+	<delete id="PReplythdelete" parameterType="String">
+		delete from prereport where RNUM=#{rNUM}
+	</delete>
+	
+	<delete id="PReplyredelete" parameterType="String">
+		delete from prelike where RNUM=#{rNUM}
+	</delete>
 	
 	<update id="readCountPlus" parameterType="String">
 		update pboard set views=views+1 where bnum=#{bnum}
@@ -49,7 +56,34 @@
 		{CALL PReportOX(#{ ID},#{BNUM},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
 	</select>
 	
+	<insert id="PRThumbsUp" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PRThumbsUp(#{ ID},#{RNUM},#{ NICK })}
+	</insert>
 	
+	<select id="PReLikeOX" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PReLikeOX(#{ ID},#{RNUM},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
+	</select>
 	
+	<insert id="PreplyReport" statementType="CALLABLE" parameterType="pethaha.dto.ReportVO">
+		{CALL PreplyReport(#{RCATEGORY},#{RNUM},#{ID},#{NICK},#{RCONTENT})}
+	</insert>
 	
+	<insert id="PreplyReportOX" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL PreplyReportOX(#{RNUM},#{ID},#{ ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=boardMap2 })}
+	</insert>
+	
+	<insert id="PboardWrite" statementType="CALLABLE" parameterType="pethaha.dto.BoardVO">
+		{CALL PboardWrite(#{CATEGORY},#{SUBJECT},#{CONTENT},#{ID},#{NICK},#{BIMG1})}
+	</insert>
+
+	<update id="PboardEdit" statementType="CALLABLE" parameterType="pethaha.dto.BoardVO">
+		{CALL pboardEdit(#{BNUM},#{SUBJECT},#{CONTENT},#{BIMG1})}
+	</update>
+	
+
+
+
+
+
+
 </mapper>

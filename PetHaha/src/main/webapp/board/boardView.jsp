@@ -21,10 +21,22 @@
 	function boardreport(BNUM,ID,NICK){
 		let opt = "toolbar=no, menubar=no, resizable=no, width=420, height=400, scrollbars=no, left=500, top=100";
 		 let a= "boardreportform?ID="+ID+"&BNUM="+BNUM+"&NICK="+NICK;
-		   window.open(a, "신고하기", opt);   
+		   window.open(a, "게시글 신고하기", opt);   
+	}
+	
+	function replyreport(RNUM,ID,NICK){
+		let opt = "toolbar=no, menubar=no, resizable=no, width=420, height=400, scrollbars=no, left=500, top=100";
+		 let a= "replyreportform?ID="+ID+"&RNUM="+RNUM+"&NICK="+NICK;
+		   window.open(a, "댓글 신고하기", opt);   
 	}
 
 </script>
+	<c:if test="${replycheck =='1' }">
+		<script type="text/javascript">
+			alert('이미 추천된 댓글입니다');
+		</script>
+	</c:if>
+
 
     <div id="bwrap">
     <c:choose>
@@ -53,6 +65,9 @@
                 <div class="bas"><img src="images/eye.png" style="height:10px">&nbsp; ${board.VIEWS }</div>
                 <div class="bdot">.</div>
                 <div class="bas"><img src="images/thumb.png" style="height:9px"> ${board.THUMBS}</div>
+                <c:if test="${board.ID == loginUser.ID }">
+                	<input type="button" id="bthumbs" style="left:500px; color:white; margin-top:10px" value="글 수정" onclick="location.href='boardEditForm?BNUM=${board.BNUM}'">
+                </c:if>
             </div>
 
         </div>
@@ -101,11 +116,26 @@
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
                 <div class="brcontent">${reply.RCONTENT }</div> 
-                <c:if test="${loginUser.ID ==reply.ID }">
-                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
-                </c:if>   
-                <div class="brthumbs">추천 </div>
-                <div class="brpolice">신고</div>
+               
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
+                	</c:otherwise>
+                </c:choose> 
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')">신고 </div>
+                	</c:when>
+                	<c:when test="${loginUser.ID != reply.ID }">
+                		<div class="brpolice" onclick="replyreport('${reply.RNUM}','${loginUser.ID }','${loginUser.NICK }')">신고 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                	</c:otherwise>
+                </c:choose>    
             </div>
             </c:when>
             <c:otherwise>
@@ -116,12 +146,26 @@
                 <div class="bras"><fmt:formatDate value="${reply.INDATE}" type="date" pattern="yy-MM-dd HH:mm" /></div>
                 <div class="brdot">.</div>
                 <div class="bras"><img src="images/thumb.png" style="height:10px">&nbsp;${ reply.RTHUMBS}</div>
-                <div class="brcontent">${reply.RCONTENT }</div> 
-                <c:if test="${loginUser.ID ==reply.ID }">
-                	<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
-                </c:if>   
-                <div class="brthumbs">추천 </div>
-                <div class="brpolice">신고</div>
+                <div class="brcontent">${reply.RCONTENT }</div>   
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brthumbs" onclick="alert('로그인을 해야 추천할 수 있습니다.')">추천 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brthumbs" onclick="location.href='RThumbsUp?ID=${loginUser.ID}&NICK=${loginUser.NICK }&BNUM=${board.BNUM }&RNUM=${reply.RNUM }&best=${best}'">추천 </div>
+                	</c:otherwise>
+                </c:choose>   
+                <c:choose>
+                	<c:when test="${empty loginUser }">
+                		<div class="brpolice" onclick="alert('로그인을 해야 신고할 수 있습니다.')">신고 </div>
+                	</c:when>
+                	<c:when test="${loginUser.ID != reply.ID }">
+                		<div class="brpolice" onclick="replyreport('${reply.RNUM}','${loginUser.ID }','${loginUser.NICK }')">신고 </div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="brdelete" onclick="replydelete('${reply.RNUM}','${board.BNUM }','${best }');">삭제 </div>
+                	</c:otherwise>
+                </c:choose>    
             </div>
             </c:otherwise>
             </c:choose>

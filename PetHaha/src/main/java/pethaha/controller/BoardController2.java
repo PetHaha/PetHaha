@@ -1,8 +1,10 @@
 package pethaha.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import pethaha.dto.BoardVO;
 import pethaha.dto.ReplyVO;
 import pethaha.dto.ReportVO;
 import pethaha.service.BoardService2;
@@ -32,7 +40,7 @@ public class BoardController2 {
 
 	@RequestMapping("/boardView") 
 	public String boardView( HttpSession session,@RequestParam("BNUM") String BNUM, Model model, HttpServletRequest request,
-			@RequestParam(value="best", required=false)String best, HttpServletResponse response) {
+			@RequestParam(value="best", required=false)String best, @ModelAttribute("replycheck")String replycheck,HttpServletResponse response) {
 		HashMap<String, Object> prm = new HashMap<>();
 		prm.put("BNUM", BNUM);
 		bs.PboardView(prm); //게시글 내용 조회
@@ -88,6 +96,7 @@ public class BoardController2 {
 		bs.PReportOX(prm); //신고유무
 		list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
 		if(list.size()!=0)model.addAttribute("ReportOX",1);
+		
 		}
 		
 		
@@ -135,7 +144,91 @@ public class BoardController2 {
 		model.addAttribute("result","1");
 		return "board/boardpolice";			
 	}
-	//신고하기 jsp 작업과 매핑 추가 해야함
+	
+	@RequestMapping("/RThumbsUp") 
+	public String RThumbsUp(@RequestParam(value="RNUM", required=false)String RNUM,@RequestParam(value="ID", required=false)String ID,
+			@RequestParam(value="best", required=false)String best,@RequestParam(value="BNUM", required=false)String BNUM,
+			@RequestParam(value="NICK", required=false)String NICK, Model model) {
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("ID", ID);
+		prm.put("NICK", NICK);
+		prm.put("RNUM", RNUM);
+		bs.PReLikeOX(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0) {return "redirect:/boardView?BNUM="+BNUM+"&best="+best+"&replycheck=1";	}	
+		else {
+			bs.PRThumbsUp(prm);
+			return "redirect:/boardView?BNUM="+BNUM+"&best="+best;	
+		}		
+	}
 	
 	
+	@RequestMapping("/replyreportform") 
+	public String replyreportform(@ModelAttribute("RNUM")String RNUM,@ModelAttribute("ID")String ID,
+			@ModelAttribute("NICK")String NICK,Model model) {
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("RNUM", RNUM);
+		prm.put("ID", ID);
+		bs.PreplyReportOX(prm);
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		if(list.size()!=0) model.addAttribute("result","0");	
+		return "board/replypolice";			
+	}
+	
+	@RequestMapping("/replyReport") 
+	public String replyReport(ReportVO rvo,Model model) {
+		bs.PreplyReport(rvo);
+		model.addAttribute("result","1");
+		return "board/replypolice";			
+	}
+	
+	@RequestMapping("/boardwriteform")
+	public String boardwriteform(@ModelAttribute("category")String category,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		return "board/boardWrite";
+	}
+	
+	@Autowired
+	ServletContext context;
+
+	@RequestMapping(value="/boardImgfileUp",method=RequestMethod.POST)
+	@ResponseBody	
+	  public HashMap<String , Object> boardImgfileUp(Model model,HttpServletRequest request) throws IOException{
+		String path=context.getRealPath("images/boardimg/");
+		HashMap<String,Object>result=new HashMap<String,Object>();		
+		MultipartRequest multi =new MultipartRequest(request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+		result.put("STATUS",1);
+		result.put("FILENAME", multi.getFilesystemName("fileimage"));
+		return result;
+	}
+	
+	@RequestMapping("/boardWrite")
+	public String boardWriteform(BoardVO bvo,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		if(bvo.getBIMG1()==null)bvo.setBIMG1("");
+		bs.PboardWrite(bvo);
+		return "redirect:/dogcat?category="+bvo.getCATEGORY();
+	}
+	
+	@RequestMapping("/boardEditForm")
+	public String boardEditForm(@RequestParam("BNUM") String BNUM,HttpSession session,Model model) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		HashMap<String, Object> prm = new HashMap<>();
+		prm.put("BNUM", BNUM);
+		bs.PboardView(prm); //게시글 내용 조회
+		ArrayList<HashMap<String,Object>> list = (ArrayList<HashMap<String,Object>>)prm.get("ref_cursor");
+		HashMap<String,Object>bVO=list.get(0);
+		model.addAttribute("board",bVO);
+		return "board/boardEdit";
+	}
+	
+	@RequestMapping("/boardEdit")
+	public String boardEdit(@RequestParam(value="oldImg", required=false) String oldImg,BoardVO bvo,HttpSession session) {
+		if(session.getAttribute("loginUser")==null) return "redirect:/loginForm";
+		if(oldImg==null)oldImg="";
+		if(bvo.getBIMG1()==null||bvo.getBIMG1().equals(""))bvo.setBIMG1(oldImg);
+		bs.PboardEdit(bvo);
+		return "redirect:/boardView?BNUM="+bvo.getBNUM();
+	}
+
 }
