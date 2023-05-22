@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 
 <script type="text/javascript">
 $(function(){
@@ -20,11 +20,18 @@ $(function(){
 
     <div id="borderlist">
     	<br>
-        <h2 class="subjectt">&nbsp;&nbsp;베스트</h2>
+    	<c:choose>
+    	<c:when test="${category =='1' }">
+        	<h2 class="subjectt">&nbsp;&nbsp;강아지</h2>
+        </c:when>
+        <c:when test="${category =='2' }">
+        	<h2 class="subjectt">&nbsp;&nbsp;고양이</h2>
+        </c:when>
+        </c:choose>
         <div style="position:relative;">
         <c:forEach items="${list}" var="board">
-        <div style="height:81px;	">
-        <a class="items" href="boardView?BNUM=${board.BNUM }&best=1">
+        <div style="height:81px; 	">
+        <a class="items" href="boardView?BNUM=${board.BNUM }">
             <div class="images">
             <c:choose>
 	            <c:when test="${empty board.BIMG1 }">
@@ -37,17 +44,9 @@ $(function(){
             </div>
             <div class="info" >
                 <div class="titleContainer">
-                	<c:choose>
-                		<c:when test="${board.CATEGORY=='1' }">
-                    		<span class="category">강아지</span>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<span class="category">고양이</span>
-                    	</c:otherwise>
-                    </c:choose>
-                    <span class="title"> ${board.SUBJECT}
-                    </span>
-                    <c:if test="${board.REPLYCNT != '0' }">
+                	
+                    <span class="text"> ${board.SUBJECT}</span>
+					<c:if test="${board.REPLYCNT != '0' }">
                     	<span style=" font-weight:bold;color:#7DD4FF; font-size:15px;">&nbsp;${board.REPLYCNT }</span>
                     </c:if>
                 </div>
@@ -66,31 +65,55 @@ $(function(){
         </c:forEach>
         </div>
        
-        <jsp:include page="/board/paging.jsp">
-			<jsp:param name="command" value="index"/>
+        <jsp:include page="/board/paging2.jsp">
+			<jsp:param name="command" value="dogcat?category=${category}"/>
 		</jsp:include>	
 	
-        <br>
-        <form name="frm" method="post" action="index">
-        <input type="hidden" name="category" value="0">
-	        <table id="" style="float: right;">
-				<tr >
+	<br>
+        <c:choose>
+        	<c:when test="${empty loginUser }">
+        		<table id="" style="float: right; ">
+				<tr>	
 					<td style="font-size:15px; width:342; " >
-	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px; font-weight:bold; color:white;" name="sc" >
+					<form name="frm" method="post" action="dogcat?category=${category}">
+	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px; color:white; font-weight:bold;" name="sc">
 	                        <option value="1" >제목</option>
 	                        <option value="2">내용</option>
 	                        <option value="3">작성자</option>
 	                    </select>
 	                    <input type="hidden" name="page" value="1">
 	                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
-						<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 50px; cursor:pointer;  font-weight:bold; color:white;" type="submit" name="btn_search" value="검색">
+						<input  style="background-color: #dcb1ff; border-radius: 8px; color:white; font-weight:bold; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
+					</form>
 					</td>
 				</tr>
 			</table>
-		</form>
+        	</c:when>
+        	<c:otherwise>
+	        <table id="" style="float: right; ">
+				<tr>	
+					<td>
+							<input  style="background-color: #dcb1ff; border-radius: 8px; border: 0;  height: 30px; width: 80px; margin-right: 450px; cursor:pointer; color:white; font-weight:bold;" type="button"   value="글쓰기" onclick="location.href='boardwriteform?category=${category}'">
+					</td>
+					<td style="font-size:15px; width:342; " >
+					<form name="frm" method="post" action="dogcat?category=${category}">
+	                    <select style="height:30px;background-color: #dcb1ff; border-radius: 8px; border: 0; width: 100px; color:white; font-weight:bold;" name="sc">
+	                        <option value="1" >제목</option>
+	                        <option value="2">내용</option>
+	                        <option value="3">작성자</option>
+	                    </select>
+	                    <input type="hidden" name="page" value="1">
+	                    <input  type="text" name="key" style="background-color: #f5edfc; border-radius: 3px; border: 0;  height: 30px;">
+						<input  style="background-color: #dcb1ff; border-radius: 8px; color:white; font-weight:bold; border: 0;  height: 30px; width: 50px; cursor:pointer;" type="submit" name="btn_search" value="검색">
+					</form>
+					</td>
+				</tr>
+			</table>
+			</c:otherwise>
+		</c:choose>
         
 
     </div>
     <br>
-	
-<%@ include file="footer.jsp"%>
+	<br>
+<%@ include file="../footer.jsp"%>
